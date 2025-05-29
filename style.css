@@ -1,4 +1,4 @@
-/* Modern CSS Reset and Variables */
+/* Reset and Variables */
 * {
     margin: 0;
     padding: 0;
@@ -6,189 +6,156 @@
 }
 
 :root {
-    --primary-color: #2563eb;
+    --primary-blue: #2563eb;
     --text-dark: #1f2937;
     --text-medium: #4b5563;
     --text-light: #6b7280;
     --bg-white: #ffffff;
-    --bg-gray: #f9fafb;
+    --bg-light: #f9fafb;
     --border-light: #e5e7eb;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --max-width: 1200px;
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
     color: var(--text-dark);
-    background-color: var(--bg-white);
-    -webkit-font-smoothing: antialiased;
+    background: var(--bg-white);
+    line-height: 1.6;
 }
 
-/* Navigation */
-.navbar {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header */
+.header {
     background: var(--bg-white);
     border-bottom: 1px solid var(--border-light);
+    padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: var(--shadow-sm);
 }
 
-.nav-container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 80px;
-}
-
-.nav-brand h1 {
+.site-title {
     font-size: 24px;
     font-weight: 600;
+    margin-bottom: 20px;
     color: var(--text-dark);
-    letter-spacing: -0.025em;
 }
 
-.nav-menu {
+.navigation {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
-.nav-link {
-    padding: 8px 16px;
+.nav-btn {
+    background: none;
+    border: 1px solid var(--border-light);
     color: var(--text-medium);
-    text-decoration: none;
+    padding: 8px 16px;
     font-size: 14px;
     font-weight: 500;
     border-radius: 6px;
+    cursor: pointer;
     transition: all 0.2s ease;
     white-space: nowrap;
 }
 
-.nav-link:hover {
-    background-color: var(--bg-gray);
-    color: var(--text-dark);
+.nav-btn:hover {
+    background: var(--bg-light);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
 }
 
-.nav-link.active {
-    background-color: var(--primary-color);
+.nav-btn.active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
     color: white;
 }
 
 .search-btn {
-    padding: 8px;
     background: none;
-    border: none;
+    border: 1px solid var(--border-light);
     color: var(--text-medium);
-    cursor: pointer;
+    padding: 8px 12px;
     border-radius: 6px;
+    cursor: pointer;
     transition: all 0.2s ease;
     margin-left: 8px;
 }
 
 .search-btn:hover {
-    background-color: var(--bg-gray);
-    color: var(--text-dark);
+    background: var(--bg-light);
+    color: var(--primary-blue);
 }
 
 /* Main Content */
-.main-content {
-    max-width: var(--max-width);
-    margin: 0 auto;
+.main {
+    padding: 40px 0;
 }
 
-.tab-section {
+.tab-content {
     display: none;
 }
 
-.tab-section.active {
+.tab-content.active {
     display: block;
 }
 
-/* Hero Section */
-.hero-section {
-    padding: 80px 24px;
-    background: var(--bg-white);
-}
-
-.hero-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.hero-content {
+/* Home Layout */
+.home-layout {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 60px;
     align-items: start;
+    margin-bottom: 60px;
 }
 
-.profile-photo {
+.text-content h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-dark);
+}
+
+.text-content p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-medium);
+}
+
+.image-content {
     display: flex;
     justify-content: center;
 }
 
-.profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+.profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
     object-fit: cover;
-    box-shadow: var(--shadow-lg);
-    transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-    transform: scale(1.05);
-}
-
-.hero-text {
-    padding-top: 20px;
-}
-
-.hero-title {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 24px;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
-}
-
-.hero-description {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--text-medium);
-    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 /* Social Section */
 .social-section {
-    padding: 60px 24px 80px;
-    background: var(--bg-white);
+    text-align: center;
+    padding: 40px 0;
     border-top: 1px solid var(--border-light);
 }
 
-.social-container {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.social-icons {
+.social-links {
     display: flex;
     justify-content: center;
     gap: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 }
 
-.social-link {
+.social-icon {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -197,227 +164,182 @@ body {
     justify-content: center;
     text-decoration: none;
     font-size: 20px;
-    transition: all 0.3s ease;
     border: 2px solid;
+    transition: all 0.3s ease;
 }
 
-.social-link.youtube {
+.social-icon.youtube {
     color: #ff0000;
     border-color: #ff0000;
 }
 
-.social-link.linkedin {
+.social-icon.linkedin {
     color: #0077b5;
     border-color: #0077b5;
 }
 
-.social-link.github {
-    color: #333333;
-    border-color: #333333;
+.social-icon.github {
+    color: #333;
+    border-color: #333;
 }
 
-.social-link.twitter {
+.social-icon.twitter {
     color: #1da1f2;
     border-color: #1da1f2;
 }
 
-.social-link:hover {
+.social-icon:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.social-link.youtube:hover {
-    background-color: #ff0000;
+.social-icon.youtube:hover {
+    background: #ff0000;
     color: white;
 }
 
-.social-link.linkedin:hover {
-    background-color: #0077b5;
+.social-icon.linkedin:hover {
+    background: #0077b5;
     color: white;
 }
 
-.social-link.github:hover {
-    background-color: #333333;
+.social-icon.github:hover {
+    background: #333;
     color: white;
 }
 
-.social-link.twitter:hover {
-    background-color: #1da1f2;
+.social-icon.twitter:hover {
+    background: #1da1f2;
     color: white;
 }
 
-.btn-contact {
+.contact-btn {
     display: inline-block;
-    padding: 12px 32px;
-    background-color: var(--primary-color);
+    background: var(--primary-blue);
     color: white;
+    padding: 12px 32px;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
-    letter-spacing: 0.05em;
-    border-radius: 8px;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
     transition: all 0.2s ease;
-    box-shadow: var(--shadow-sm);
 }
 
-.btn-contact:hover {
-    background-color: #1d4ed8;
+.contact-btn:hover {
+    background: #1d4ed8;
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
 }
 
-/* Content Sections */
-.content-container {
-    padding: 80px 24px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.content-container h2 {
-    font-size: 32px;
+/* Other Tab Content */
+.tab-content h2 {
+    font-size: 28px;
     font-weight: 700;
+    margin-bottom: 20px;
     color: var(--text-dark);
-    margin-bottom: 24px;
-    letter-spacing: -0.025em;
 }
 
-.content-container p {
-    font-size: 18px;
+.tab-content p {
+    font-size: 16px;
     color: var(--text-medium);
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
-/* Contact Info */
 .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
+    margin-top: 24px;
 }
 
-.contact-item {
+.contact-info p {
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 16px;
-    background: var(--bg-gray);
-    border-radius: 8px;
 }
 
-.contact-item i {
-    color: var(--primary-color);
-    font-size: 18px;
+.contact-info i {
+    color: var(--primary-blue);
     width: 20px;
-}
-
-.contact-item span {
-    font-size: 16px;
-    color: var(--text-dark);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        padding: 16px 24px;
-        min-height: auto;
-        gap: 16px;
+    .container {
+        padding: 0 16px;
     }
 
-    .nav-brand h1 {
+    .header {
+        padding: 16px 0;
+    }
+
+    .site-title {
         font-size: 20px;
+        text-align: center;
     }
 
-    .nav-menu {
+    .navigation {
+        justify-content: center;
         overflow-x: auto;
-        width: 100%;
-        justify-content: flex-start;
         padding-bottom: 8px;
     }
 
-    .nav-link {
+    .nav-btn {
         font-size: 13px;
         padding: 6px 12px;
         flex-shrink: 0;
     }
 
-    .hero-section {
-        padding: 40px 24px;
-    }
-
-    .hero-content {
+    .home-layout {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
     }
 
-    .hero-title {
-        font-size: 28px;
+    .text-content h2 {
+        font-size: 24px;
     }
 
-    .hero-description {
+    .text-content p {
         font-size: 16px;
     }
 
-    .profile-img {
-        width: 150px;
-        height: 150px;
+    .profile-photo {
+        width: 200px;
+        height: 200px;
     }
 
-    .social-section {
-        padding: 40px 24px 60px;
-    }
-
-    .social-icons {
+    .social-links {
         gap: 12px;
     }
 
-    .social-link {
+    .social-icon {
         width: 44px;
         height: 44px;
         font-size: 18px;
     }
-
-    .content-container {
-        padding: 60px 24px;
-    }
-
-    .content-container h2 {
-        font-size: 24px;
-    }
-
-    .content-container p {
-        font-size: 16px;
-    }
 }
 
 @media (max-width: 480px) {
-    .nav-container {
-        padding: 12px 16px;
+    .site-title {
+        font-size: 18px;
     }
 
-    .hero-section {
-        padding: 32px 16px;
+    .nav-btn {
+        font-size: 12px;
+        padding: 6px 10px;
     }
 
-    .hero-content {
-        gap: 32px;
+    .text-content h2 {
+        font-size: 20px;
     }
 
-    .hero-title {
-        font-size: 24px;
+    .profile-photo {
+        width: 180px;
+        height: 180px;
     }
 
-    .profile-img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .social-section {
-        padding: 32px 16px 48px;
-    }
-
-    .content-container {
-        padding: 48px 16px;
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
     }
 }

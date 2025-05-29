@@ -11,158 +11,108 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation Header -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <h1>Karishma Gangwani</h1>
-            </div>
-            <div class="nav-menu">
-                <a href="#" class="nav-link active" data-tab="home">Home</a>
-                <a href="#" class="nav-link" data-tab="science-communication">Science Communication</a>
-                <a href="#" class="nav-link" data-tab="art-stories">Art & Stories</a>
-                <a href="#" class="nav-link" data-tab="academic-research">Academic Research</a>
-                <a href="#" class="nav-link" data-tab="community-engagement">Community Engagement</a>
-                <a href="#" class="nav-link" data-tab="educational-videos">Educational Videos</a>
-                <a href="#" class="nav-link" data-tab="certifications">Certifications</a>
-                <a href="#" class="nav-link" data-tab="contact">Contact Me</a>
-                <button class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="site-title">Karishma Gangwani</h1>
+            <nav class="navigation">
+                <button class="nav-btn active" data-tab="home">Home</button>
+                <button class="nav-btn" data-tab="science-communication">Science Communication</button>
+                <button class="nav-btn" data-tab="art-stories">Art & Stories</button>
+                <button class="nav-btn" data-tab="academic-research">Academic Research</button>
+                <button class="nav-btn" data-tab="community-engagement">Community Engagement</button>
+                <button class="nav-btn" data-tab="educational-videos">Educational Videos</button>
+                <button class="nav-btn" data-tab="certifications">Certifications</button>
+                <button class="nav-btn" data-tab="contact">Contact Me</button>
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <!-- Home Tab -->
-        <section id="home" class="tab-section active">
-            <div class="hero-section">
-                <div class="hero-container">
-                    <div class="hero-content">
-                        <div class="profile-photo">
-                            <img src="KGprof.jpg" alt="Karishma Gangwani" class="profile-img">
-                        </div>
-                        <div class="hero-text">
-                            <h2 class="hero-title">Who Am I</h2>
-                            <p class="hero-description">
-                                Scientist by training, storyteller by passion – I bridge the gap between complex scientific, 
-                                medical data and meaningful human connections. My unique blend of scientific expertise and 
-                                communication skills allows me to transform intricate science into compelling narratives 
-                                that resonate with a broad audience of all ages.
-                            </p>
-                        </div>
+    <main class="main">
+        <div class="container">
+            <!-- Home Tab -->
+            <div id="home" class="tab-content active">
+                <div class="home-layout">
+                    <div class="text-content">
+                        <h2>Who Am I</h2>
+                        <p>Scientist by training, storyteller by passion – I bridge the gap between complex scientific, medical data and meaningful human connections. My unique blend of scientific expertise and communication skills allows me to transform intricate science into compelling narratives that resonate with a broad audience of all ages.</p>
+                    </div>
+                    <div class="image-content">
+                        <img src="KGprof.jpg" alt="Karishma Gangwani" class="profile-photo">
                     </div>
                 </div>
-            </div>
-            
-            <!-- Social Links -->
-            <div class="social-section">
-                <div class="social-container">
-                    <div class="social-icons">
-                        <a href="#" class="social-link youtube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="social-link linkedin">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link github">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                
+                <div class="social-section">
+                    <div class="social-links">
+                        <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon github"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
                     </div>
-                    <div class="contact-button">
-                        <a href="#" class="btn-contact">CONTACT</a>
-                    </div>
+                    <a href="#" class="contact-btn">CONTACT</a>
                 </div>
             </div>
-        </section>
 
-        <!-- Other Tabs -->
-        <section id="science-communication" class="tab-section">
-            <div class="content-container">
+            <!-- Other Tabs -->
+            <div id="science-communication" class="tab-content">
                 <h2>Science Communication</h2>
                 <p>Content coming soon...</p>
             </div>
-        </section>
 
-        <section id="art-stories" class="tab-section">
-            <div class="content-container">
+            <div id="art-stories" class="tab-content">
                 <h2>Art & Stories</h2>
                 <p>Content coming soon...</p>
             </div>
-        </section>
 
-        <section id="academic-research" class="tab-section">
-            <div class="content-container">
+            <div id="academic-research" class="tab-content">
                 <h2>Academic Research</h2>
                 <p>Content coming soon...</p>
             </div>
-        </section>
 
-        <section id="community-engagement" class="tab-section">
-            <div class="content-container">
+            <div id="community-engagement" class="tab-content">
                 <h2>Community Engagement</h2>
                 <p>Content coming soon...</p>
             </div>
-        </section>
 
-        <section id="educational-videos" class="tab-section">
-            <div class="content-container">
+            <div id="educational-videos" class="tab-content">
                 <h2>Educational Videos</h2>
                 <p>Content coming soon...</p>
             </div>
-        </section>
 
-        <section id="certifications" class="tab-section">
-            <div class="content-container">
+            <div id="certifications" class="tab-content">
                 <h2>Certifications</h2>
                 <p>Content coming soon...</p>
             </div>
-        </section>
 
-        <section id="contact" class="tab-section">
-            <div class="content-container">
+            <div id="contact" class="tab-content">
                 <h2>Contact Me</h2>
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>your.email@example.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin-in"></i>
-                        <span>LinkedIn Profile</span>
-                    </div>
+                    <p><i class="fas fa-envelope"></i> your.email@example.com</p>
+                    <p><i class="fab fa-linkedin-in"></i> LinkedIn Profile</p>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <script>
-        // Simple tab functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const tabSections = document.querySelectorAll('.tab-section');
+            const navBtns = document.querySelectorAll('.nav-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all links and sections
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    tabSections.forEach(s => s.classList.remove('active'));
-                    
-                    // Add active class to clicked link
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons and tabs
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(tab => tab.classList.remove('active'));
+
+                    // Add active class to clicked button
                     this.classList.add('active');
-                    
-                    // Show corresponding section
+
+                    // Show corresponding tab
                     const targetTab = this.getAttribute('data-tab');
-                    const targetSection = document.getElementById(targetTab);
-                    if (targetSection) {
-                        targetSection.classList.add('active');
-                    }
+                    document.getElementById(targetTab).classList.add('active');
                 });
             });
         });
