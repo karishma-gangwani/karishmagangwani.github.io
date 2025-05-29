@@ -481,7 +481,6 @@
         <nav>
             <div class="logo">Karishma Gangwani</div>
             <div class="nav-links">
-                <a href="#" onclick="showPage('home')" class="nav-link">Home</a>
                 <a href="#" onclick="showPage('communications')" class="nav-link">Communications</a>
                 <a href="#" onclick="showPage('art-stories')" class="nav-link">Art & Stories</a>
                 <a href="#" onclick="showPage('academic-research')" class="nav-link">Academic Research</a>
@@ -539,8 +538,7 @@
     <script>
         // Define a mapping of page IDs to their corresponding HTML file paths
         const pagePaths = {
-            'home': 'pages/home.html',
-            // Updated file path for communications
+            'home': 'pages/home.html', // Keep home.html as the content source for the landing page
             'communications': 'pages/communications.html',
             'art-stories': 'pages/art-stories.html',
             'academic-research': 'pages/academic-research.html',
@@ -585,15 +583,17 @@
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
                 });
-                // Find the link that corresponds to the current pageId and add 'active' class
-                const activeLink = document.querySelector(`.nav-link[onclick*="showPage('${pageId}')"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                } else if (pageId === 'home') {
-                    // Special handling for home if its link doesn't follow the pattern
-                    document.querySelector('.nav-link[onclick*="showPage(\'home\')"]').classList.add('active');
-                }
 
+                // Find the link that corresponds to the current pageId and add 'active' class
+                // Special handling for the 'home' page since it's no longer a direct nav link
+                if (pageId === 'home') {
+                    // No nav link to activate for 'home'
+                } else {
+                    const activeLink = document.querySelector(`.nav-link[onclick*="showPage('${pageId}')"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
 
                 // Scroll to the top of the window after loading new content
                 window.scrollTo(0, 0);
@@ -639,7 +639,7 @@
                 }
             } else if (e.target.closest('.logo')) { // Handle click on the logo to go home
                 e.preventDefault();
-                showPage('home');
+                showPage('home'); // Clicking the logo always goes to home
             } else if (e.target.closest('.contact-button')) { // Handle click on the contact button
                 e.preventDefault();
                 showPage('contact');
@@ -651,10 +651,9 @@
         const searchInput = document.getElementById('searchInput');
         let searchActive = false;
 
-        // Define searchable content (updated to include home and more keywords)
+        // Define searchable content (updated to reflect 'home' as the default landing page)
         const searchableContent = [
             { title: 'Home', pageId: 'home', keywords: ['home', 'profile', 'about', 'karishma', 'scientist', 'storyteller'] },
-            // Updated pageId for "Communications"
             { title: 'Communications', pageId: 'communications', keywords: ['science', 'communication', 'blog', 'articles', 'tobacco', 'drosophila', 'proteinpaint', 'epigenetic', 'scientists', 'nematodes', 'grad school', 'cancer', 'research', 'publication', 'interdisciplinary', 'essays', 'public insights', 'societal biases', 'psychology', 'symbolism', 'change', 'xi wang mu', 'holika', 'limits'] },
             { title: 'Art & Stories', pageId: 'art-stories', keywords: ['art', 'stories', 'creative', 'narrative', 'gallery', 'fiction', 'painting', 'illustration', 'sculpture', 'woods', 'painter'] },
             { title: 'Academic Research', pageId: 'academic-research', keywords: ['academic', 'research', 'papers', 'publications', 'studies', 'thesis'] },
