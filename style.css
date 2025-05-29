@@ -41,8 +41,9 @@ body {
 .site-title {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
     color: var(--text-dark);
+    text-align: left;
 }
 
 .navigation {
