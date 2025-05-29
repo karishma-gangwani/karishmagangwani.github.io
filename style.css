@@ -41,8 +41,9 @@ body {
 .site-title {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
     color: var(--text-dark);
+    text-align: left;
 }
 
 .navigation {
@@ -109,10 +110,11 @@ body {
 /* Home Layout */
 .home-layout {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
     align-items: start;
     margin-bottom: 60px;
+    max-width: 900px;
 }
 
 .text-content h2 {
@@ -130,12 +132,12 @@ body {
 
 .image-content {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .profile-photo {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 8px;
     object-fit: cover;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
