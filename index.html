@@ -613,13 +613,13 @@
                     </svg>
                 </a>
             </div>
-            <a href="#" onclick="showPage('contact')" class="contact-button">CONTACT</a>
+            <a href="#contact" onclick="showPage('contact'); return false;" class="contact-button">CONTACT</a>
         </div>
     </footer>
 
     <script>
         // Page navigation
-        function showPage(pageId) {
+        function showPage(pageId, updateHash = true) {
             // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
@@ -634,17 +634,19 @@
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.textContent.toLowerCase().replace(' ', '-') === pageId.replace('-', ' ') || 
-                    (pageId === 'home' && link.textContent === 'Home')) {
+                const linkText = link.textContent.toLowerCase().replace(/\s+/g, '-');
+                if (linkText === pageId || (pageId === 'home' && link.textContent === 'Home')) {
                     link.classList.add('active');
                 }
             });
             
-            // Update URL hash
-            if (pageId === 'home') {
-                history.pushState(null, null, '#');
-            } else {
-                history.pushState(null, null, '#' + pageId);
+            // Update URL hash only if needed
+            if (updateHash) {
+                if (pageId === 'home') {
+                    window.location.hash = '';
+                } else {
+                    window.location.hash = pageId;
+                }
             }
             
             // Scroll to top
@@ -655,17 +657,21 @@
         function handleHashChange() {
             const hash = window.location.hash.slice(1); // Remove the # symbol
             if (hash && document.getElementById(hash)) {
-                showPage(hash);
+                showPage(hash, false); // false to prevent updating hash again
             } else {
-                showPage('home');
+                showPage('home', false);
             }
         }
 
         // Load correct page on initial load
-        window.addEventListener('DOMContentLoaded', handleHashChange);
+        document.addEventListener('DOMContentLoaded', function() {
+            handleHashChange();
+        });
         
         // Handle browser back/forward buttons
-        window.addEventListener('hashchange', handleHashChange);
+        window.addEventListener('hashchange', function() {
+            handleHashChange();
+        });
 
         // Search functionality
         const searchIcon = document.getElementById('searchIcon');
