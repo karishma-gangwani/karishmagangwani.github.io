@@ -1,0 +1,163 @@
+<div class="page-header">
+    <h1>Art & Stories</h1>
+    <p>Dive into a world where science meets creativity through visual art and compelling narratives.</p>
+</div>
+
+<section class="art-grid">
+    <div class="art-item">
+        <img src="https://via.placeholder.com/400x300/e0e0e0/ffffff?text=Art+Piece+1" alt="Abstract Painting">
+        <h3>Abstract Cosmos</h3>
+        <p>A piece exploring the vastness of the universe through color and texture.</p>
+        <button class="view-details-button">View Details</button>
+    </div>
+    <div class="art-item">
+        <img src="https://via.placeholder.com/400x300/d0d0d0/ffffff?text=Digital+Art+2" alt="Digital Illustration">
+        <h3>Digital Nature Study</h3>
+        <p>An intricate digital illustration inspired by microscopic life forms.</p>
+        <button class="view-details-button">View Details</button>
+    </div>
+    <div class="art-item">
+        <img src="https://via.placeholder.com/400x300/c0c0c0/ffffff?text=Sculpture+3" alt="Conceptual Sculpture">
+        <h3>Sculpting Data</h3>
+        <p>A conceptual sculpture that visualizes complex data patterns.</p>
+        <button class="view-details-button">View Details</button>
+    </div>
+    </section>
+
+<section class="story-list">
+    <h2>Short Stories & Essays</h2>
+    <div class="story-item">
+        <h3><a href="https://www.linkedin.com/pulse/why-do-we-change-karishma-gangwani-phd--xknje/" target="_blank" class="read-story-link">Why Do We Change?</a></h3>
+        <p>An exploration into the reasons behind human transformation and adaptation.</p>
+    </div>
+    <div class="story-item">
+        <h3><a href="https://karishmagangwani.substack.com/p/xi-wang-mu" target="_blank" class="read-story-link">Xi Wang Mu</a></h3>
+        <p>A story inspired by the Queen Mother of the West from Chinese mythology.</p>
+    </div>
+    <div class="story-item">
+        <h3><a href="https://karishmagangwani.substack.com/p/holika" target="_blank" class="read-story-link">Holika</a></h3>
+        <p>A narrative delving into the tale of Holika and the festival of Holi.</p>
+    </div>
+    <div class="story-item">
+        <h3><a href="https://karishmagangwani.substack.com/p/the-question-on-limits" target="_blank" class="read-story-link">The Question on Limits</a></h3>
+        <p>An essay pondering the boundaries and limitations we encounter in life and science.</p>
+    </div>
+    <div class="story-item">
+        <h3><a href="https://karishmagangwani.substack.com/p/unraveling-the-mysteries-of-epigenetic" target="_blank" class="read-story-link">Unraveling the Mysteries of Epigenetic Regulation: How Nematodes rewrite genetic rules</a></h3>
+        <p>How environmental or internal signals can reprogram gene expression without altering the DNA sequence.</p>
+    </div>
+</section>
+
+<style>
+    /* Unique CSS for the Art & Stories page */
+    .art-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .art-item {
+        background-color: #fcf8f0; /* A soft, warm background */
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        padding-bottom: 1.5rem;
+    }
+
+    .art-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .art-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .art-item h3 {
+        font-size: 1.3rem;
+        color: #4a69bd; /* A calming blue */
+        margin-bottom: 0.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .art-item p {
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.5;
+        padding: 0 1.5rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .view-details-button {
+        background-color: #4a69bd;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .view-details-button:hover {
+        background-color: #3e5a9b;
+        transform: scale(1.05);
+    }
+
+    .story-list {
+        background-color: #f0f8ff; /* A very light blue background */
+        border-radius: 12px;
+        padding: 3rem;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    }
+
+    .story-list h2 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .story-item {
+        background-color: white;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-left: 5px solid #a3d9ff; /* A subtle blue border */
+    }
+
+    .story-item h3 {
+        font-size: 1.25rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .story-item p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .read-story-link {
+        color: #4a69bd;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .read-story-link:hover {
+        color: #3e5a9b;
+        text-decoration: underline;
+    }
+
+</style>
