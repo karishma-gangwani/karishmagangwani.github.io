@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karishma Gangwani</title>
     <style>
-        /* Your existing CSS from style.css is already linked or inlined,
-           but for a complete example, I'm including the relevant parts here.
-           In your actual project, keep style.css separate and linked. */
         * {
             margin: 0;
             padding: 0;
@@ -35,10 +32,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* Adjusted max-width and padding to align with main content below */
-            max-width: 1200px; /* Matches main's max-width */
+            max-width: 1200px; 
             margin: 0 auto;
-            padding: 1.5rem 2rem; /* Matches main's horizontal padding */
+            padding: 1.5rem 2rem;
         }
 
         .logo {
@@ -48,14 +44,12 @@
             letter-spacing: -0.5px;
             white-space: nowrap;
             cursor: pointer;
-            /* Removed margin-left: auto; to keep it on the left */
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            /* Added margin-left: auto; to push nav links to the right */
             margin-left: auto;
         }
 
@@ -304,6 +298,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            min-height: 120px; /* Added min-height to ensure content is visible */
         }
 
         .blog-card-title {
@@ -312,10 +307,11 @@
             color: #2c3e50;
             margin-bottom: 0.75rem;
             line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            /* Removed line clamping properties to ensure full title is visible */
+            display: block; /* Changed to block to remove flexbox truncation */
+            overflow: visible; /* Ensure text is not hidden */
+            -webkit-line-clamp: unset; /* Ensure no line clamping */
+            -webkit-box-orient: unset; /* Ensure no box orientation */
             transition: color 0.3s ease;
         }
 
@@ -323,10 +319,11 @@
             color: #2c3e50;
             text-decoration: none;
             transition: color 0.3s ease;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            /* Removed line clamping properties to ensure full title is visible */
+            display: block; /* Changed to block to remove flexbox truncation */
+            overflow: visible; /* Ensure text is not hidden */
+            -webkit-line-clamp: unset; /* Ensure no line clamping */
+            -webkit-box-orient: unset; /* Ensure no box orientation */
         }
         .blog-card-title a:hover {
             color: #667eea;
@@ -337,10 +334,11 @@
             font-size: 0.95rem;
             color: #666;
             line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            /* Removed line clamping properties to ensure text is always visible */
+            /* display: -webkit-box; */
+            /* -webkit-line-clamp: 2; */
+            /* -webkit-box-orient: vertical; */
+            overflow: visible; /* Changed to visible to ensure text is not hidden */
             flex-grow: 1;
         }
 
@@ -540,7 +538,7 @@
             'home': 'pages/home.html', // Keep home.html as the content source for the landing page
             'science': 'pages/science.html',
             'communications': 'pages/communications.html',
-            'education': 'pages/education',
+            'education': 'pages/education.html', // Corrected path
             'outreach': 'pages/outreach.html',
             'certifications': 'pages/certifications.html',
             'contact': 'pages/contact.html'
@@ -549,32 +547,26 @@
         /**
          * Loads content for a given page ID into the dynamic content container.
          * @param {string} pageId - The ID of the page to load.
+         * @param {boolean} [clearHash=false] - If true, clears the URL hash after loading (e.g., for home page).
          */
-        async function showPage(pageId) {
+        async function showPage(pageId, clearHash = false) {
             const container = document.getElementById('dynamic-content-container');
             const filePath = pagePaths[pageId];
 
-            // If no file path is defined for the pageId, log an error and return.
             if (!filePath) {
                 console.error(`Error: No file path defined for page: ${pageId}`);
-                // Optionally, display a user-friendly error message in the container
                 container.innerHTML = `<div class="page-header"><h1>Page Not Found</h1><p>The content for "${pageId}" could not be loaded.</p></div>`;
                 return;
             }
 
             try {
-                // Fetch the HTML content from the specified file path
                 const response = await fetch(filePath);
 
-                // Check if the network request was successful (status code 200-299)
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
                 }
 
-                // Get the response text (the HTML content)
                 const htmlContent = await response.text();
-
-                // Insert the fetched HTML content into the container
                 container.innerHTML = htmlContent;
 
                 // Update the 'active' class on navigation links
@@ -582,8 +574,6 @@
                     link.classList.remove('active');
                 });
 
-                // Find the link that corresponds to the current pageId and add 'active' class
-                // Special handling for the 'home' page since it's no longer a direct nav link
                 if (pageId === 'home') {
                     // No nav link to activate for 'home'
                 } else {
@@ -593,58 +583,70 @@
                     }
                 }
 
-                // Scroll to the top of the window after loading new content
                 window.scrollTo(0, 0);
 
-                // Update the URL hash to reflect the current page, allowing browser history
-                if (window.location.hash !== `#${pageId}`) {
+                // --- MODIFIED HASH UPDATE LOGIC ---
+                if (clearHash) {
+                    // Replace the current history entry to remove the hash
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                } else if (window.location.hash !== `#${pageId}`) {
+                    // Only update hash if it's different to avoid redundant history entries
                     window.location.hash = pageId;
                 }
+                // --- END MODIFIED HASH UPDATE LOGIC ---
 
             } catch (error) {
-                // Log and display any errors during the fetch process
                 console.error('Error loading page content:', error);
                 container.innerHTML = `<div class="page-header"><h1>Error</h1><p>Failed to load content for this page. Please try again later.</p></div>`;
             }
         }
 
-        /**
-         * Handles changes to the URL hash (e.g., when using browser back/forward buttons or direct URL access).
-         * Loads the appropriate page based on the hash.
-         */
-        function handleHashChange() {
-            const hash = window.location.hash.slice(1); // Get the hash without the '#'
-            if (hash && pagePaths[hash]) { // Check if hash exists and has a corresponding file path
-                showPage(hash);
+        // --- NEW/MODIFIED EVENT LISTENERS ---
+
+        // 1. On initial load, check if there's a hash. If so, load that page. Otherwise, load home.
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.slice(1);
+            if (hash && pagePaths[hash]) {
+                showPage(hash); // Load the page corresponding to the hash
             } else {
-                showPage('home'); // Default to home page if no valid hash is found
-            }
-        }
-
-        // Event listeners for page initialization and hash changes
-        window.addEventListener('DOMContentLoaded', handleHashChange); // Load content when the DOM is ready
-        window.addEventListener('hashchange', handleHashChange); // Load content when the URL hash changes
-
-        // Event listener for navigation clicks (delegated to the document for efficiency)
-        document.addEventListener('click', function(e) {
-            // Check if the clicked element or its parent is a nav-link
-            if (e.target.classList.contains('nav-link')) {
-                e.preventDefault(); // Prevent default link behavior (page reload)
-                // Extract the pageId from the onclick attribute
-                const pageIdMatch = e.target.getAttribute('onclick').match(/showPage\('(.+?)'\)/);
-                if (pageIdMatch && pageIdMatch[1]) {
-                    showPage(pageIdMatch[1]); // Call showPage with the extracted ID
-                }
-            } else if (e.target.closest('.logo')) { // Handle click on the logo to go home
-                e.preventDefault();
-                showPage('home'); // Clicking the logo always goes to home
-            } else if (e.target.closest('.contact-button')) { // Handle click on the contact button
-                e.preventDefault();
-                showPage('contact');
+                showPage('home', true); // Load home page and clear hash from URL if no valid hash
             }
         });
 
-        // Search functionality
+        // 2. Handle hash changes triggered by browser back/forward buttons or direct hash entry.
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.slice(1);
+            if (hash && pagePaths[hash]) {
+                showPage(hash); // Load the page corresponding to the hash
+            } else {
+                // If hash becomes empty or invalid through history navigation, go home
+                showPage('home', true); // Go home and clear the hash from URL
+            }
+        });
+
+        // 3. Modified click handlers for navigation links and logo.
+        document.addEventListener('click', function(e) {
+            // Handle clicks on navigation links
+            if (e.target.classList.contains('nav-link')) {
+                e.preventDefault(); // Prevent default link behavior
+                const pageIdMatch = e.target.getAttribute('onclick').match(/showPage\('(.+?)'\)/);
+                if (pageIdMatch && pageIdMatch[1]) {
+                    showPage(pageIdMatch[1]); // Normal navigation, will set URL hash
+                }
+            }
+            // Handle clicks on the logo to go to home page and clear hash
+            else if (e.target.closest('.logo')) {
+                e.preventDefault();
+                showPage('home', true); // Go home and clear hash from URL
+            }
+            // Handle clicks on the contact button
+            else if (e.target.closest('.contact-button')) {
+                e.preventDefault();
+                showPage('contact'); // Contact button will set URL hash
+            }
+        });
+
+        // Search functionality (remains the same)
         const searchIcon = document.getElementById('searchIcon');
         const searchInput = document.getElementById('searchInput');
         let searchActive = false;
@@ -652,10 +654,10 @@
         // Define searchable content (updated to reflect 'home' as the default landing page)
         const searchableContent = [
             { title: 'Home', pageId: 'home', keywords: ['home', 'profile', 'about', 'karishma', 'scientist', 'storyteller'] },
-            { title: 'Communications', pageId: 'communications', keywords: ['science', 'communications', 'blog', 'articles', 'tobacco', 'drosophila', 'proteinpaint', 'epigenetic', 'scientists', 'nematodes', 'grad school', 'cancer', 'research', 'publication', 'interdisciplinary', 'essays', 'public insights', 'societal biases', 'psychology', 'symbolism', 'change', 'xi wang mu', 'holika', 'limits'] },
-            { title: 'Academic Research', pageId: 'science', keywords: ['academic', 'research', 'papers', 'publications', 'studies', 'thesis'] },
-            { title: 'Community Engagement', pageId: 'outreach', keywords: ['community', 'engagement', 'outreach', 'public', 'volunteer', 'events'] },
-            { title: 'Education', pageId: 'education', keywords: ['education', 'videos', 'youtube', 'content', 'tutorials', 'learning'] },
+            { title: 'Science', pageId: 'science', keywords: ['science', 'research', 'publications', 'biorxiv', 'springer', 'sciencedirect', 'mdpi', 'frontiers', 'pubmed', 'chromatin', 'drug discovery', 'crispr-cas9', 'non-coding rnas', 'cellular senescence', 'aging', 'mitochondrial dynamics', 'neurodegenerative', 'epigenetic modifications', 'plant development', 'drosophila cancer modeling', 'tobacco'] },
+            { title: 'Communications', pageId: 'communications', keywords: ['science', 'communication', 'blog', 'articles', 'tobacco', 'drosophila', 'proteinpaint', 'epigenetic', 'scientists', 'nematodes', 'grad school', 'cancer', 'research', 'publication', 'interdisciplinary', 'essays', 'public insights', 'societal biases', 'psychology', 'symbolism', 'change', 'xi wang mu', 'holika', 'limits'] },
+            { title: 'Education', pageId: 'education', keywords: ['education', 'learning', 'teaching', 'academic', 'videos', 'courses'] },
+            { title: 'Outreach', pageId: 'outreach', keywords: ['outreach', 'community', 'engagement', 'public', 'volunteer', 'events'] },
             { title: 'Certifications', pageId: 'certifications', keywords: ['certifications', 'certificates', 'credentials', 'awards', 'achievements'] },
             { title: 'Contact Me', pageId: 'contact', keywords: ['contact', 'email', 'reach', 'connect', 'inquiry', 'form'] }
         ];
@@ -713,7 +715,7 @@
                     const results = performSearch(searchTerm);
 
                     if (results.length > 0) {
-                        showPage(results[0].pageId); // Load the first matching page
+                        showPage(results[0].pageId, true); // Load the first matching page and clear hash
                         this.value = ''; // Clear search input
                         searchActive = false;
                         this.classList.remove('active');
@@ -723,16 +725,13 @@
                             console.log(`Found ${results.length} results. Showing: ${results[0].title}`);
                         }
                     } else {
-                        // Using a custom message box instead of alert()
                         displayMessageBox(`No results found for "${searchTerm}"`);
                     }
                 }
             }
         });
 
-        // Custom message box function to replace alert()
         function displayMessageBox(message) {
-            // Create overlay and message box elements
             const overlay = document.createElement('div');
             overlay.style.cssText = `
                 position: fixed;
@@ -779,12 +778,10 @@
             closeButton.onmouseover = () => closeButton.style.backgroundColor = '#5a6edb';
             closeButton.onmouseout = () => closeButton.style.backgroundColor = '#667eea';
 
-            // Add event listener to close the message box
             closeButton.addEventListener('click', () => {
                 document.body.removeChild(overlay);
             });
 
-            // Append elements
             messageBox.appendChild(messageText);
             messageBox.appendChild(closeButton);
             overlay.appendChild(messageBox);
