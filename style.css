@@ -43,7 +43,6 @@ body {
     font-weight: 600;
     margin-bottom: 32px;
     color: var(--text-dark);
-    text-align: left;
 }
 
 .navigation {
