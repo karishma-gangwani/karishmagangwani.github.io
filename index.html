@@ -47,15 +47,16 @@
             color: #2c3e50;
             letter-spacing: -0.5px;
             white-space: nowrap;
-            /* Pushes the logo to the far right within the nav */
-            margin-left: 10%;
+            cursor: pointer;
+            /* Removed margin-left: auto; to keep it on the left */
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            /* Removed margin-left: auto; as logo now takes that space */
+            /* Added margin-left: auto; to push nav links to the right */
+            margin-left: auto;
         }
 
         .nav-links a {
@@ -478,6 +479,7 @@
 <body>
     <header>
         <nav>
+            <div class="logo">Karishma Gangwani</div>
             <div class="nav-links">
                 <a href="#" onclick="showPage('home')" class="nav-link">Home</a>
                 <a href="#" onclick="showPage('communications')" class="nav-link">Communications</a>
@@ -495,7 +497,6 @@
                     </svg>
                 </div>
             </div>
-            <div class="logo">Karishma Gangwani</div>
         </nav>
     </header>
 
