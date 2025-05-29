@@ -472,7 +472,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo" onclick="showPage('home')">Karishma Gangwani</div>
+            <div class="logo" onclick="window.location.hash=''; showPage('home');">Karishma Gangwani</div>
             <div class="nav-links">
                 <a href="#" onclick="showPage('home')" class="nav-link active">Home</a>
                 <a href="#" onclick="showPage('science-communication')" class="nav-link">Science Communication</a>
@@ -683,11 +683,12 @@
     </footer>
 
     <script>
-        // Page navigation
-        function showPage(pageId, updateHash = true) {
+        // Simple page navigation
+        function showPage(pageId) {
             // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
             
             // Show selected page
             const selectedPage = document.getElementById(pageId);
@@ -696,46 +697,39 @@
             }
             
             // Update active nav link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
+            document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
-                const linkText = link.textContent.toLowerCase().replace(/\s+/g, '-');
-                if (linkText === pageId || (pageId === 'home' && link.textContent === 'Home')) {
+                // Check if the link href matches the current page
+                if (link.getAttribute('href') === '#' + pageId) {
                     link.classList.add('active');
                 }
             });
-            
-            // Update URL hash only if needed
-            if (updateHash) {
-                if (pageId === 'home') {
-                    window.location.hash = '';
-                } else {
-                    window.location.hash = pageId;
-                }
-            }
             
             // Scroll to top
             window.scrollTo(0, 0);
         }
 
-        // Handle initial page load and hash changes
+        // Handle hash changes (for browser back/forward and page refresh)
         function handleHashChange() {
-            const hash = window.location.hash.slice(1); // Remove the # symbol
+            const hash = window.location.hash.slice(1);
             if (hash && document.getElementById(hash)) {
-                showPage(hash, false); // false to prevent updating hash again
+                showPage(hash);
             } else {
-                showPage('home', false);
+                showPage('home');
             }
         }
 
-        // Load correct page on initial load
-        document.addEventListener('DOMContentLoaded', function() {
-            handleHashChange();
-        });
-        
-        // Handle browser back/forward buttons
-        window.addEventListener('hashchange', function() {
-            handleHashChange();
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', handleHashChange);
+        window.addEventListener('hashchange', handleHashChange);
+
+        // Handle navigation clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('nav-link')) {
+                e.preventDefault();
+                const pageId = e.target.getAttribute('href').slice(1);
+                window.location.hash = pageId;
+            }
         });
 
         // Search functionality
@@ -743,9 +737,8 @@
         const searchInput = document.getElementById('searchInput');
         let searchActive = false;
         
-        // Define searchable content
+        // Define searchable content (removed Home from search)
         const searchableContent = [
-            { title: 'Home', pageId: 'home', keywords: ['home', 'main', 'index', 'who am i', 'about'] },
             { title: 'Science Communication', pageId: 'science-communication', keywords: ['science', 'communication', 'blog', 'articles'] },
             { title: 'Art & Stories', pageId: 'art-stories', keywords: ['art', 'stories', 'creative', 'narrative'] },
             { title: 'Academic Research', pageId: 'academic-research', keywords: ['academic', 'research', 'papers', 'publications'] },
@@ -768,7 +761,6 @@
         });
 
         searchInput.addEventListener('blur', function() {
-            // Delay to allow click on search icon
             setTimeout(() => {
                 if (this.value === '') {
                     searchActive = false;
@@ -783,13 +775,11 @@
             const results = [];
             
             searchableContent.forEach(item => {
-                // Check if search term matches title
                 if (item.title.toLowerCase().includes(term)) {
                     results.push(item);
                     return;
                 }
                 
-                // Check if search term matches any keywords
                 const keywordMatch = item.keywords.some(keyword => 
                     keyword.toLowerCase().includes(term)
                 );
@@ -809,16 +799,13 @@
                     const results = performSearch(searchTerm);
                     
                     if (results.length > 0) {
-                        // Navigate to first result
-                        showPage(results[0].pageId);
+                        window.location.hash = results[0].pageId;
                         
-                        // Clear and hide search
                         this.value = '';
                         searchActive = false;
                         this.classList.remove('active');
                         searchIcon.classList.remove('active');
                         
-                        // Show message if multiple results
                         if (results.length > 1) {
                             console.log(`Found ${results.length} results. Showing: ${results[0].title}`);
                         }
