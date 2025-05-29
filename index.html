@@ -42,6 +42,7 @@
             color: #2c3e50;
             letter-spacing: -0.5px;
             white-space: nowrap;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -125,12 +126,22 @@
 
         /* Main Content */
         main {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            min-height: calc(100vh - 200px);
         }
 
-        /* Profile Section */
+        /* Pages */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Home Page Styles */
         .profile-section {
             text-align: center;
             margin-bottom: 3rem;
@@ -153,7 +164,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* About Section */
         .about-section {
             background: #f8f9fa;
             border-radius: 12px;
@@ -175,6 +185,108 @@
             line-height: 1.8;
             color: #555;
             text-align: left;
+        }
+
+        /* Science Communication Page Styles */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-card-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease;
+        }
+
+        .blog-card-link:hover {
+            gap: 0.8rem;
+        }
+
+        .blog-card-link svg {
+            width: 16px;
+            height: 16px;
         }
 
         /* Footer */
@@ -242,10 +354,6 @@
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            header {
-                padding: 1.5rem 2rem;
-            }
-
             .nav-links {
                 gap: 1.5rem;
             }
@@ -281,6 +389,11 @@
                 padding: 2rem;
             }
 
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
             .footer-content {
                 flex-direction: column;
                 gap: 2rem;
@@ -291,16 +404,16 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Karishma Gangwani</div>
+            <div class="logo" onclick="showPage('home')">Karishma Gangwani</div>
             <div class="nav-links">
-                <a href="#" class="active">Home</a>
-                <a href="scicomm.html" class="active">Science Communication</a>
-                <a href="#">Art & Stories</a>
-                <a href="#">Academic Research</a>
-                <a href="#">Community Engagement</a>
-                <a href="#">Educational Videos</a>
-                <a href="#">Certifications</a>
-                <a href="#">Contact Me</a>
+                <a href="#" onclick="showPage('home')" class="nav-link active">Home</a>
+                <a href="#" onclick="showPage('science-communication')" class="nav-link">Science Communication</a>
+                <a href="#" onclick="showPage('art-stories')" class="nav-link">Art & Stories</a>
+                <a href="#" onclick="showPage('academic-research')" class="nav-link">Academic Research</a>
+                <a href="#" onclick="showPage('community-engagement')" class="nav-link">Community Engagement</a>
+                <a href="#" onclick="showPage('educational-videos')" class="nav-link">Educational Videos</a>
+                <a href="#" onclick="showPage('certifications')" class="nav-link">Certifications</a>
+                <a href="#" onclick="showPage('contact')" class="nav-link">Contact Me</a>
                 <div class="search-container">
                     <input type="text" class="search-input" id="searchInput" placeholder="Search...">
                     <svg class="search-icon" id="searchIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -313,15 +426,159 @@
     </header>
 
     <main>
-        <section class="profile-section">
-            <img src="KGprof.jpg" alt="Karishma Gangwani" class="profile-image">
-            <p class="tagline">Scientist by training, storyteller by passion</p>
-        </section>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="profile-section">
+                <img src="KGprof.jpg" alt="Karishma Gangwani" class="profile-image">
+                <p class="tagline">Scientist by training, storyteller by passion</p>
+            </section>
 
-        <section class="about-section">
-            <h2>Who Am I</h2>
-            <p>I bridge the gap between complex scientific, medical data and meaningful human connections. My unique blend of scientific expertise and communication skills allows me to transform intricate science into compelling narratives that resonate with a broad audience of all ages.</p>
-        </section>
+            <section class="about-section">
+                <h2>Who Am I</h2>
+                <p>I bridge the gap between complex scientific, medical data and meaningful human connections. My unique blend of scientific expertise and communication skills allows me to transform intricate science into compelling narratives that resonate with a broad audience of all ages.</p>
+            </section>
+        </div>
+
+        <!-- Science Communication Page -->
+        <div id="science-communication" class="page">
+            <div class="page-header">
+                <h1>Science Communication</h1>
+                <p>Transforming complex scientific concepts into engaging narratives that inspire and educate audiences of all backgrounds.</p>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">Exploring the Brain and Space: Insights from Collaborative Research</h3>
+                        <p class="blog-card-description">This paper examines the intersection of neuroscience and space research, highlighting collaborative approaches to understanding complex systems and their implications for future scientific endeavors.</p>
+                        <a href="https://www.mdpi.com/2673-8430/4/4/35" target="_blank" class="blog-card-link">
+                            Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">Bioinformatics for Space Life Sciences</h3>
+                        <p class="blog-card-description">An exploration of how bioinformatics tools and techniques can be applied to space life sciences research, opening new frontiers in our understanding of life in extreme environments.</p>
+                        <a href="https://link.springer.com/chapter/10.1007/978-3-030-42246-2_9" target="_blank" class="blog-card-link">
+                            Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">Research Documentation & Findings</h3>
+                        <p class="blog-card-description">Comprehensive documentation of research findings and methodologies, providing insights into the scientific process and discoveries that shape our understanding of the world.</p>
+                        <a href="https://drive.google.com/file/d/1WxKgaLbw2Z0jtFsQiAY8GiYbDZ4L_GvW/view" target="_blank" class="blog-card-link">
+                            Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">Unraveling the Mysteries of Epigenetic</h3>
+                        <p class="blog-card-description">A deep dive into the fascinating world of epigenetics, exploring how environmental factors can influence gene expression and shape our biological destiny without changing DNA sequences.</p>
+                        <a href="https://karishmagangwani.substack.com/p/unraveling-the-mysteries-of-epigenetic" target="_blank" class="blog-card-link">
+                            Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">Ten Simple Rules for Engaging with Science Through Social Media</h3>
+                        <p class="blog-card-description">Practical guidelines for scientists and communicators on how to effectively use social media platforms to share research, engage with audiences, and build meaningful scientific communities online.</p>
+                        <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010130" target="_blank" class="blog-card-link">
+                            Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">P. pacificus's Epigenetic Toolkit is Missing an Important Tool</h3>
+                        <p class="blog-card-description">An investigation into the epigenetic mechanisms of P. pacificus, revealing surprising gaps in its molecular toolkit and what this means for our understanding of evolutionary biology.</p>
+                        <a href="https://genestogenomes.org/p-pacificuss-epigenetic-toolkit-is-missing-an-important-tool/" target="_blank" class="blog-card-link">
+                            Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);"></div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">Avoiding Overcommitment</h3>
+                        <p class="blog-card-description">Essential strategies for early-career researchers to manage their time, energy, and commitments effectively while maintaining productivity and well-being in academic settings.</p>
+                        <a href="https://ecrlife.org/avoiding_overcommitment/" target="_blank" class="blog-card-link">
+                            Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);"></div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">St. Jude Cloud Survivorship Portal: A Treasure Trove of Data for Discovery</h3>
+                        <p class="blog-card-description">Exploring how the St. Jude Cloud Survivorship Portal is revolutionizing childhood cancer research by providing unprecedented access to survivorship data for researchers worldwide.</p>
+                        <a href="https://www.stjude.org/research/progress/2023/st-jude-cloud-survivorship-portal-offers-a-treasure-trove-of-data-for-discovery-in-childhood-cancers.html" target="_blank" class="blog-card-link">
+                            Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- Placeholder pages for other sections -->
+        <div id="art-stories" class="page">
+            <div class="page-header">
+                <h1>Art & Stories</h1>
+                <p>Coming soon...</p>
+            </div>
+        </div>
+
+        <div id="academic-research" class="page">
+            <div class="page-header">
+                <h1>Academic Research</h1>
+                <p>Coming soon...</p>
+            </div>
+        </div>
+
+        <div id="community-engagement" class="page">
+            <div class="page-header">
+                <h1>Community Engagement</h1>
+                <p>Coming soon...</p>
+            </div>
+        </div>
+
+        <div id="educational-videos" class="page">
+            <div class="page-header">
+                <h1>Educational Videos</h1>
+                <p>Coming soon...</p>
+            </div>
+        </div>
+
+        <div id="certifications" class="page">
+            <div class="page-header">
+                <h1>Certifications</h1>
+                <p>Coming soon...</p>
+            </div>
+        </div>
+
+        <div id="contact" class="page">
+            <div class="page-header">
+                <h1>Contact Me</h1>
+                <p>Coming soon...</p>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -353,26 +610,52 @@
                     </svg>
                 </a>
             </div>
-            <a href="#" class="contact-button">CONTACT</a>
+            <a href="#" onclick="showPage('contact')" class="contact-button">CONTACT</a>
         </div>
     </footer>
 
     <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.textContent.toLowerCase().replace(' ', '-') === pageId.replace('-', ' ') || 
+                    (pageId === 'home' && link.textContent === 'Home')) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Search functionality
         const searchIcon = document.getElementById('searchIcon');
         const searchInput = document.getElementById('searchInput');
         let searchActive = false;
         
         // Define searchable content
         const searchableContent = [
-            { title: 'Home', url: '#', keywords: ['home', 'main', 'index'] },
-            { title: 'Science Communication', url: '#science-communication', keywords: ['science', 'communication', 'outreach'] },
-            { title: 'Art & Stories', url: '#art-stories', keywords: ['art', 'stories', 'creative', 'narrative'] },
-            { title: 'Academic Research', url: '#academic-research', keywords: ['academic', 'research', 'papers', 'publications'] },
-            { title: 'Community Engagement', url: '#community-engagement', keywords: ['community', 'engagement', 'outreach', 'public'] },
-            { title: 'Educational Videos', url: '#educational-videos', keywords: ['education', 'videos', 'youtube', 'content'] },
-            { title: 'Certifications', url: '#certifications', keywords: ['certifications', 'certificates', 'credentials'] },
-            { title: 'Contact Me', url: '#contact', keywords: ['contact', 'email', 'reach', 'connect'] },
-            { title: 'About', url: '#about', keywords: ['who am i', 'about', 'bio', 'biography', 'scientist', 'storyteller'] }
+            { title: 'Home', pageId: 'home', keywords: ['home', 'main', 'index', 'who am i', 'about'] },
+            { title: 'Science Communication', pageId: 'science-communication', keywords: ['science', 'communication', 'blog', 'articles'] },
+            { title: 'Art & Stories', pageId: 'art-stories', keywords: ['art', 'stories', 'creative', 'narrative'] },
+            { title: 'Academic Research', pageId: 'academic-research', keywords: ['academic', 'research', 'papers', 'publications'] },
+            { title: 'Community Engagement', pageId: 'community-engagement', keywords: ['community', 'engagement', 'outreach', 'public'] },
+            { title: 'Educational Videos', pageId: 'educational-videos', keywords: ['education', 'videos', 'youtube', 'content'] },
+            { title: 'Certifications', pageId: 'certifications', keywords: ['certifications', 'certificates', 'credentials'] },
+            { title: 'Contact Me', pageId: 'contact', keywords: ['contact', 'email', 'reach', 'connect'] }
         ];
         
         searchIcon.addEventListener('click', function() {
@@ -429,32 +712,22 @@
                     const results = performSearch(searchTerm);
                     
                     if (results.length > 0) {
-                        // If only one result, navigate directly
-                        if (results.length === 1) {
-                            window.location.href = results[0].url;
-                        } else {
-                            // Multiple results - show options
-                            let message = `Found ${results.length} results for "${searchTerm}":\n\n`;
-                            results.forEach((result, index) => {
-                                message += `${index + 1}. ${result.title}\n`;
-                            });
-                            message += '\nNavigating to first result...';
-                            alert(message);
-                            
-                            // Navigate to first result
-                            setTimeout(() => {
-                                window.location.href = results[0].url;
-                            }, 2000);
+                        // Navigate to first result
+                        showPage(results[0].pageId);
+                        
+                        // Clear and hide search
+                        this.value = '';
+                        searchActive = false;
+                        this.classList.remove('active');
+                        searchIcon.classList.remove('active');
+                        
+                        // Show message if multiple results
+                        if (results.length > 1) {
+                            console.log(`Found ${results.length} results. Showing: ${results[0].title}`);
                         }
                     } else {
                         alert(`No results found for "${searchTerm}"`);
                     }
-                    
-                    // Clear and hide search
-                    this.value = '';
-                    searchActive = false;
-                    this.classList.remove('active');
-                    searchIcon.classList.remove('active');
                 }
             }
         });
