@@ -32,134 +32,12 @@ body {
     background-color: var(--bg-primary);
     font-size: 16px;
     transition: var(--transition);
-    padding-top: 80px; /* Account for fixed navigation */
 }
 
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 2rem 1rem;
-}
-
-/* Navigation Styles */
-.nav-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: var(--bg-primary);
-    border-bottom: 2px solid var(--border-color);
-    z-index: 1000;
-    transition: var(--transition);
-    box-shadow: var(--shadow-md);
-}
-
-.nav-wrapper {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.nav-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    padding: 1.5rem 0;
-    justify-content: center;
-}
-
-.nav-tab {
-    background: var(--bg-secondary);
-    border: 2px solid var(--border-color);
-    color: var(--text-secondary);
-    padding: 1rem 1.75rem;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    white-space: nowrap;
-    position: relative;
-    overflow: hidden;
-    letter-spacing: 0.025em;
-}
-
-.nav-tab::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-    opacity: 0.1;
-    transition: left 0.6s ease;
-}
-
-.nav-tab:hover::before {
-    left: 100%;
-}
-
-.nav-tab:hover {
-    border-color: var(--accent-blue);
-    color: var(--accent-blue);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-}
-
-.nav-tab.active {
-    background: var(--accent-blue);
-    border-color: var(--accent-blue);
-    color: white;
-    box-shadow: var(--shadow-md);
-}
-
-.nav-tab.active:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
-    color: white;
-}
-
-/* Tab Content */
-.tab-content {
-    display: none;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.tab-content.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    animation: fadeInUp 0.6s ease-out;
-}
-
-/* Placeholder Content Styles */
-.placeholder-content {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: var(--text-muted);
-}
-
-.placeholder-content i {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    color: var(--accent-blue);
-    opacity: 0.7;
-}
-
-.placeholder-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-    font-weight: 600;
-}
-
-.placeholder-content p {
-    font-size: 1.125rem;
-    font-style: italic;
-    margin: 0;
 }
 
 /* Hero Section */
@@ -205,6 +83,33 @@ body {
     font-size: 1.25rem;
     color: var(--text-secondary);
     font-weight: 400;
+    margin: 0;
+}
+
+/* Placeholder Content Styles */
+.placeholder-content {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--text-muted);
+}
+
+.placeholder-content i {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-blue);
+    opacity: 0.7;
+}
+
+.placeholder-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.placeholder-content p {
+    font-size: 1.125rem;
+    font-style: italic;
     margin: 0;
 }
 
@@ -471,30 +376,8 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    body {
-        padding-top: 140px; /* Increased for mobile nav wrapping */
-    }
-    
     .container {
         padding: 1.5rem 1rem;
-    }
-
-    .nav-tabs {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 1.5rem;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .nav-tabs::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-tab {
-        padding: 0.65rem 1.25rem;
-        font-size: 0.8rem;
-        flex-shrink: 0;
     }
 
     .hero {
@@ -551,15 +434,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    body {
-        padding-top: 160px; /* Further increased for very small screens */
-    }
-
-    .nav-tab {
-        padding: 0.6rem 1rem;
-        font-size: 0.75rem;
-    }
-
     .profile-text h1 {
         font-size: 2rem;
     }

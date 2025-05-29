@@ -11,23 +11,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-wrapper">
-            <div class="nav-tabs">
-                <button class="nav-tab active" data-tab="science-communication">Science Communication</button>
-                <button class="nav-tab" data-tab="art-stories">Art & Stories</button>
-                <button class="nav-tab" data-tab="academic-research">Academic Research</button>
-                <button class="nav-tab" data-tab="community-engagement">Community Engagement</button>
-                <button class="nav-tab" data-tab="educational-videos">Educational Videos</button>
-                <button class="nav-tab" data-tab="certifications">Certifications</button>
-                <button class="nav-tab" data-tab="contact">Contact Me</button>
-            </div>
-        </div>
-    </nav>
-
     <div class="container">
-        <!-- Hero Section (shows on Science Communication tab) -->
+        <!-- Hero Section -->
         <section class="hero">
             <div class="profile-section">
                 <img src="KGprof.jpg" alt="Karishma Gangwani" class="profile-image">
@@ -38,128 +23,120 @@
             </div>
         </section>
 
-        <!-- Tab Contents -->
-        <div id="science-communication" class="tab-content active">
-            <section class="about-section">
-                <div class="content-card">
-                    <h2>Who Am I</h2>
-                    <p>
-                        I bridge the gaps between complex scientific, medical data and meaningful human connections. 
-                        My unique blend of scientific expertise and communication skills allows me to transform 
-                        intricate science into compelling narratives that resonate with a broad audience of all ages.
-                    </p>
+        <!-- Science Communication Section -->
+        <section class="about-section">
+            <div class="content-card">
+                <h2>Who Am I</h2>
+                <p>
+                    I bridge the gaps between complex scientific, medical data and meaningful human connections. 
+                    My unique blend of scientific expertise and communication skills allows me to transform 
+                    intricate science into compelling narratives that resonate with a broad audience of all ages.
+                </p>
+            </div>
+        </section>
+
+        <!-- Art & Stories Section -->
+        <section class="about-section">
+            <div class="content-card">
+                <div class="placeholder-content">
+                    <i class="fas fa-palette"></i>
+                    <h3>Art & Stories</h3>
+                    <p>Creative works and storytelling content coming soon...</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <div id="art-stories" class="tab-content">
-            <section class="about-section">
-                <div class="content-card">
-                    <div class="placeholder-content">
-                        <i class="fas fa-palette"></i>
-                        <h3>Art & Stories</h3>
-                        <p>Creative works and storytelling content coming soon...</p>
-                    </div>
+        <!-- Academic Research Section -->
+        <section class="about-section">
+            <div class="content-card">
+                <div class="placeholder-content">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Academic Research</h3>
+                    <p>Research publications and academic work coming soon...</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <div id="academic-research" class="tab-content">
-            <section class="about-section">
-                <div class="content-card">
-                    <div class="placeholder-content">
-                        <i class="fas fa-microscope"></i>
-                        <h3>Academic Research</h3>
-                        <p>Research publications and academic work coming soon...</p>
-                    </div>
+        <!-- Community Engagement Section -->
+        <section class="about-section">
+            <div class="content-card">
+                <div class="placeholder-content">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Engagement</h3>
+                    <p>Community outreach programs and initiatives coming soon...</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <div id="community-engagement" class="tab-content">
-            <section class="about-section">
-                <div class="content-card">
-                    <div class="placeholder-content">
-                        <i class="fas fa-users"></i>
-                        <h3>Community Engagement</h3>
-                        <p>Community outreach programs and initiatives coming soon...</p>
-                    </div>
+        <!-- Educational Videos Section -->
+        <section class="about-section">
+            <div class="content-card">
+                <div class="placeholder-content">
+                    <i class="fas fa-play-circle"></i>
+                    <h3>Educational Videos</h3>
+                    <p>Video content and educational materials coming soon...</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <div id="educational-videos" class="tab-content">
-            <section class="about-section">
-                <div class="content-card">
-                    <div class="placeholder-content">
-                        <i class="fas fa-play-circle"></i>
-                        <h3>Educational Videos</h3>
-                        <p>Video content and educational materials coming soon...</p>
-                    </div>
+        <!-- Certifications Section -->
+        <section class="about-section">
+            <div class="content-card">
+                <div class="placeholder-content">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certifications</h3>
+                    <p>Professional certifications and credentials coming soon...</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <div id="certifications" class="tab-content">
-            <section class="about-section">
-                <div class="content-card">
-                    <div class="placeholder-content">
-                        <i class="fas fa-certificate"></i>
-                        <h3>Certifications</h3>
-                        <p>Professional certifications and credentials coming soon...</p>
-                    </div>
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="content-card">
+                <h2>Contact</h2>
+                <div class="contact-grid">
+                    <a href="mailto:your.email@example.com" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">your.email@example.com</span>
+                        </div>
+                    </a>
+
+                    <a href="https://twitter.com/yourhandle" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">Twitter</span>
+                            <span class="contact-value">@yourhandle</span>
+                        </div>
+                    </a>
+
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">LinkedIn</span>
+                            <span class="contact-value">Professional Profile</span>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/yourusername" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">GitHub</span>
+                            <span class="contact-value">Code & Projects</span>
+                        </div>
+                    </a>
                 </div>
-            </section>
-        </div>
-
-        <div id="contact" class="tab-content">
-            <section class="contact-section">
-                <div class="content-card">
-                    <h2>Contact</h2>
-                    <div class="contact-grid">
-                        <a href="mailto:your.email@example.com" class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">your.email@example.com</span>
-                            </div>
-                        </a>
-
-                        <a href="https://twitter.com/yourhandle" target="_blank" class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-twitter"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Twitter</span>
-                                <span class="contact-value">@yourhandle</span>
-                            </div>
-                        </a>
-
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">Professional Profile</span>
-                            </div>
-                        </a>
-
-                        <a href="https://github.com/yourusername" target="_blank" class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">GitHub</span>
-                                <span class="contact-value">Code & Projects</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <footer class="social-footer">
             <div class="social-links">
@@ -177,61 +154,12 @@
                 </a>
             </div>
             <div class="footer-contact">
-                <a href="#contact" class="contact-link">CONTACT</a>
+                <a href="mailto:your.email@example.com" class="contact-link">CONTACT</a>
             </div>
         </footer>
     </div>
 
     <script>
-        // Tab functionality
-        function initTabs() {
-            const tabs = document.querySelectorAll('.nav-tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const targetTab = tab.getAttribute('data-tab');
-                    
-                    // Remove active class from all tabs and contents
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked tab and corresponding content
-                    tab.classList.add('active');
-                    const targetContent = document.getElementById(targetTab);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                    }
-                    
-                    // Trigger fade-in animation for content cards
-                    const contentCards = targetContent.querySelectorAll('.content-card');
-                    contentCards.forEach((card, index) => {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.classList.add('fade-in');
-                        }, index * 100);
-                    });
-                });
-            });
-        }
-
-        // Smooth scroll for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
         // Add intersection observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
@@ -263,8 +191,19 @@
             });
         }
 
-        // Initialize tabs when page loads
-        document.addEventListener('DOMContentLoaded', initTabs);
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
