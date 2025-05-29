@@ -362,6 +362,19 @@
         const searchInput = document.getElementById('searchInput');
         let searchActive = false;
         
+        // Define searchable content
+        const searchableContent = [
+            { title: 'Home', url: '#', keywords: ['home', 'main', 'index'] },
+            { title: 'Science Communication', url: '#science-communication', keywords: ['science', 'communication', 'outreach'] },
+            { title: 'Art & Stories', url: '#art-stories', keywords: ['art', 'stories', 'creative', 'narrative'] },
+            { title: 'Academic Research', url: '#academic-research', keywords: ['academic', 'research', 'papers', 'publications'] },
+            { title: 'Community Engagement', url: '#community-engagement', keywords: ['community', 'engagement', 'outreach', 'public'] },
+            { title: 'Educational Videos', url: '#educational-videos', keywords: ['education', 'videos', 'youtube', 'content'] },
+            { title: 'Certifications', url: '#certifications', keywords: ['certifications', 'certificates', 'credentials'] },
+            { title: 'Contact Me', url: '#contact', keywords: ['contact', 'email', 'reach', 'connect'] },
+            { title: 'About', url: '#about', keywords: ['who am i', 'about', 'bio', 'biography', 'scientist', 'storyteller'] }
+        ];
+        
         searchIcon.addEventListener('click', function() {
             searchActive = !searchActive;
             searchInput.classList.toggle('active');
@@ -385,14 +398,63 @@
             }, 200);
         });
 
+        function performSearch(searchTerm) {
+            const term = searchTerm.toLowerCase();
+            const results = [];
+            
+            searchableContent.forEach(item => {
+                // Check if search term matches title
+                if (item.title.toLowerCase().includes(term)) {
+                    results.push(item);
+                    return;
+                }
+                
+                // Check if search term matches any keywords
+                const keywordMatch = item.keywords.some(keyword => 
+                    keyword.toLowerCase().includes(term)
+                );
+                
+                if (keywordMatch) {
+                    results.push(item);
+                }
+            });
+            
+            return results;
+        }
+
         searchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 const searchTerm = this.value.trim();
                 if (searchTerm) {
-                    // You can customize this search functionality
-                    console.log('Searching for:', searchTerm);
-                    alert('Search functionality for: ' + searchTerm + '\n(To be implemented)');
-                    // Example: window.location.href = `/search?q=${searchTerm}`;
+                    const results = performSearch(searchTerm);
+                    
+                    if (results.length > 0) {
+                        // If only one result, navigate directly
+                        if (results.length === 1) {
+                            window.location.href = results[0].url;
+                        } else {
+                            // Multiple results - show options
+                            let message = `Found ${results.length} results for "${searchTerm}":\n\n`;
+                            results.forEach((result, index) => {
+                                message += `${index + 1}. ${result.title}\n`;
+                            });
+                            message += '\nNavigating to first result...';
+                            alert(message);
+                            
+                            // Navigate to first result
+                            setTimeout(() => {
+                                window.location.href = results[0].url;
+                            }, 2000);
+                        }
+                    } else {
+                        alert(`No results found for "${searchTerm}"`);
+                    }
+                    
+                    // Clear and hide search
+                    this.value = '';
+                    searchActive = false;
+                    this.classList.remove('active');
+                    searchIcon.classList.remove('active');
                 }
             }
         });
