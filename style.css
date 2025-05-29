@@ -47,23 +47,11 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    border-bottom: 2px solid var(--border-color);
     z-index: 1000;
     transition: var(--transition);
-}
-
-.nav-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--bg-primary);
-    opacity: 0.95;
-    z-index: -1;
+    box-shadow: var(--shadow-md);
 }
 
 .nav-wrapper {
@@ -75,24 +63,25 @@ body {
 .nav-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 1rem 0;
+    gap: 0.75rem;
+    padding: 1.5rem 0;
     justify-content: center;
 }
 
 .nav-tab {
-    background: transparent;
+    background: var(--bg-secondary);
     border: 2px solid var(--border-color);
     color: var(--text-secondary);
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    font-size: 0.875rem;
-    font-weight: 500;
+    padding: 1rem 1.75rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
     white-space: nowrap;
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.025em;
 }
 
 .nav-tab::before {
