@@ -254,12 +254,56 @@
             opacity: 1;
         }
 
+        .blog-card:hover .blog-card-image::after {
+            opacity: 1;
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card-image::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            right: -100%;
+            bottom: -100%;
+            background: linear-gradient(45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%);
+            transform: rotate(45deg);
+            transition: opacity 0.6s ease;
+            opacity: 0;
+            animation: shimmer 0.6s ease-out;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .blog-card:hover .blog-card-image::after {
+            animation: shimmer 0.6s ease-out;
+        }
+
         .blog-card-content {
             padding: 1.75rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            min-height: 120px; /* Added min-height to ensure content is visible */
         }
 
         .blog-card-title {
@@ -268,11 +312,10 @@
             color: #2c3e50;
             margin-bottom: 0.75rem;
             line-height: 1.4;
-            /* Removed line clamping properties to ensure full title is visible */
-            display: block; /* Changed to block to remove flexbox truncation */
-            overflow: visible; /* Ensure text is not hidden */
-            -webkit-line-clamp: unset; /* Ensure no line clamping */
-            -webkit-box-orient: unset; /* Ensure no box orientation */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
             transition: color 0.3s ease;
         }
 
@@ -280,11 +323,10 @@
             color: #2c3e50;
             text-decoration: none;
             transition: color 0.3s ease;
-            /* Removed line clamping properties to ensure full title is visible */
-            display: block; /* Changed to block to remove flexbox truncation */
-            overflow: visible; /* Ensure text is not hidden */
-            -webkit-line-clamp: unset; /* Ensure no line clamping */
-            -webkit-box-orient: unset; /* Ensure no box orientation */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .blog-card-title a:hover {
             color: #667eea;
@@ -295,11 +337,10 @@
             font-size: 0.95rem;
             color: #666;
             line-height: 1.5;
-            /* Removed line clamping properties to ensure text is always visible */
-            /* display: -webkit-box; */
-            /* -webkit-line-clamp: 2; */
-            /* -webkit-box-orient: vertical; */
-            overflow: visible; /* Changed to visible to ensure text is not hidden */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
             flex-grow: 1;
         }
 
@@ -442,10 +483,8 @@
             <div class="nav-links">
                 <a href="#" onclick="showPage('science')" class="nav-link">Science</a>
                 <a href="#" onclick="showPage('communications')" class="nav-link">Communications</a>
-                <a href="#" onclick="showPage('art-stories')" class="nav-link">Art & Stories</a>
-                <a href="#" onclick="showPage('academic-research')" class="nav-link">Academic Research</a>
-                <a href="#" onclick="showPage('community-engagement')" class="nav-link">Community Engagement</a>
-                <a href="#" onclick="showPage('educational-videos')" class="nav-link">Educational Videos</a>
+                <a href="#" onclick="showPage('education')" class="nav-link">Education</a>
+                <a href="#" onclick="showPage('outreach')" class="nav-link">Outreach</a>
                 <a href="#" onclick="showPage('certifications')" class="nav-link">Certifications</a>
                 <a href="#" onclick="showPage('contact')" class="nav-link">Contact Me</a>
                 <div class="search-container">
@@ -499,12 +538,10 @@
         // Define a mapping of page IDs to their corresponding HTML file paths
         const pagePaths = {
             'home': 'pages/home.html', // Keep home.html as the content source for the landing page
-            'science': 'pages/science.html', // New science page
+            'science': 'pages/science.html',
             'communications': 'pages/communications.html',
-            'art-stories': 'pages/art-stories.html',
-            'academic-research': 'pages/academic-research.html', // This tab was removed, but keeping for search if needed
-            'community-engagement': 'pages/community-engagement.html', // This tab was removed, but keeping for search if needed
-            'educational-videos': 'pages/educational-videos.html', // This tab was removed, but keeping for search if needed
+            'education': 'pages/education',
+            'outreach': 'pages/outreach.html',
             'certifications': 'pages/certifications.html',
             'contact': 'pages/contact.html'
         };
@@ -615,12 +652,10 @@
         // Define searchable content (updated to reflect 'home' as the default landing page)
         const searchableContent = [
             { title: 'Home', pageId: 'home', keywords: ['home', 'profile', 'about', 'karishma', 'scientist', 'storyteller'] },
-            { title: 'Science', pageId: 'science', keywords: ['science', 'research', 'publications', 'biorxiv', 'springer', 'sciencedirect', 'mdpi', 'frontiers', 'pubmed', 'chromatin', 'drug discovery', 'crispr-cas9', 'non-coding rnas', 'cellular senescence', 'aging', 'mitochondrial dynamics', 'neurodegenerative', 'epigenetic modifications', 'plant development', 'drosophila cancer modeling', 'tobacco'] },
-            { title: 'Communications', pageId: 'communications', keywords: ['science', 'communication', 'blog', 'articles', 'tobacco', 'drosophila', 'proteinpaint', 'epigenetic', 'scientists', 'nematodes', 'grad school', 'cancer', 'research', 'publication', 'interdisciplinary', 'essays', 'public insights', 'societal biases', 'psychology', 'symbolism', 'change', 'xi wang mu', 'holika', 'limits'] },
-            { title: 'Art & Stories', pageId: 'art-stories', keywords: ['art', 'stories', 'creative', 'narrative', 'gallery', 'fiction', 'painting', 'illustration', 'sculpture', 'woods', 'painter'] },
-            { title: 'Academic Research', pageId: 'academic-research', keywords: ['academic', 'research', 'papers', 'publications', 'studies', 'thesis'] },
-            { title: 'Community Engagement', pageId: 'community-engagement', keywords: ['community', 'engagement', 'outreach', 'public', 'volunteer', 'events'] },
-            { title: 'Educational Videos', pageId: 'educational-videos', keywords: ['education', 'videos', 'youtube', 'content', 'tutorials', 'learning'] },
+            { title: 'Communications', pageId: 'communications', keywords: ['science', 'communications', 'blog', 'articles', 'tobacco', 'drosophila', 'proteinpaint', 'epigenetic', 'scientists', 'nematodes', 'grad school', 'cancer', 'research', 'publication', 'interdisciplinary', 'essays', 'public insights', 'societal biases', 'psychology', 'symbolism', 'change', 'xi wang mu', 'holika', 'limits'] },
+            { title: 'Academic Research', pageId: 'science', keywords: ['academic', 'research', 'papers', 'publications', 'studies', 'thesis'] },
+            { title: 'Community Engagement', pageId: 'outreach', keywords: ['community', 'engagement', 'outreach', 'public', 'volunteer', 'events'] },
+            { title: 'Education', pageId: 'education', keywords: ['education', 'videos', 'youtube', 'content', 'tutorials', 'learning'] },
             { title: 'Certifications', pageId: 'certifications', keywords: ['certifications', 'certificates', 'credentials', 'awards', 'achievements'] },
             { title: 'Contact Me', pageId: 'contact', keywords: ['contact', 'email', 'reach', 'connect', 'inquiry', 'form'] }
         ];
