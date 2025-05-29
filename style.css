@@ -1,28 +1,105 @@
+/* Variables */
+:root {
+    --text-primary: #1a1a1a;
+    --text-secondary: #4d4d4d;
+    --bg-primary: #ffffff;
+    --accent-color: #2563eb;
+    --border-color: #e5e7eb;
+    --max-width: 800px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f5f5f5;
+        --text-secondary: #a3a3a3;
+        --bg-primary: #171717;
+        --border-color: #404040;
+    }
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: sans-serif;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: auto;
-  padding: 2em;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    padding: 2rem 1rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Header Styles */
 header {
-  text-align: center;
-  margin-bottom: 2em;
+    margin-bottom: 3rem;
 }
 
-nav a {
-  margin: 0 1em;
-  text-decoration: none;
-  color: #007acc;
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
-section {
-  margin-bottom: 2em;
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    color: var(--text-primary);
 }
 
-footer {
-  text-align: center;
-  font-size: 0.9em;
-  color: #666;
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 2rem 0;
+}
+
+/* Link Styles */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Contact List Styles */
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 0.75rem;
+}
+
+.contact-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    body {
+        padding: 1.5rem 1rem;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
 }
