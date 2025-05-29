@@ -218,38 +218,41 @@
 
         .blog-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
         .blog-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
 
         .blog-card-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0;
         }
 
         .blog-card-content {
-            padding: 1.5rem;
+            padding: 1.75rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .blog-card-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: #2c3e50;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.75rem;
             line-height: 1.4;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -257,16 +260,16 @@
             overflow: hidden;
         }
 
-        .blog-card-description {
+        .blog-card-excerpt {
             font-size: 0.95rem;
             color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            flex-grow: 1;
         }
 
         .blog-card-link {
@@ -448,10 +451,10 @@
 
             <div class="blog-grid">
                 <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="blog-card-image" style="background-image: url('https://pub.mdpi-res.com/challenges/challenges-04-00035/article_deploy/html/images/challenges-04-00035-ag-550.jpg?1700223437');"></div>
                     <div class="blog-card-content">
-                        <h3 class="blog-card-title">Exploring the Brain and Space: Insights from Collaborative Research</h3>
-                        <p class="blog-card-description">This paper examines the intersection of neuroscience and space research, highlighting collaborative approaches to understanding complex systems and their implications for future scientific endeavors.</p>
+                        <h3 class="blog-card-title">Smokeless Tobacco: A Comprehensive Review of Molecular Effects, Societal Perception, and Cessation Strategies</h3>
+                        <p class="blog-card-excerpt">Tobacco, the age old subject of misconceptions throughout society. </p>
                         <a href="https://www.mdpi.com/2673-8430/4/4/35" target="_blank" class="blog-card-link">
                             Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -459,10 +462,10 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="blog-card-image" style="background-image: url('https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-3-030-42246-2_9/MediaObjects/483180_1_En_9_Fig1_HTML.png');"></div>
                     <div class="blog-card-content">
-                        <h3 class="blog-card-title">Bioinformatics for Space Life Sciences</h3>
-                        <p class="blog-card-description">An exploration of how bioinformatics tools and techniques can be applied to space life sciences research, opening new frontiers in our understanding of life in extreme environments.</p>
+                        <h3 class="blog-card-title">Drosophila Cancer Modeling Using the Eye Imaginal Discs</h3>
+                        <p class="blog-card-excerpt">The emergence of preclinical Drosophila models to study cancer biology</p>
                         <a href="https://link.springer.com/chapter/10.1007/978-3-030-42246-2_9" target="_blank" class="blog-card-link">
                             Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -470,10 +473,10 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="blog-card-image" style="background-image: url('https://drive.google.com/thumbnail?id=1WxKgaLbw2Z0jtFsQiAY8GiYbDZ4L_GvW&sz=w1000');"></div>
                     <div class="blog-card-content">
-                        <h3 class="blog-card-title">Research Documentation & Findings</h3>
-                        <p class="blog-card-description">Comprehensive documentation of research findings and methodologies, providing insights into the scientific process and discoveries that shape our understanding of the world.</p>
+                        <h3 class="blog-card-title">User guides for ProteinPaint tools</h3>
+                        <p class="blog-card-excerpt">https://drive.google.com/file/d/1WxKgaLbw2Z0jtFsQiAY8GiYbDZ4L_GvW/view</p>
                         <a href="https://drive.google.com/file/d/1WxKgaLbw2Z0jtFsQiAY8GiYbDZ4L_GvW/view" target="_blank" class="blog-card-link">
                             Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -481,10 +484,10 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    <div class="blog-card-image" style="background-image: url('https://substackcdn.com/image/fetch/w_1200,h_600,c_limit,f_jpg,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e3b5d8a-9f3e-4b3f-9e8f-3b7e8f8e8e8e-1024x1024.png');"></div>
                     <div class="blog-card-content">
-                        <h3 class="blog-card-title">Unraveling the Mysteries of Epigenetic</h3>
-                        <p class="blog-card-description">A deep dive into the fascinating world of epigenetics, exploring how environmental factors can influence gene expression and shape our biological destiny without changing DNA sequences.</p>
+                        <h3 class="blog-card-title">Unraveling the Mysteries of Epigenetic Regulation: How Nematodes rewrite genetic rules</h3>
+                        <p class="blog-card-excerpt">How environmental or internal signals can reprogram gene expression without altering the DNA sequence. </p>
                         <a href="https://karishmagangwani.substack.com/p/unraveling-the-mysteries-of-epigenetic" target="_blank" class="blog-card-link">
                             Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -492,10 +495,10 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                    <div class="blog-card-image" style="background-image: url('https://journals.plos.org/ploscompbiol/article/figure/image?size=large&id=10.1371/journal.pcbi.1010130.g001');"></div>
                     <div class="blog-card-content">
-                        <h3 class="blog-card-title">Ten Simple Rules for Engaging with Science Through Social Media</h3>
-                        <p class="blog-card-description">Practical guidelines for scientists and communicators on how to effectively use social media platforms to share research, engage with audiences, and build meaningful scientific communities online.</p>
+                        <h3 class="blog-card-title">Ten simple rules for improving communication among scientists</h3>
+                        <p class="blog-card-excerpt">Effective strategies for scientists to communicate research and build online communities.</p>
                         <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010130" target="_blank" class="blog-card-link">
                             Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -503,10 +506,10 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+                    <div class="blog-card-image" style="background-image: url('https://assets.genestogenomes.org/2023/04/pacificus.jpg');"></div>
                     <div class="blog-card-content">
                         <h3 class="blog-card-title">P. pacificus's Epigenetic Toolkit is Missing an Important Tool</h3>
-                        <p class="blog-card-description">An investigation into the epigenetic mechanisms of P. pacificus, revealing surprising gaps in its molecular toolkit and what this means for our understanding of evolutionary biology.</p>
+                        <p class="blog-card-excerpt">Surprising gaps in molecular mechanisms reveal evolutionary insights in nematode biology.</p>
                         <a href="https://genestogenomes.org/p-pacificuss-epigenetic-toolkit-is-missing-an-important-tool/" target="_blank" class="blog-card-link">
                             Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -514,10 +517,10 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);"></div>
+                    <div class="blog-card-image" style="background-image: url('https://ecrlife.org/wp-content/uploads/2023/06/overcommitment.jpg');"></div>
                     <div class="blog-card-content">
                         <h3 class="blog-card-title">Avoiding Overcommitment</h3>
-                        <p class="blog-card-description">Essential strategies for early-career researchers to manage their time, energy, and commitments effectively while maintaining productivity and well-being in academic settings.</p>
+                        <p class="blog-card-excerpt">Essential time management strategies for early-career researchers to maintain balance.</p>
                         <a href="https://ecrlife.org/avoiding_overcommitment/" target="_blank" class="blog-card-link">
                             Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -525,10 +528,10 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);"></div>
+                    <div class="blog-card-image" style="background-image: url('https://www.stjude.org/content/dam/en_US/shared/www/research/progress-articles/2023-st-jude-cloud-survivorship-portal/stjude-cloud-survivorship-portal-hero.jpg');"></div>
                     <div class="blog-card-content">
-                        <h3 class="blog-card-title">St. Jude Cloud Survivorship Portal: A Treasure Trove of Data for Discovery</h3>
-                        <p class="blog-card-description">Exploring how the St. Jude Cloud Survivorship Portal is revolutionizing childhood cancer research by providing unprecedented access to survivorship data for researchers worldwide.</p>
+                        <h3 class="blog-card-title">St. Jude Cloud Survivorship Portal offers a treasure trove of data for discovery in childhood cancers</h3>
+                        <p class="blog-card-excerpt">Revolutionary platform transforms childhood cancer research through comprehensive data sharing.</p>
                         <a href="https://www.stjude.org/research/progress/2023/st-jude-cloud-survivorship-portal-offers-a-treasure-trove-of-data-for-discovery-in-childhood-cancers.html" target="_blank" class="blog-card-link">
                             Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
