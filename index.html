@@ -1,10 +1,13 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karishma Gangwani</title>
     <style>
+        /* Your existing CSS from style.css is already linked or inlined,
+           but for a complete example, I'm including the relevant parts here.
+           In your actual project, keep style.css separate and linked. */
         * {
             margin: 0;
             padding: 0;
@@ -124,7 +127,7 @@
             color: #2c3e50;
         }
 
-        /* Main Content */
+        /* Main Content styles (for the container) */
         main {
             max-width: 1200px;
             margin: 0 auto;
@@ -132,16 +135,7 @@
             min-height: calc(100vh - 200px);
         }
 
-        /* Pages */
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* Home Page Styles */
+        /* Styles that apply to content loaded into #dynamic-content-container */
         .profile-section {
             text-align: center;
             margin-bottom: 3rem;
@@ -187,7 +181,6 @@
             text-align: left;
         }
 
-        /* Science Communication Page Styles */
         .page-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -238,10 +231,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(180deg, 
-                transparent 0%, 
-                transparent 70%, 
-                rgba(102, 126, 234, 0.05) 85%, 
+            background: linear-gradient(180deg,
+                transparent 0%,
+                transparent 70%,
+                rgba(102, 126, 234, 0.05) 85%,
                 rgba(102, 126, 234, 0.1) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -279,9 +272,9 @@
             left: -100%;
             right: -100%;
             bottom: -100%;
-            background: linear-gradient(45deg, 
-                transparent 30%, 
-                rgba(255, 255, 255, 0.1) 50%, 
+            background: linear-gradient(45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
                 transparent 70%);
             transform: rotate(45deg);
             transition: opacity 0.6s ease;
@@ -321,13 +314,6 @@
             overflow: hidden;
             transition: color 0.3s ease;
         }
-
-        /* .blog-card-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        } */
 
         .blog-card-title a {
             color: #2c3e50;
@@ -373,41 +359,6 @@
             width: 16px;
             height: 16px;
         }
-
-        /* .blog-card:hover .blog-card-title {
-            color: #667eea;
-        }
-
-        .blog-card-excerpt {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            flex-grow: 1;
-        }
-
-        .blog-card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: gap 0.3s ease;
-        }
-
-        .blog-card-link:hover {
-            gap: 0.8rem;
-        }
-
-        .blog-card-link svg {
-            width: 16px;
-            height: 16px;
-        } */
 
         /* Footer */
         footer {
@@ -524,9 +475,9 @@
 <body>
     <header>
         <nav>
-            <div class="logo" onclick="window.location.hash=''; showPage('home');">Karishma Gangwani</div>
+            <div class="logo" onclick="showPage('home');">Karishma Gangwani</div>
             <div class="nav-links">
-                <!-- <a href="#" onclick="showPage('home')" class="nav-link active">Home</a> -->
+                <a href="#" onclick="showPage('home')" class="nav-link">Home</a>
                 <a href="#" onclick="showPage('science-communication')" class="nav-link">Science Communication</a>
                 <a href="#" onclick="showPage('art-stories')" class="nav-link">Art & Stories</a>
                 <a href="#" onclick="showPage('academic-research')" class="nav-link">Academic Research</a>
@@ -545,175 +496,8 @@
         </nav>
     </header>
 
-    <main>
-        <!-- Home Page -->
-        <div id="home" class="page active">
-            <section class="profile-section">
-                <img src="KGprof.jpg" alt="Karishma Gangwani" class="profile-image">
-                <p class="tagline">Scientist by training, storyteller by passion</p>
-            </section>
-
-            <section class="about-section">
-                <h2>Who Am I</h2>
-                <p>I bridge the gap between complex scientific, medical data and meaningful human connections. My unique blend of scientific expertise and communication skills allows me to transform intricate science into compelling narratives that resonate with a broad audience of all ages.</p>
-            </section>
-        </div>
-
-        <!-- Science Communication Page -->
-        <div id="science-communication" class="page">
-            <div class="page-header">
-                <h1>Science Communication</h1>
-                <p>Transforming complex scientific concepts into engaging narratives that inspire and educate audiences of all backgrounds.</p>
-            </div>
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <div class="blog-card-image" style="background-image: url('https://www.mdpi.com/biomed/biomed-04-00035/article_deploy/html/images/biomed-04-00035-g001.png');"></div>
-                        <div class="blog-card-content">
-                            <h3 class="blog-card-title">
-                                <a href="https://www.mdpi.com/2673-8430/4/4/35" target="_blank"
-                                class="blog-card-link">
-                                    Smokeless Tobacco: A Comprehensive Review of Molecular Effects, Societal Perception, and Cessation Strategies
-                                </a>
-                            </h3>
-                            <p class="blog-card-excerpt">Tobacco, the age old subject of misconceptions throughout society.</p>
-                        </div>
-                    </article>
-
-                <article class="blog-card">
-                    <div class="blog-card-image" style="background-image: url('https://www.researchgate.net/publication/333355611/figure/fig3/AS:11431281246825422@1716470797247/Drosophila-cancer-models-A-Cartoon-showing-various-larval-organs-cells-in-which.tif');"></div>
-                    <div class="blog-card-content">
-                        <h3 class="blog-card-title">
-                            <a href="https://link.springer.com/chapter/10.1007/978-3-030-42246-2_9" target="_blank"
-                            class="blog-card-link">
-                                Drosophila Cancer Modeling Using the Eye Imaginal Discs 
-                            </a>
-                    </h3>
-                    <p class="blog-card-excerpt">The emergence of preclinical Drosophila models to study cancer biology</p>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-card-image" style="background-image: url('https://drive.google.com/thumbnail?id=1WxKgaLbw2Z0jtFsQiAY8GiYbDZ4L_GvW&sz=w1000');"></div>
-                    <div class="blog-card-content">
-                        <h3 class="blog-card-title">
-                        <a href="https://drive.google.com/file/d/1WxKgaLbw2Z0jtFsQiAY8GiYbDZ4L_GvW/view" target="_blank"
-                        class="blog-card-link">
-                            User guides for ProteinPaint tools
-                        </a>
-                        </h3>
-                        <p class="blog-card-excerpt"></p>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-card-image" style="background-image: url('https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e46ea26-1936-43e0-84a9-58fe5f3c56be_1024x1024.png');"></div>
-                    <div class="blog-card-content">
-                        <h3 class="blog-card-title">
-                            <a href="https://karishmagangwani.substack.com/p/unraveling-the-mysteries-of-epigenetic" target="_blank"
-                            class="blog-card-link">
-                                Unraveling the Mysteries of Epigenetic Regulation: How Nematodes rewrite genetic rules
-                            </a>
-                           </h3>
-                           <p class="blog-card-excerpt">How environmental or internal signals can reprogram gene expression without altering the DNA sequence. </p>
-
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-card-image" style="background-image: url('https://journals.plos.org/ploscompbiol/article/figure/image?size=large&id=10.1371/journal.pcbi.1010130.g001');"></div>
-                    <div class="blog-card-content">
-                        <h3 class="blog-card-title">
-                            <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010130" target="_blank"
-                                class="blog-card-link">
-                                Ten simple rules for improving communication among scientists
-                            </a>
-                            </h3>
-                            <p class="blog-card-excerpt">Effective strategies for scientists to communicate research and build online communities.</p>
-
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-card-image" style="background-image: url('https://genestogenomes.org/wp-content/uploads/2024/08/ToolkitStrip.png');"></div>
-                    <div class="blog-card-content">
-                        <h3 class="blog-card-title">
-                            <a href="https://genestogenomes.org/p-pacificuss-epigenetic-toolkit-is-missing-an-important-tool/" target="_blank" class="blog-card-link">
-                                P. pacificus's Epigenetic Toolkit is Missing an Important Tool
-                    </a>
-                    </h3>
-                    <p class="blog-card-excerpt">Surprising gaps in molecular mechanisms reveal evolutionary insights in nematode biology.</p>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-card-image" style="background-image: url('https://ecrlife.org/content/images/2022/01/fig1_overcommitting-1.png');"></div>
-                    <div class="blog-card-content">
-                        <h3 class="blog-card-title">
-                            <a href="https://ecrlife.org/avoiding_overcommitment/" target="_blank" class="blog-card-link">
-                                How to avoid Overcommiting in grad school
-                            </a>
-                           </h3>
-                        <p class="blog-card-excerpt">Essential time management strategies for early-career researchers to maintain balance.</p>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-card-image" style="background-image: url('https://stjude.scene7.com/is/image/stjude/survivorship-portal?wid=1600');"></div>
-                    <div class="blog-card-content">
-                        <h3 class="blog-card-title">
-                            <a href="https://www.stjude.org/research/progress/2023/st-jude-cloud-survivorship-portal-offers-a-treasure-trove-of-data-for-discovery-in-childhood-cancers.html" target="_blank" class="blog-card-link">
-                                St. Jude Cloud Survivorship Portal offers a treasure trove of data for discovery in childhood cancers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                            </h3>
-                        <p class="blog-card-excerpt">Revolutionary platform transforms childhood cancer research through comprehensive data sharing.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-
-        <!-- Placeholder pages for other sections -->
-        <div id="art-stories" class="page">
-            <div class="page-header">
-                <h1>Art & Stories</h1>
-                <p>Coming soon...</p>
-            </div>
-        </div>
-
-        <div id="academic-research" class="page">
-            <div class="page-header">
-                <h1>Academic Research</h1>
-                <p>Coming soon...</p>
-            </div>
-        </div>
-
-        <div id="community-engagement" class="page">
-            <div class="page-header">
-                <h1>Community Engagement</h1>
-                <p>Coming soon...</p>
-            </div>
-        </div>
-
-        <div id="educational-videos" class="page">
-            <div class="page-header">
-                <h1>Educational Videos</h1>
-                <p>Coming soon...</p>
-            </div>
-        </div>
-
-        <div id="certifications" class="page">
-            <div class="page-header">
-                <h1>Certifications</h1>
-                <p>Coming soon...</p>
-            </div>
-        </div>
-
-        <div id="contact" class="page">
-            <div class="page-header">
-                <h1>Contact Me</h1>
-                <p>Coming soon...</p>
-            </div>
-        </div>
-    </main>
+    <main id="dynamic-content-container">
+        </main>
 
     <footer>
         <div class="footer-content">
@@ -749,52 +533,111 @@
     </footer>
 
     <script>
-        // Simple page navigation
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            const selectedPage = document.getElementById(pageId);
-            if (selectedPage) {
-                selectedPage.classList.add('active');
+        // Define a mapping of page IDs to their corresponding HTML file paths
+        const pagePaths = {
+            'home': 'pages/home.html',
+            'science-communication': 'pages/science-communication.html',
+            'art-stories': 'pages/art-stories.html',
+            'academic-research': 'pages/academic-research.html',
+            'community-engagement': 'pages/community-engagement.html',
+            'educational-videos': 'pages/educational-videos.html',
+            'certifications': 'pages/certifications.html',
+            'contact': 'pages/contact.html'
+        };
+
+        /**
+         * Loads content for a given page ID into the dynamic content container.
+         * @param {string} pageId - The ID of the page to load.
+         */
+        async function showPage(pageId) {
+            const container = document.getElementById('dynamic-content-container');
+            const filePath = pagePaths[pageId];
+
+            // If no file path is defined for the pageId, log an error and return.
+            if (!filePath) {
+                console.error(`Error: No file path defined for page: ${pageId}`);
+                // Optionally, display a user-friendly error message in the container
+                container.innerHTML = `<div class="page-header"><h1>Page Not Found</h1><p>The content for "${pageId}" could not be loaded.</p></div>`;
+                return;
             }
-            
-            // Update active nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                // Check if the link href matches the current page
-                if (link.getAttribute('href') === '#' + pageId) {
-                    link.classList.add('active');
+
+            try {
+                // Fetch the HTML content from the specified file path
+                const response = await fetch(filePath);
+
+                // Check if the network request was successful (status code 200-299)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
                 }
-            });
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
+
+                // Get the response text (the HTML content)
+                const htmlContent = await response.text();
+
+                // Insert the fetched HTML content into the container
+                container.innerHTML = htmlContent;
+
+                // Update the 'active' class on navigation links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                // Find the link that corresponds to the current pageId and add 'active' class
+                const activeLink = document.querySelector(`.nav-link[onclick*="showPage('${pageId}')"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                } else if (pageId === 'home') {
+                    // Special handling for home if its link doesn't follow the pattern
+                    document.querySelector('.nav-link[onclick*="showPage(\'home\')"]').classList.add('active');
+                }
+
+
+                // Scroll to the top of the window after loading new content
+                window.scrollTo(0, 0);
+
+                // Update the URL hash to reflect the current page, allowing browser history
+                if (window.location.hash !== `#${pageId}`) {
+                    window.location.hash = pageId;
+                }
+
+            } catch (error) {
+                // Log and display any errors during the fetch process
+                console.error('Error loading page content:', error);
+                container.innerHTML = `<div class="page-header"><h1>Error</h1><p>Failed to load content for this page. Please try again later.</p></div>`;
+            }
         }
 
-        // Handle hash changes (for browser back/forward and page refresh)
+        /**
+         * Handles changes to the URL hash (e.g., when using browser back/forward buttons or direct URL access).
+         * Loads the appropriate page based on the hash.
+         */
         function handleHashChange() {
-            const hash = window.location.hash.slice(1);
-            if (hash && document.getElementById(hash)) {
+            const hash = window.location.hash.slice(1); // Get the hash without the '#'
+            if (hash && pagePaths[hash]) { // Check if hash exists and has a corresponding file path
                 showPage(hash);
             } else {
-                showPage('home');
+                showPage('home'); // Default to home page if no valid hash is found
             }
         }
 
-        // Initialize on page load
-        window.addEventListener('DOMContentLoaded', handleHashChange);
-        window.addEventListener('hashchange', handleHashChange);
+        // Event listeners for page initialization and hash changes
+        window.addEventListener('DOMContentLoaded', handleHashChange); // Load content when the DOM is ready
+        window.addEventListener('hashchange', handleHashChange); // Load content when the URL hash changes
 
-        // Handle navigation clicks
+        // Event listener for navigation clicks (delegated to the document for efficiency)
         document.addEventListener('click', function(e) {
+            // Check if the clicked element or its parent is a nav-link
             if (e.target.classList.contains('nav-link')) {
+                e.preventDefault(); // Prevent default link behavior (page reload)
+                // Extract the pageId from the onclick attribute
+                const pageIdMatch = e.target.getAttribute('onclick').match(/showPage\('(.+?)'\)/);
+                if (pageIdMatch && pageIdMatch[1]) {
+                    showPage(pageIdMatch[1]); // Call showPage with the extracted ID
+                }
+            } else if (e.target.closest('.logo')) { // Handle click on the logo to go home
                 e.preventDefault();
-                const pageId = e.target.getAttribute('href').slice(1);
-                window.location.hash = pageId;
+                showPage('home');
+            } else if (e.target.closest('.contact-button')) { // Handle click on the contact button
+                e.preventDefault();
+                showPage('contact');
             }
         });
 
@@ -802,23 +645,24 @@
         const searchIcon = document.getElementById('searchIcon');
         const searchInput = document.getElementById('searchInput');
         let searchActive = false;
-        
-        // Define searchable content (removed Home from search)
+
+        // Define searchable content (updated to include home and more keywords)
         const searchableContent = [
-            { title: 'Science Communication', pageId: 'science-communication', keywords: ['science', 'communication', 'blog', 'articles'] },
-            { title: 'Art & Stories', pageId: 'art-stories', keywords: ['art', 'stories', 'creative', 'narrative'] },
-            { title: 'Academic Research', pageId: 'academic-research', keywords: ['academic', 'research', 'papers', 'publications'] },
-            { title: 'Community Engagement', pageId: 'community-engagement', keywords: ['community', 'engagement', 'outreach', 'public'] },
-            { title: 'Educational Videos', pageId: 'educational-videos', keywords: ['education', 'videos', 'youtube', 'content'] },
-            { title: 'Certifications', pageId: 'certifications', keywords: ['certifications', 'certificates', 'credentials'] },
-            { title: 'Contact Me', pageId: 'contact', keywords: ['contact', 'email', 'reach', 'connect'] }
+            { title: 'Home', pageId: 'home', keywords: ['home', 'profile', 'about', 'karishma', 'scientist', 'storyteller'] },
+            { title: 'Science Communication', pageId: 'science-communication', keywords: ['science', 'communication', 'blog', 'articles', 'tobacco', 'drosophila', 'proteinpaint', 'epigenetic', 'scientists', 'nematodes', 'grad school', 'cancer', 'research', 'publication'] },
+            { title: 'Art & Stories', pageId: 'art-stories', keywords: ['art', 'stories', 'creative', 'narrative', 'gallery', 'fiction'] },
+            { title: 'Academic Research', pageId: 'academic-research', keywords: ['academic', 'research', 'papers', 'publications', 'studies', 'thesis'] },
+            { title: 'Community Engagement', pageId: 'community-engagement', keywords: ['community', 'engagement', 'outreach', 'public', 'volunteer', 'events'] },
+            { title: 'Educational Videos', pageId: 'educational-videos', keywords: ['education', 'videos', 'youtube', 'content', 'tutorials', 'learning'] },
+            { title: 'Certifications', pageId: 'certifications', keywords: ['certifications', 'certificates', 'credentials', 'awards', 'achievements'] },
+            { title: 'Contact Me', pageId: 'contact', keywords: ['contact', 'email', 'reach', 'connect', 'inquiry', 'form'] }
         ];
-        
+
         searchIcon.addEventListener('click', function() {
             searchActive = !searchActive;
             searchInput.classList.toggle('active');
             searchIcon.classList.toggle('active');
-            
+
             if (searchActive) {
                 searchInput.focus();
             } else {
@@ -839,22 +683,24 @@
         function performSearch(searchTerm) {
             const term = searchTerm.toLowerCase();
             const results = [];
-            
+
             searchableContent.forEach(item => {
+                // Check if the search term is in the title
                 if (item.title.toLowerCase().includes(term)) {
                     results.push(item);
-                    return;
+                    return; // Move to the next item once a title match is found
                 }
-                
-                const keywordMatch = item.keywords.some(keyword => 
+
+                // Check if the search term is in any of the keywords
+                const keywordMatch = item.keywords.some(keyword =>
                     keyword.toLowerCase().includes(term)
                 );
-                
+
                 if (keywordMatch) {
                     results.push(item);
                 }
             });
-            
+
             return results;
         }
 
@@ -863,24 +709,86 @@
                 const searchTerm = this.value.trim();
                 if (searchTerm) {
                     const results = performSearch(searchTerm);
-                    
+
                     if (results.length > 0) {
-                        window.location.hash = results[0].pageId;
-                        
-                        this.value = '';
+                        showPage(results[0].pageId); // Load the first matching page
+                        this.value = ''; // Clear search input
                         searchActive = false;
                         this.classList.remove('active');
                         searchIcon.classList.remove('active');
-                        
+
                         if (results.length > 1) {
                             console.log(`Found ${results.length} results. Showing: ${results[0].title}`);
                         }
                     } else {
-                        alert(`No results found for "${searchTerm}"`);
+                        // Using a custom message box instead of alert()
+                        displayMessageBox(`No results found for "${searchTerm}"`);
                     }
                 }
             }
         });
+
+        // Custom message box function to replace alert()
+        function displayMessageBox(message) {
+            // Create overlay and message box elements
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            `;
+
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                max-width: 300px;
+                font-family: inherit;
+            `;
+
+            const messageText = document.createElement('p');
+            messageText.textContent = message;
+            messageText.style.marginBottom = '15px';
+            messageText.style.fontSize = '1.1rem';
+            messageText.style.color = '#333';
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'OK';
+            closeButton.style.cssText = `
+                background-color: #667eea;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: background-color 0.3s ease;
+            `;
+            closeButton.onmouseover = () => closeButton.style.backgroundColor = '#5a6edb';
+            closeButton.onmouseout = () => closeButton.style.backgroundColor = '#667eea';
+
+            // Add event listener to close the message box
+            closeButton.addEventListener('click', () => {
+                document.body.removeChild(overlay);
+            });
+
+            // Append elements
+            messageBox.appendChild(messageText);
+            messageBox.appendChild(closeButton);
+            overlay.appendChild(messageBox);
+            document.body.appendChild(overlay);
+        }
+
     </script>
 </body>
 </html>
