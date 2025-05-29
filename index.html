@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karishma Gangwani | Scientific Storyteller</title>
+    <title>Karishma Gangwani</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,216 +11,161 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header with Name and Navigation -->
-    <header class="header">
-        <div class="header-content">
-            <h1 class="site-title">Karishma Gangwani</h1>
-            <nav class="main-nav">
-                <div class="nav-tabs">
-                    <button class="nav-tab active" data-tab="home">Home</button>
-                    <button class="nav-tab" data-tab="science-communication">Science Communication</button>
-                    <button class="nav-tab" data-tab="art-stories">Art & Stories</button>
-                    <button class="nav-tab" data-tab="academic-research">Academic Research</button>
-                    <button class="nav-tab" data-tab="community-engagement">Community Engagement</button>
-                    <button class="nav-tab" data-tab="educational-videos">Educational Videos</button>
-                    <button class="nav-tab" data-tab="certifications">Certifications</button>
-                    <button class="nav-tab" data-tab="contact-me">Contact Me</button>
-                    <button class="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </nav>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>Karishma Gangwani</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link active" data-tab="home">Home</a>
+                <a href="#" class="nav-link" data-tab="science-communication">Science Communication</a>
+                <a href="#" class="nav-link" data-tab="art-stories">Art & Stories</a>
+                <a href="#" class="nav-link" data-tab="academic-research">Academic Research</a>
+                <a href="#" class="nav-link" data-tab="community-engagement">Community Engagement</a>
+                <a href="#" class="nav-link" data-tab="educational-videos">Educational Videos</a>
+                <a href="#" class="nav-link" data-tab="certifications">Certifications</a>
+                <a href="#" class="nav-link" data-tab="contact">Contact Me</a>
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <div class="container">
-        <!-- Tab Contents -->
-        <div id="home" class="tab-content active">
-            <section class="home-section">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h2>Who Am I</h2>
-                        <p>
-                            Scientist by training, storyteller by passion – I bridge the gap between complex scientific, 
-                            medical data and meaningful human connections. My unique blend of scientific expertise and 
-                            communication skills allows me to transform intricate science into compelling narratives 
-                            that resonate with a broad audience of all ages.
-                        </p>
-                    </div>
-                    <div class="hero-image">
-                        <img src="KGprof.jpg" alt="Karishma Gangwani" class="profile-image">
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Tab -->
+        <section id="home" class="tab-section active">
+            <div class="hero-section">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div class="profile-photo">
+                            <img src="KGprof.jpg" alt="Karishma Gangwani" class="profile-img">
+                        </div>
+                        <div class="hero-text">
+                            <h2 class="hero-title">Who Am I</h2>
+                            <p class="hero-description">
+                                Scientist by training, storyteller by passion – I bridge the gap between complex scientific, 
+                                medical data and meaningful human connections. My unique blend of scientific expertise and 
+                                communication skills allows me to transform intricate science into compelling narratives 
+                                that resonate with a broad audience of all ages.
+                            </p>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Social Footer -->
-                <footer class="social-footer">
-                    <div class="social-links">
-                        <a href="https://youtube.com/channel/yourhandle" target="_blank" class="social-icon youtube">
+            </div>
+            
+            <!-- Social Links -->
+            <div class="social-section">
+                <div class="social-container">
+                    <div class="social-icons">
+                        <a href="#" class="social-link youtube">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-icon linkedin">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="#" class="social-link linkedin">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/yourusername" target="_blank" class="social-icon github">
+                        <a href="#" class="social-link github">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://twitter.com/yourhandle" target="_blank" class="social-icon twitter">
+                        <a href="#" class="social-link twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
-                    <div class="footer-contact">
-                        <a href="#" class="contact-link">CONTACT</a>
-                    </div>
-                </footer>
-            </section>
-        </div>
-
-        <div id="science-communication" class="tab-content">
-            <section class="content-section">
-                <div class="content-card">
-                    <h2>Science Communication</h2>
-                    <p>Content about science communication coming soon...</p>
-                </div>
-            </section>
-        </div>
-
-        <div id="art-stories" class="tab-content">
-            <section class="content-section">
-                <div class="content-card">
-                    <h2>Art & Stories</h2>
-                    <p>Creative works and storytelling content coming soon...</p>
-                </div>
-            </section>
-        </div>
-
-        <div id="academic-research" class="tab-content">
-            <section class="content-section">
-                <div class="content-card">
-                    <h2>Academic Research</h2>
-                    <p>Research publications and academic work coming soon...</p>
-                </div>
-            </section>
-        </div>
-
-        <div id="community-engagement" class="tab-content">
-            <section class="content-section">
-                <div class="content-card">
-                    <h2>Community Engagement</h2>
-                    <p>Community outreach programs and initiatives coming soon...</p>
-                </div>
-            </section>
-        </div>
-
-        <div id="educational-videos" class="tab-content">
-            <section class="content-section">
-                <div class="content-card">
-                    <h2>Educational Videos</h2>
-                    <p>Video content and educational materials coming soon...</p>
-                </div>
-            </section>
-        </div>
-
-        <div id="certifications" class="tab-content">
-            <section class="content-section">
-                <div class="content-card">
-                    <h2>Certifications</h2>
-                    <p>Professional certifications and credentials coming soon...</p>
-                </div>
-            </section>
-        </div>
-
-        <div id="contact-me" class="tab-content">
-            <section class="contact-section">
-                <div class="content-card">
-                    <h2>Contact Me</h2>
-                    <div class="contact-grid">
-                        <a href="mailto:your.email@example.com" class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">your.email@example.com</span>
-                            </div>
-                        </a>
-
-                        <a href="https://twitter.com/yourhandle" target="_blank" class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-twitter"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Twitter</span>
-                                <span class="contact-value">@yourhandle</span>
-                            </div>
-                        </a>
-
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">Professional Profile</span>
-                            </div>
-                        </a>
-
-                        <a href="https://github.com/yourusername" target="_blank" class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">GitHub</span>
-                                <span class="contact-value">Code & Projects</span>
-                            </div>
-                        </a>
+                    <div class="contact-button">
+                        <a href="#" class="btn-contact">CONTACT</a>
                     </div>
                 </div>
-            </section>
-        </div>
-    </div>
+            </div>
+        </section>
+
+        <!-- Other Tabs -->
+        <section id="science-communication" class="tab-section">
+            <div class="content-container">
+                <h2>Science Communication</h2>
+                <p>Content coming soon...</p>
+            </div>
+        </section>
+
+        <section id="art-stories" class="tab-section">
+            <div class="content-container">
+                <h2>Art & Stories</h2>
+                <p>Content coming soon...</p>
+            </div>
+        </section>
+
+        <section id="academic-research" class="tab-section">
+            <div class="content-container">
+                <h2>Academic Research</h2>
+                <p>Content coming soon...</p>
+            </div>
+        </section>
+
+        <section id="community-engagement" class="tab-section">
+            <div class="content-container">
+                <h2>Community Engagement</h2>
+                <p>Content coming soon...</p>
+            </div>
+        </section>
+
+        <section id="educational-videos" class="tab-section">
+            <div class="content-container">
+                <h2>Educational Videos</h2>
+                <p>Content coming soon...</p>
+            </div>
+        </section>
+
+        <section id="certifications" class="tab-section">
+            <div class="content-container">
+                <h2>Certifications</h2>
+                <p>Content coming soon...</p>
+            </div>
+        </section>
+
+        <section id="contact" class="tab-section">
+            <div class="content-container">
+                <h2>Contact Me</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>your.email@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn Profile</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script>
-        // Tab functionality
-        function initTabs() {
-            const tabs = document.querySelectorAll('.nav-tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const targetTab = tab.getAttribute('data-tab');
+        // Simple tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const tabSections = document.querySelectorAll('.tab-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
                     
-                    // Remove active class from all tabs and contents
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(content => {
-                        content.classList.remove('active');
-                    });
+                    // Remove active class from all links and sections
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    tabSections.forEach(s => s.classList.remove('active'));
                     
-                    // Add active class to clicked tab and corresponding content
-                    tab.classList.add('active');
-                    const targetContent = document.getElementById(targetTab);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetTab = this.getAttribute('data-tab');
+                    const targetSection = document.getElementById(targetTab);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
                     }
                 });
             });
-        }
-
-        // Add intersection observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Initialize tabs when page loads
-        document.addEventListener('DOMContentLoaded', initTabs);
+        });
     </script>
 </body>
 </html>
