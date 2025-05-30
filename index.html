@@ -800,6 +800,48 @@
             document.body.appendChild(overlay);
         }
 
+        function initCommunicationsPage() {
+    const themeLinks = document.querySelectorAll('.theme-link');
+    const articlesSections = document.querySelectorAll('.articles-section');
+
+    const showTheme = (themeId) => {
+        articlesSections.forEach(section => {
+            section.classList.remove('active');
+        });
+        themeLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+
+        const activeSection = document.getElementById(themeId);
+        if (activeSection) {
+            activeSection.classList.add('active');
+            const activeLink = document.querySelector(`.theme-link[data-theme="${themeId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    };
+
+    themeLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const themeId = e.currentTarget.dataset.theme;
+            showTheme(themeId);
+        });
+    });
+
+    if (themeLinks.length > 0) {
+        const currentHash = window.location.hash.slice(1);
+        const initialTheme = themeLinks[0].dataset.theme;
+        if (currentHash && document.getElementById(currentHash)) {
+            showTheme(currentHash);
+        } else {
+            showTheme(initialTheme);
+        }
+    }
+}
+
+
     </script>
 </body>
 </html>
