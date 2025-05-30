@@ -579,7 +579,15 @@
                                  console.warn('initCommunicationsPage() not found.');
                                 }
                         }, 100); // 100ms delay; adjust if needed
-                    }
+                    } else if (pageId === 'education-outreach') {
+                        setTimeout(() => {
+                            if (typeof initEducationOutreachPage === 'function') {
+                                initEducationOutreachPage();
+                                } else {
+                                 console.warn('initEducationOutreachPage() not found.');
+                                }
+                        }, 10);
+                    } 
                 
                 // Update the 'active' class on navigation links
                 document.querySelectorAll('.nav-link').forEach(link => {
