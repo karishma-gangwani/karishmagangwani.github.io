@@ -572,14 +572,16 @@
                 const htmlContent = await response.text();
                 container.innerHTML = htmlContent;
 
-                // --- START OF THE CRITICAL ADDITION/MODIFICATION ---
-                // After content is loaded, check if it's the communications page
-                // and if its initialization function exists globally.
-                // This ensures the JS for communications.html runs after it's loaded.
-                if (pageId === 'communications' && typeof initCommunicationsPage === 'function') {
-                    initCommunicationsPage();
-                }
-                // --- END OF THE CRITICAL ADDITION/MODIFICATION ---
+                // Wait a moment for the new HTML to be parsed into the DOM
+                if (pageId === 'communications') {
+                        setTimeout(() => {
+                            if (typeof initCommunicationsPage === 'function') {
+                                initCommunicationsPage();
+                                } else {
+                                 console.warn('initCommunicationsPage() not found.');
+                                }
+                        }, 100); // 100ms delay; adjust if needed
+                    }
                 
                 // Update the 'active' class on navigation links
                 document.querySelectorAll('.nav-link').forEach(link => {
