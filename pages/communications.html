@@ -458,62 +458,6 @@
 </style>
 
 <script>
-    // Define a function to initialize the communications page's interactive elements
-    function initCommunicationsPage() {
-        console.log("initCommunicationsPage function called."); // Debugging log
-
-        const themeLinks = document.querySelectorAll('.theme-link');
-        const articlesSections = document.querySelectorAll('.articles-section');
-
-        // Function to show a specific theme's articles
-        const showTheme = (themeId) => {
-            console.log("Attempting to show theme:", themeId); // Debugging log
-            articlesSections.forEach(section => {
-                section.classList.remove('active');
-            });
-            themeLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            const activeSection = document.getElementById(themeId);
-            if (activeSection) {
-                activeSection.classList.add('active');
-                const activeLink = document.querySelector(`.theme-link[data-theme="${themeId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            } else {
-                console.warn("Section with ID", themeId, "not found."); // Warn if section not found
-            }
-        };
-
-        // Add click listeners to theme links
-        themeLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                console.log("Theme link clicked:", e.target.textContent); // Debugging log
-                e.preventDefault(); // Prevent default link behavior (crucial for staying on page)
-                const themeId = e.currentTarget.dataset.theme;
-                showTheme(themeId);
-            });
-        });
-
-        // Show the first theme by default on load
-        // This will now run when initCommunicationsPage is called
-        if (themeLinks.length > 0) {
-            // Check if there's a hash in the URL that matches a theme, and activate it
-            const currentHash = window.location.hash.slice(1);
-            const initialTheme = themeLinks[0].dataset.theme; // Default to the first theme
-            if (currentHash && document.getElementById(currentHash)) {
-                showTheme(currentHash);
-            } else {
-                showTheme(initialTheme);
-            }
-        }
-    }
-
-    // This part is crucial: If this script is loaded directly (e.g., for testing communications.html alone),
-    // it will still run on DOMContentLoaded. However, when loaded via innerHTML in index.html,
-    // index.html will explicitly call initCommunicationsPage().
     document.addEventListener('DOMContentLoaded', () => {
         // Only run if not already handled by a parent script (e.g., index.html)
         // This check is a safeguard for direct loading of communications.html
