@@ -6,18 +6,27 @@
 <section class="section-container">
     <div class="image-grid">
         <article class="image-card">
-            <img src="../images/aacr2.JPG" alt="Poster@AACR2025 Medulloblastoma meta-analysis portal" class="image-card-visual">
-            <div class="image-card-content">
-                <h3 class="image-card-title"></h3>
-                <p class="image-card-description">Multicultural mixer at AACR2025</p>
-                </div>
-        </article>
+            <div class="image-card-visual slideshow-container" data-slides='[
+                "../images/aacr2.JPG",
+                "../images/aacr.jpg",
+                "https://placehold.co/400x250/E7A7C7/000000?text=AACR+Slide+3"
+            ]'>
+                <img src="../images/aacr2.JPG" alt="Multicultural mixer at AACR2025 (Slide 1)" class="slideshow-image active">
+                <img src="../images/aacr.jpg" alt="Poster @ AACR2025 Medulloblastoma meta-analysis portal (Slide 2)" class="slideshow-image">
+                <img src="https://placehold.co/400x250/E7A7C7/000000?text=AACR+Slide+3" alt="AACR related event (Slide 3)" class="slideshow-image">
 
-        <article class="image-card">
-            <img src="../images/aacr.jpg" alt="Poster@AACR2025 Medulloblastoma meta-analysis portal" class="image-card-visual">
+                <button class="slideshow-btn prev" aria-label="Previous slide">&#10094;</button>
+                <button class="slideshow-btn next" aria-label="Next slide">&#10095;</button>
+
+                <div class="slideshow-dots">
+                    <span class="dot active" data-slide-index="0"></span>
+                    <span class="dot" data-slide-index="1"></span>
+                    <span class="dot" data-slide-index="2"></span>
+                </div>
+            </div>
             <div class="image-card-content">
-                <h3 class="image-card-title">Poster @ AACR2025 Medulloblastoma meta-analysis portal</h3>
-                <p class="image-card-description">Presented a poster highlighting the product portfolio of a medulloblastoma patient level meta-analysis portal at the AACR 2025 conference.</p>
+                <h3 class="image-card-title">AACR 2025 Events</h3>
+                <p class="image-card-description">Collection of moments from the AACR 2025 conference, including a multicultural mixer and a poster presentation on Medulloblastoma meta-analysis.</p>
                 </div>
         </article>
 
@@ -96,13 +105,86 @@
         box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     }
 
-    /* Updated CSS for <img> tags */
-    .image-card-visual {
+    /* Styles for the slideshow container */
+    .slideshow-container {
+        position: relative;
         width: 100%;
-        height: 200px; /* Adjust height as needed */
-        object-fit: cover; /* Ensures image covers the area without distortion */
-        display: block; /* Removes extra space below image */
-        background-color: #f0f0f0; /* Fallback background for missing images */
+        height: 200px; /* Consistent height for all cards */
+        overflow: hidden;
+        background-color: #f0f0f0; /* Fallback background */
+    }
+
+    .slideshow-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .slideshow-image.active {
+        opacity: 1;
+    }
+
+    /* Slideshow navigation buttons */
+    .slideshow-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: rgba(0,0,0,0.5);
+        border: none;
+        z-index: 10;
+    }
+
+    .slideshow-btn.prev {
+        left: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .slideshow-btn.next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .slideshow-btn:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Slideshow dots */
+    .slideshow-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .dot.active, .dot:hover {
+        background-color: #717171;
     }
 
     .image-card-content {
@@ -156,3 +238,62 @@
         }
     }
 </style>
+
+<script>
+    // This function will be called by index.html after the page content is loaded
+    function initEducationOutreachPage() {
+        console.log("Education & Outreach page initialized with slideshows.");
+
+        const slideshowContainers = document.querySelectorAll('.slideshow-container');
+
+        slideshowContainers.forEach(container => {
+            const images = container.querySelectorAll('.slideshow-image');
+            const dotsContainer = container.querySelector('.slideshow-dots');
+            const prevBtn = container.querySelector('.slideshow-btn.prev');
+            const nextBtn = container.querySelector('.slideshow-btn.next');
+
+            let slideIndex = 0; // Current slide index for this specific slideshow
+
+            // Function to show a specific slide
+            const showSlide = (n) => {
+                // Wrap the index around if it goes out of bounds
+                if (n >= images.length) { slideIndex = 0; }
+                if (n < 0) { slideIndex = images.length - 1; }
+
+                // Hide all images and deactivate all dots
+                images.forEach(img => img.classList.remove('active'));
+                Array.from(dotsContainer.children).forEach(dot => dot.classList.remove('active'));
+
+                // Show the current image and activate the current dot
+                images[slideIndex].classList.add('active');
+                dotsContainer.children[slideIndex].classList.add('active');
+            };
+
+            // Event listeners for prev/next buttons
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    slideIndex--;
+                    showSlide(slideIndex);
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    slideIndex++;
+                    showSlide(slideIndex);
+                });
+            }
+
+            // Event listeners for dots
+            Array.from(dotsContainer.children).forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    slideIndex = index;
+                    showSlide(slideIndex);
+                });
+            });
+
+            // Initialize the first slide
+            showSlide(slideIndex);
+        });
+    }
+</script>
