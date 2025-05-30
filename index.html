@@ -553,65 +553,6 @@
          * @param {boolean} [clearHash=false] - If true, clears the URL hash after loading (e.g., for home page).
          */
         async function showPage(pageId, clearHash = false) {
-        const container = document.getElementById('dynamic-content-container');
-        const filePath = pagePaths[pageId];
-
-        if (!filePath) {
-            console.error(`Error: No file path defined for page: ${pageId}`);
-            container.innerHTML = `<div class="page-header"><h1>Page Not Found</h1><p>The content for "${pageId}" could not be loaded.</p></div>`;
-            return;
-        }
-
-        try {
-            const response = await fetch(filePath);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
-            }
-
-            const htmlContent = await response.text();
-            container.innerHTML = htmlContent;
-
-            // --- START OF THE CRITICAL ADDITION/MODIFICATION ---
-            // After content is loaded, check if it's the communications page
-            // and if its initialization function exists globally.
-            // This ensures the JS for communications.html runs after it's loaded.
-            if (pageId === 'communications' && typeof initCommunicationsPage === 'function') {
-                initCommunicationsPage();
-            }
-            // --- END OF THE CRITICAL ADDITION/MODIFICATION ---
-
-            // Update the 'active' class on navigation links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            if (pageId === 'home') {
-                // No nav link to activate for 'home'
-            } else {
-                const activeLink = document.querySelector(`.nav-link[onclick*="showPage('${pageId}')"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            }
-
-            window.scrollTo(0, 0);
-
-            // --- MODIFIED HASH UPDATE LOGIC ---
-            if (clearHash) {
-                // Replace the current history entry to remove the hash
-                history.replaceState(null, '', window.location.pathname + window.location.search);
-            } else if (window.location.hash !== `#${pageId}`) {
-                // Only update hash if it's different to avoid redundant history entries
-                window.location.hash = pageId;
-            }
-            // --- END MODIFIED HASH UPDATE LOGIC ---
-
-        } catch (error) {
-            console.error('Error loading page content:', error);
-            container.innerHTML = `<div class="page-header"><h1>Error</h1><p>Failed to load content for this page. Please try again later.</p></div>`;
-        }
-    }
             const container = document.getElementById('dynamic-content-container');
             const filePath = pagePaths[pageId];
 
@@ -638,8 +579,8 @@
                 if (pageId === 'communications' && typeof initCommunicationsPage === 'function') {
                     initCommunicationsPage();
                 }
-
-
+                // --- END OF THE CRITICAL ADDITION/MODIFICATION ---
+                
                 // Update the 'active' class on navigation links
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
