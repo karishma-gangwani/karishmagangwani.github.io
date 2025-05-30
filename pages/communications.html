@@ -492,7 +492,7 @@
             link.addEventListener('click', (e) => {
                 console.log("Theme link clicked:", e.target.textContent); // Debugging log
                 e.preventDefault(); // Prevent default link behavior (crucial for staying on page)
-                const themeId = e.target.dataset.theme;
+                const themeId = e.currentTarget.dataset.theme;
                 showTheme(themeId);
             });
         });
