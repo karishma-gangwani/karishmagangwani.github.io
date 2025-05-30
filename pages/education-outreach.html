@@ -1,0 +1,158 @@
+<div class="page-header">
+    <h1>Education & Outreach</h1>
+    <p>Engaging communities through science education, workshops, and public outreach initiatives.</p>
+</div>
+
+<section class="section-container">
+    <div class="image-grid">
+        <article class="image-card">
+            <img src="../images/aacr2.JPG" alt="Poster@AACR2025 Medulloblastoma meta-analysis portal" class="image-card-visual">
+            <div class="image-card-content">
+                <h3 class="image-card-title"></h3>
+                <p class="image-card-description">Multicultural mixer</p>
+                </div>
+        </article>
+
+        <article class="image-card">
+            <img src="../images/aacr.jpg" alt="Poster@AACR2025 Medulloblastoma meta-analysis portal" class="image-card-visual">
+            <div class="image-card-content">
+                <h3 class="image-card-title">Poster @ AACR2025 Medulloblastoma meta-analysis portal</h3>
+                <p class="image-card-description">Presented a product portfolio poster on a comprehensive meta-analysis portal for Medulloblastoma at the AACR 2025 conference.</p>
+                </div>
+        </article>
+
+        <article class="image-card">
+            <img src="../images/ecsite2.png" alt="Panel session @ Ecsite2024: AI in career growth" class="image-card-visual">
+            <div class="image-card-content">
+                <h3 class="image-card-title">Panel session @ Ecsite2024: AI in career growth</h3>
+                <p class="image-card-description">Participated in a panel discussion at Ecsite 2024, exploring the impact of AI on career development and future opportunities.</p>
+                </div>
+        </article>
+
+        <article class="image-card">
+            <img src="../images/ecsite.jpeg" alt="Panel session @ Ecsite2024: AI in career growth" class="image-card-visual">
+            <div class="image-card-content">
+                <h3 class="image-card-title">Panel session @ Ecsite2024: AI in career growth</h3>
+                <p class="image-card-description">Excited for ecsite!</p>
+                </div>
+        </article>
+
+        <article class="image-card">
+            <img src="../images/water-lillies.jpg" alt="Making paper lilies at Girl Scout lab, Denver, Colorado" class="image-card-visual">
+            <div class="image-card-content">
+                <h3 class="image-card-title">Making paper lilies at Girl Scout lab, Denver, Colorado</h3>
+                <p class="image-card-description">Engaged with Girl Scouts in a hands-on science activity, creating paper lilies to demonstrate biological concepts.</p>
+                </div>
+        </article>
+    </div>
+</section>
+
+<style>
+    /* Reusing styles from main style.css and communications.html for consistency */
+    .section-container {
+        margin-bottom: 4rem; /* Spacing between sections */
+    }
+
+    .section-container h2 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+    }
+
+    .section-description {
+        font-size: 1.1rem;
+        color: #666;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2.5rem auto;
+        line-height: 1.6;
+    }
+
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .image-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .image-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Updated CSS for <img> tags */
+    .image-card-visual {
+        width: 100%;
+        height: 200px; /* Adjust height as needed */
+        object-fit: cover; /* Ensures image covers the area without distortion */
+        display: block; /* Removes extra space below image */
+        background-color: #f0f0f0; /* Fallback background for missing images */
+    }
+
+    .image-card-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image-card-title {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .image-card-description {
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.5;
+        flex-grow: 1;
+        margin-bottom: 1rem;
+    }
+
+    .image-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: gap 0.3s ease;
+        margin-top: auto; /* Pushes the link to the bottom */
+    }
+
+    .image-card-link:hover {
+        gap: 0.8rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .image-grid {
+            grid-template-columns: 1fr; /* Stack cards on small screens */
+            gap: 1.5rem;
+        }
+
+        .image-card-visual {
+            height: 180px; /* Adjust height for mobile */
+        }
+    }
+</style>
