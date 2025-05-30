@@ -365,6 +365,152 @@
             height: 16px;
         }
 
+        /* Communications Page Specific Styles */
+        .communications-layout {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem 0;
+            flex-direction: row;
+        }
+
+        .theme-sidebar {
+            flex: 0 0 250px;
+            padding-right: 1.5rem;
+            border-right: 1px solid #eee;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .theme-sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .theme-sidebar .theme-link {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .theme-sidebar .theme-link:hover {
+            color: #2c3e50;
+            transform: translateX(5px);
+        }
+
+        .theme-sidebar .theme-link.active {
+            color: #667eea;
+            font-weight: 700;
+            transform: translateX(0);
+        }
+
+        .articles-display-area {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .articles-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .articles-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .articles-section h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .articles-section .section-description {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: left;
+            max-width: 100%;
+            margin: 0 0 2.5rem 0;
+            line-height: 1.6;
+        }
+
+        .blog-grid.horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            gap: 1.5rem;
+            padding-bottom: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: #ccc #f1f1f1;
+        }
+
+        .blog-grid.horizontal-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .blog-grid.horizontal-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .blog-grid.horizontal-scroll::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
+
+        .blog-grid.horizontal-scroll::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+        .blog-grid.horizontal-scroll .blog-card {
+            flex: 0 0 220px;
+            max-width: 220px;
+            height: auto;
+        }
+
+        .blog-grid.horizontal-scroll .blog-card-image {
+            height: 160px;
+        }
+
+        .blog-grid.horizontal-scroll .blog-card-content {
+            padding: 1rem;
+        }
+
+        .blog-grid.horizontal-scroll .blog-card-title {
+            font-size: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .blog-grid.horizontal-scroll .blog-card-excerpt {
+            font-size: 0.85rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-grid.horizontal-scroll .blog-card-link {
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+
         /* Footer */
         footer {
             background: #2c3e50;
@@ -453,7 +599,6 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 1rem;
-                /* margin-left: 0; (This will be handled by the logo's margin-left: auto) */
             }
 
             .profile-image {
@@ -473,6 +618,51 @@
             .footer-content {
                 flex-direction: column;
                 gap: 2rem;
+            }
+
+            /* Communications page responsive */
+            .communications-layout {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .theme-sidebar {
+                position: static;
+                width: 100%;
+                padding-right: 0;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .theme-sidebar nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .theme-sidebar .theme-link {
+                font-size: 1rem;
+                padding: 0.3rem 0.6rem;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+            }
+
+            .theme-sidebar .theme-link.active {
+                background-color: #667eea;
+                color: white;
+                border-color: #667eea;
+            }
+
+            .articles-display-area {
+                padding: 0 1rem;
+            }
+
+            .articles-section h2,
+            .articles-section .section-description {
+                text-align: center;
             }
         }
     </style>
@@ -500,7 +690,7 @@
     </header>
 
     <main id="dynamic-content-container">
-        </main>
+    </main>
 
     <footer>
         <div class="footer-content">
@@ -538,266 +728,71 @@
     <script>
         // Define a mapping of page IDs to their corresponding HTML file paths
         const pagePaths = {
-            'home': 'pages/home.html', // Keep home.html as the content source for the landing page
+            'home': 'pages/home.html',
             'science': 'pages/science.html',
             'communications': 'pages/communications.html',
-            'education': 'pages/education.html', // Corrected path
+            'education': 'pages/education.html',
             'outreach': 'pages/outreach.html',
             'certifications': 'pages/certifications.html',
             'contact': 'pages/contact.html'
         };
 
         /**
+         * Function to initialize the communications page's interactive elements
+         */
+        function initCommunicationsPage() {
+            console.log("initCommunicationsPage function called.");
+
+            const themeLinks = document.querySelectorAll('.theme-link');
+            const articlesSections = document.querySelectorAll('.articles-section');
+
+            // Function to show a specific theme's articles
+            const showTheme = (themeId) => {
+                console.log("Attempting to show theme:", themeId);
+                articlesSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                themeLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                const activeSection = document.getElementById(themeId);
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                    const activeLink = document.querySelector(`.theme-link[data-theme="${themeId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                } else {
+                    console.warn("Section with ID", themeId, "not found.");
+                }
+            };
+
+            // Add click listeners to theme links
+            themeLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    console.log("Theme link clicked:", e.target.textContent);
+                    e.preventDefault();
+                    const themeId = e.target.dataset.theme;
+                    showTheme(themeId);
+                });
+            });
+
+            // Show the first theme by default on load
+            if (themeLinks.length > 0) {
+                const currentHash = window.location.hash.slice(1);
+                const initialTheme = themeLinks[0].dataset.theme;
+                if (currentHash && document.getElementById(currentHash)) {
+                    showTheme(currentHash);
+                } else {
+                    showTheme(initialTheme);
+                }
+            }
+        }
+
+        /**
          * Loads content for a given page ID into the dynamic content container.
          * @param {string} pageId - The ID of the page to load.
          * @param {boolean} [clearHash=false] - If true, clears the URL hash after loading (e.g., for home page).
          */
-        async function showPage(pageId, clearHash = false) {
-            const container = document.getElementById('dynamic-content-container');
-            const filePath = pagePaths[pageId];
-
-            if (!filePath) {
-                console.error(`Error: No file path defined for page: ${pageId}`);
-                container.innerHTML = `<div class="page-header"><h1>Page Not Found</h1><p>The content for "${pageId}" could not be loaded.</p></div>`;
-                return;
-            }
-
-            try {
-                const response = await fetch(filePath);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
-                }
-
-                const htmlContent = await response.text();
-                container.innerHTML = htmlContent;
-
-                // --- START OF THE CRITICAL ADDITION/MODIFICATION ---
-                // After content is loaded, check if it's the communications page
-                // and if its initialization function exists globally.
-                // This ensures the JS for communications.html runs after it's loaded.
-                if (pageId === 'communications' && typeof initCommunicationsPage === 'function') {
-                    initCommunicationsPage();
-                }
-
-
-                // Update the 'active' class on navigation links
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                if (pageId === 'home') {
-                    // No nav link to activate for 'home'
-                } else {
-                    const activeLink = document.querySelector(`.nav-link[onclick*="showPage('${pageId}')"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
-
-                window.scrollTo(0, 0);
-
-                // --- MODIFIED HASH UPDATE LOGIC ---
-                if (clearHash) {
-                    // Replace the current history entry to remove the hash
-                    history.replaceState(null, '', window.location.pathname + window.location.search);
-                } else if (window.location.hash !== `#${pageId}`) {
-                    // Only update hash if it's different to avoid redundant history entries
-                    window.location.hash = pageId;
-                }
-                // --- END MODIFIED HASH UPDATE LOGIC ---
-
-            } catch (error) {
-                console.error('Error loading page content:', error);
-                container.innerHTML = `<div class="page-header"><h1>Error</h1><p>Failed to load content for this page. Please try again later.</p></div>`;
-            }
-        }
-
-        // 1. On initial load, check if there's a hash. If so, load that page. Otherwise, load home.
-        window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.slice(1);
-            if (hash && pagePaths[hash]) {
-                showPage(hash); // Load the page corresponding to the hash
-            } else {
-                showPage('home', true); // Load home page and clear hash from URL if no valid hash
-            }
-        });
-
-        // 2. Handle hash changes triggered by browser back/forward buttons or direct hash entry.
-        window.addEventListener('hashchange', () => {
-            const hash = window.location.hash.slice(1);
-            if (hash && pagePaths[hash]) {
-                showPage(hash); // Load the page corresponding to the hash
-            } else {
-                // If hash becomes empty or invalid through history navigation, go home
-                showPage('home', true); // Go home and clear the hash from URL
-            }
-        });
-
-        // 3. Modified click handlers for navigation links and logo.
-        document.addEventListener('click', function(e) {
-            // Handle clicks on navigation links
-            if (e.target.classList.contains('nav-link')) {
-                e.preventDefault(); // Prevent default link behavior
-                const pageIdMatch = e.target.getAttribute('onclick').match(/showPage\('(.+?)'\)/);
-                if (pageIdMatch && pageIdMatch[1]) {
-                    showPage(pageIdMatch[1]); // Normal navigation, will set URL hash
-                }
-            }
-            // Handle clicks on the logo to go to home page and clear hash
-            else if (e.target.closest('.logo')) {
-                e.preventDefault();
-                showPage('home', true); // Go home and clear hash from URL
-            }
-            // Handle clicks on the contact button
-            else if (e.target.closest('.contact-button')) {
-                e.preventDefault();
-                showPage('contact'); // Contact button will set URL hash
-            }
-        });
-
-        // Search functionality (remains the same)
-        const searchIcon = document.getElementById('searchIcon');
-        const searchInput = document.getElementById('searchInput');
-        let searchActive = false;
-
-        // Define searchable content (updated to reflect 'home' as the default landing page)
-        const searchableContent = [
-            { title: 'Home', pageId: 'home', keywords: ['home', 'profile', 'about', 'karishma', 'scientist', 'storyteller'] },
-            { title: 'Science', pageId: 'science', keywords: ['science', 'research', 'publications', 'biorxiv', 'springer', 'sciencedirect', 'mdpi', 'frontiers', 'pubmed', 'chromatin', 'drug discovery', 'crispr-cas9', 'non-coding rnas', 'cellular senescence', 'aging', 'mitochondrial dynamics', 'neurodegenerative', 'epigenetic modifications', 'plant development', 'drosophila cancer modeling', 'tobacco'] },
-            { title: 'Communications', pageId: 'communications', keywords: ['science', 'communication', 'blog', 'articles', 'tobacco', 'drosophila', 'proteinpaint', 'epigenetic', 'scientists', 'nematodes', 'grad school', 'cancer', 'research', 'publication', 'interdisciplinary', 'essays', 'public insights', 'societal biases', 'psychology', 'symbolism', 'change', 'xi wang mu', 'holika', 'limits'] },
-            { title: 'Education', pageId: 'education', keywords: ['education', 'learning', 'teaching', 'academic', 'videos', 'courses'] },
-            { title: 'Outreach', pageId: 'outreach', keywords: ['outreach', 'community', 'engagement', 'public', 'volunteer', 'events'] },
-            { title: 'Certifications', pageId: 'certifications', keywords: ['certifications', 'certificates', 'credentials', 'awards', 'achievements'] },
-            { title: 'Contact Me', pageId: 'contact', keywords: ['contact', 'email', 'reach', 'connect', 'inquiry', 'form'] }
-        ];
-
-        searchIcon.addEventListener('click', function() {
-            searchActive = !searchActive;
-            searchInput.classList.toggle('active');
-            searchIcon.classList.toggle('active');
-
-            if (searchActive) {
-                searchInput.focus();
-            } else {
-                searchInput.value = '';
-            }
-        });
-
-        searchInput.addEventListener('blur', function() {
-            setTimeout(() => {
-                if (this.value === '') {
-                    searchActive = false;
-                    this.classList.remove('active');
-                    searchIcon.classList.remove('active');
-                }
-            }, 200);
-        });
-
-        function performSearch(searchTerm) {
-            const term = searchTerm.toLowerCase();
-            const results = [];
-
-            searchableContent.forEach(item => {
-                // Check if the search term is in the title
-                if (item.title.toLowerCase().includes(term)) {
-                    results.push(item);
-                    return; // Move to the next item once a title match is found
-                }
-
-                // Check if the search term is in any of the keywords
-                const keywordMatch = item.keywords.some(keyword =>
-                    keyword.toLowerCase().includes(term)
-                );
-
-                if (keywordMatch) {
-                    results.push(item);
-                }
-            });
-
-            return results;
-        }
-
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const searchTerm = this.value.trim();
-                if (searchTerm) {
-                    const results = performSearch(searchTerm);
-
-                    if (results.length > 0) {
-                        showPage(results[0].pageId, true); // Load the first matching page and clear hash
-                        this.value = ''; // Clear search input
-                        searchActive = false;
-                        this.classList.remove('active');
-                        searchIcon.classList.remove('active');
-
-                        if (results.length > 1) {
-                            console.log(`Found ${results.length} results. Showing: ${results[0].title}`);
-                        }
-                    } else {
-                        displayMessageBox(`No results found for "${searchTerm}"`);
-                    }
-                }
-            }
-        });
-
-        function displayMessageBox(message) {
-            const overlay = document.createElement('div');
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-            `;
-
-            const messageBox = document.createElement('div');
-            messageBox.style.cssText = `
-                background-color: white;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                text-align: center;
-                max-width: 300px;
-                font-family: inherit;
-            `;
-
-            const messageText = document.createElement('p');
-            messageText.textContent = message;
-            messageText.style.marginBottom = '15px';
-            messageText.style.fontSize = '1.1rem';
-            messageText.style.color = '#333';
-
-            const closeButton = document.createElement('button');
-            closeButton.textContent = 'OK';
-            closeButton.style.cssText = `
-                background-color: #667eea;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 1rem;
-                transition: background-color 0.3s ease;
-            `;
-            closeButton.onmouseover = () => closeButton.style.backgroundColor = '#5a6edb';
-            closeButton.onmouseout = () => closeButton.style.backgroundColor = '#667eea';
-
-            closeButton.addEventListener('click', () => {
-                document.body.removeChild(overlay);
-            });
-
-            messageBox.appendChild(messageText);
-            messageBox.appendChild(closeButton);
-            overlay.appendChild(messageBox);
-            document.body.appendChild(overlay);
-        }
-
-    </script>
-</body>
-</html>
+        async
