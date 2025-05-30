@@ -604,6 +604,46 @@
             }
         }
 
+
+        async function showPage(pageId, clearHash = false) {
+            const container = document.getElementById('dynamic-content-container');
+            const filePath = pagePaths[pageId];
+
+            if (!filePath) {
+                console.error(`Error: No file path defined for page: ${pageId}`);
+                container.innerHTML = `<div class="page-header"><h1>Page Not Found</h1><p>The content for "${pageId}" could not be loaded.</p></div>`;
+                return;
+            }
+
+            try {
+                const response = await fetch(filePath);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
+                }
+
+                const htmlContent = await response.text();
+                container.innerHTML = htmlContent;
+
+                // --- START OF THE CODE YOU NEED TO ADD/ENSURE IS PRESENT IN index.html ---
+                // After content is loaded, check if it's the communications page
+                // and if its initialization function exists globally.
+                if (pageId === 'communications' && typeof initCommunicationsPage === 'function') {
+                    initCommunicationsPage();
+                }
+                // --- END OF THE CODE YOU NEED TO ADD/ENSURE IS PRESENT IN index.html ---
+
+                // Update the 'active' class on navigation links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // ... (rest of your showPage function) ...
+            } catch (error) {
+                console.error('Error loading page content:', error);
+                container.innerHTML = `<div class="page-header"><h1>Error</h1><p>Failed to load content for this page. Please try again later.</p></div>`;
+            }
+        }
         // --- NEW/MODIFIED EVENT LISTENERS ---
 
         // 1. On initial load, check if there's a hash. If so, load that page. Otherwise, load home.
