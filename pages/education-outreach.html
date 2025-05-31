@@ -85,12 +85,16 @@
         line-height: 1.6;
     }
 
+    /* image-grid will now simply stack the horizontal cards */
     .image-grid {
-        display: grid; /* Keep grid for overall 4-column layout */
-        grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-        gap: 2rem;
+        display: flex; /* Use flex to stack cards vertically */
+        flex-direction: column; /* Stack cards on top of each other */
+        gap: 2rem; /* Space between the horizontal cards */
         margin-top: 2rem;
-        align-items: start; /* Align cards to the top in the grid row if heights vary */
+        max-width: 900px; /* Limit the overall width of the cards for readability */
+        margin-left: auto; /* Center the grid */
+        margin-right: auto; /* Center the grid */
+        padding: 0 1rem; /* Add some horizontal padding */
     }
 
     .image-card {
@@ -98,12 +102,13 @@
         border-radius: 12px;
         box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: flex; /* NOW FLEX FOR HORIZONTAL CONTENT */
-        flex-direction: row; /* Arranges image and content side-by-side */
+        display: flex; /* Make the card itself a flex container */
+        flex-direction: row; /* Arrange image (left) and content (right) horizontally */
+        align-items: stretch; /* Stretch items to fill the height of the card */
         height: auto; /* Allow height to adjust based on content */
         text-decoration: none;
         color: inherit;
-        /* Remove horizontal scroll snapping properties from here */
+        width: 100%; /* Take full width of its parent (.image-grid) */
     }
 
     .image-card:hover {
@@ -114,29 +119,29 @@
     /* Styles for the image visual area (for both <img> and slideshows) */
     .image-card-visual {
         flex-shrink: 0; /* Prevent image from shrinking */
-        width: 40%; /* Image takes 40% of card width. Adjust as needed. */
-        height: 100%; /* Image fills the height of the card */
+        width: 35%; /* Image takes 35% of card width. Adjust as needed. */
+        height: 250px; /* Fixed height for the visual area, adjust to your preference */
         object-fit: cover; /* Ensures images cover the area and are cropped if necessary */
         object-position: center center; /* Center crop for horizontal layout */
         overflow: hidden; /* KEEP THIS for the image visual, to crop the image itself */
         border-top-left-radius: 12px; /* Top-left matches card radius */
         border-bottom-left-radius: 12px; /* Bottom-left matches card radius */
-        border-top-right-radius: 0; /* Remove top-right radius for horizontal layout */
-        border-bottom-right-radius: 0; /* Remove bottom-right radius for horizontal layout */
+        border-top-right-radius: 0; /* No radius on the right side of the image */
+        border-bottom-right-radius: 0; /* No radius on the right side of the image */
     }
 
     /* Styles for the slideshow container */
     .slideshow-container {
         flex-shrink: 0; /* Prevent slideshow from shrinking */
-        width: 40%; /* Slideshow takes 40% of card width. Matches .image-card-visual */
-        height: 100%; /* Slideshow fills the height of the card */
+        width: 35%; /* Slideshow takes 35% of card width. Matches .image-card-visual */
+        height: 250px; /* Slideshow height. Matches .image-card-visual */
         position: relative;
         overflow: hidden; /* KEEP THIS for the slideshow, to contain images */
         background-color: #f0f0f0;
         border-top-left-radius: 12px; /* Top-left matches card radius */
         border-bottom-left-radius: 12px; /* Bottom-left matches card radius */
-        border-top-right-radius: 0; /* Remove top-right radius for horizontal layout */
-        border-bottom-right-radius: 0; /* Remove bottom-right radius for horizontal layout */
+        border-top-right-radius: 0; /* No radius on the right side of the slideshow */
+        border-bottom-right-radius: 0; /* No radius on the right side of the slideshow */
     }
 
     .slideshow-image {
@@ -166,7 +171,7 @@
         font-weight: bold;
         font-size: 14px; /* Smaller font size */
         transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0; /* Adjusted for horizontal card */
         user-select: none;
         background-color: rgba(0,0,0,0.5);
         border: none;
@@ -218,6 +223,8 @@
         display: flex;
         flex-direction: column; /* Stack title and description vertically */
         justify-content: flex-start; /* Aligns content to top */
+        border-top-right-radius: 12px; /* Top-right matches card radius */
+        border-bottom-right-radius: 12px; /* Bottom-right matches card radius */
     }
 
     .image-card-title {
@@ -253,45 +260,53 @@
     }
 
     /* Responsive adjustments for horizontal card content */
-    @media (max-width: 1200px) {
+    @media (max-width: 992px) { /* Adjust breakpoint for larger screens */
         .image-grid {
-            grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+            max-width: 700px; /* Make grid narrower on slightly smaller screens */
         }
         .image-card-visual, .slideshow-container {
-            width: 35%; /* Adjust image width within card */
+            width: 40%; /* Image takes more width within card */
         }
     }
 
     @media (max-width: 768px) {
         .image-grid {
-            grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
             gap: 1.5rem;
+            padding: 0 0.5rem;
         }
         .image-card {
-            flex-direction: column; /* Stack content vertically on smaller screens */
+            flex-direction: column; /* Stack content vertically on tablets */
+            height: auto; /* Allow height to adjust */
         }
         .image-card-visual, .slideshow-container {
-            width: 100%; /* Image takes full width again */
-            height: 180px; /* Adjust height for stacking */
+            width: 100%; /* Image takes full width when stacking */
+            height: 200px; /* Adjust image height for stacking */
             border-bottom-left-radius: 0; /* Remove bottom-left radius when stacking */
             border-top-right-radius: 12px; /* Add top-right radius back */
             border-bottom-right-radius: 0; /* Remove bottom-right radius */
+        }
+        .image-card-content {
+            border-top-right-radius: 0; /* Remove top-right radius when stacking */
+            border-bottom-left-radius: 12px; /* Add bottom-left radius back */
         }
     }
 
     @media (max-width: 480px) {
         .image-grid {
-            grid-template-columns: 1fr; /* Stack cards on small mobile screens */
-            gap: 1.5rem;
+            gap: 1rem;
+            padding: 0;
         }
         .image-card {
-            flex-direction: column; /* Stack content vertically */
+            border-radius: 0; /* Remove border-radius on very small screens for full width */
+            box-shadow: none; /* Remove box-shadow to blend with background */
         }
         .image-card-visual, .slideshow-container {
-            width: 100%;
             height: 220px; /* Larger image on single column */
-            border-bottom-left-radius: 0;
-            border-top-right-radius: 12px;
+            border-radius: 0; /* No radius on very small screens */
+        }
+        .image-card-content {
+            padding: 1rem; /* Smaller padding */
+            border-radius: 0; /* No radius on very small screens */
         }
     }
 </style>
