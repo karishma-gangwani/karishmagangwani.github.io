@@ -8,20 +8,17 @@
         <article class="image-card">
             <div class="image-card-visual slideshow-container" data-slides='[
                 "../images/aacr2.JPG",
-                "../images/aacr.jpg",
-                "https://placehold.co/400x250/E7A7C7/000000?text=AACR+Slide+3"
+                "../images/aacr.jpg"
             ]'>
                 <img src="../images/aacr2.JPG" alt="Multicultural mixer at AACR2025 (Slide 1)" class="slideshow-image active">
                 <img src="../images/aacr.jpg" alt="Poster @ AACR2025 Medulloblastoma meta-analysis portal (Slide 2)" class="slideshow-image">
-                <img src="https://placehold.co/400x250/E7A7C7/000000?text=AACR+Slide+3" alt="AACR related event (Slide 3)" class="slideshow-image">
-
                 <button class="slideshow-btn prev" aria-label="Previous slide">&#10094;</button>
                 <button class="slideshow-btn next" aria-label="Next slide">&#10095;</button>
 
                 <div class="slideshow-dots">
                     <span class="dot active" data-slide-index="0"></span>
                     <span class="dot" data-slide-index="1"></span>
-                </div>
+                    </div>
             </div>
             <div class="image-card-content">
                 <h3 class="image-card-title">AACR 2025 Events</h3>
@@ -250,7 +247,7 @@
         console.log("Education & Outreach page initialized with slideshows.");
 
         const slideshowContainers = document.querySelectorAll('.slideshow-container');
-        console.log("Found slideshow containers:", slideshowContainers.length); // Debug check
+        console.log("Found slideshow containers:", slideshowContainers.length);
 
         slideshowContainers.forEach(container => {
             const images = container.querySelectorAll('.slideshow-image');
@@ -258,58 +255,72 @@
             const prevBtn = container.querySelector('.slideshow-btn.prev');
             const nextBtn = container.querySelector('.slideshow-btn.next');
 
-            console.log("  Processing container:", container); // Debug check
-            console.log("    Images found:", images.length); // Debug check
-            console.log("    Dots container found:", !!dotsContainer); // Debug check
-            console.log("    Prev button found:", !!prevBtn); // Debug check
-            console.log("    Next button found:", !!nextBtn); // Debug check
+            let slideIndex = 0; // Initialize slideIndex for each container
 
-            let slideIndex = 0; // Current slide index for this specific slideshow
+            // Ensure images and dots are found
+            if (images.length === 0) {
+                console.warn("No slideshow images found in container:", container);
+                return; // Skip if no images
+            }
 
-            // Function to show a specific slide
-            const showSlide = (n) => {
-                console.log("      Showing slide:", n); // Debug check
-                // Wrap the index around if it goes out of bounds
-                if (n >= images.length) { slideIndex = 0; }
-                if (n < 0) { slideIndex = images.length - 1; }
+            // Function to display specific slide
+            function showSlides(n) {
+                if (n >= images.length) {
+                    slideIndex = 0; // Loop back to the first slide
+                } else if (n < 0) {
+                    slideIndex = images.length - 1; // Loop to the last slide
+                } else {
+                    slideIndex = n;
+                }
 
                 // Hide all images and deactivate all dots
                 images.forEach(img => img.classList.remove('active'));
-                Array.from(dotsContainer.children).forEach(dot => dot.classList.remove('active'));
+                if (dotsContainer) {
+                    dotsContainer.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+                }
 
                 // Show the current image and activate the current dot
                 images[slideIndex].classList.add('active');
-                dotsContainer.children[slideIndex].classList.add('active');
-            };
-
-            // Event listeners for prev/next buttons
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    console.log("      Prev button clicked for container:", container); // Debug check
-                    slideIndex--;
-                    showSlide(slideIndex);
-                });
+                if (dotsContainer && dotsContainer.children[slideIndex]) {
+                    dotsContainer.children[slideIndex].classList.add('active');
+                }
             }
 
+            // Function to advance/rewind slides
+            function plusSlides(n) {
+                showSlides(slideIndex + n);
+            }
+
+            // Event listeners for navigation buttons
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => plusSlides(-1));
+            }
             if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    console.log("      Next button clicked for container:", container); // Debug check
-                    slideIndex++;
-                    showSlide(slideIndex);
-                });
+                nextBtn.addEventListener('click', () => plusSlides(1));
             }
 
             // Event listeners for dots
-            Array.from(dotsContainer.children).forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    console.log("      Dot clicked (index:", index, ") for container:", container); // Debug check
-                    slideIndex = index;
-                    showSlide(slideIndex);
+            if (dotsContainer) {
+                dotsContainer.querySelectorAll('.dot').forEach((dot, index) => {
+                    dot.addEventListener('click', () => showSlides(index));
                 });
-            });
+            }
 
-            // Initialize the first slide
-            showSlide(slideIndex);
+            // Initialize the first slide for each slideshow
+            showSlides(0);
         });
     }
+
+    // This part is crucial: If this script is loaded directly (e.g., for testing education-outreach.html alone),
+    // it will still run on DOMContentLoaded. However, when loaded via innerHTML in index.html,
+    // index.html will explicitly call initEducationOutreachPage().
+    // We'll add a check here to ensure it runs only if not already handled by a parent script.
+    document.addEventListener('DOMContentLoaded', () => {
+        // Only run if not already handled by a parent script (e.g., index.html)
+        // This check is a safeguard for direct loading of education-outreach.html
+        if (typeof initEducationOutreachPage === 'function' && !window.educationOutreachPageInitialized) {
+            initEducationOutreachPage();
+            window.educationOutreachPageInitialized = true; // Prevent re-initialization
+        }
+    });
 </script>
