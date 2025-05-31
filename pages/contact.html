@@ -23,34 +23,18 @@
 
     <section class="section-container contact-form-section">
         <h2>Send Me a Message</h2>
-        <form id="contactForm" class="contact-form">
-            <div class="form-group">
-                <label for="name">Your Name *</label>
-                <input type="text" id="name" name="name" required placeholder="Jane Doe">
-            </div>
-
-            <div class="form-group">
-                <label for="email">Your Email *</label>
-                <input type="email" id="email" name="email" required placeholder="jane.doe@example.com">
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="Optional">
-            </div>
-
-            <div class="form-group">
-                <label for="subject">Subject *</label>
-                <input type="text" id="subject" name="subject" required placeholder="Inquiring about....">
-            </div>
-
-            <div class="form-group">
-                <label for="comments">Comments *</label>
-                <textarea id="comments" name="comments" rows="6" required placeholder="......"></textarea>
-            </div>
-
-            <button type="submit" class="submit-button">Send Message</button>
-        </form>
+        
+        <!-- Google Form Embed -->
+        <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfccUFxCobCSKkBmvHOMYqZGT1xLYMHYMSNJEfyReLb6oaGOg/viewform" 
+            width="100%" 
+            height="800" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0"
+            class="google-form-iframe">
+            Loading…
+        </iframe>
     </section>
 </div>
 
@@ -58,6 +42,15 @@
     /* Reusing general styles from main style.css and other pages */
     .section-container {
         margin-bottom: 4rem; /* Spacing between sections */
+    }
+    
+    /* Google Form Styling */
+    .google-form-iframe {
+    width: 100%;
+    min-height: 750px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
     }
 
     .section-container h2 {
@@ -244,7 +237,7 @@
 <script>
     // This function will be called by index.html after the page content is loaded
     function initContactPage() {
-        console.log("Contact Me page initialized.");
+        // console.log("Contact Me page initialized.");
 
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
