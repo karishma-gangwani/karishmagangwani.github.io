@@ -93,24 +93,49 @@
     }
 
     .image-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* Changed to 4 equal columns */
-        gap: 2rem;
+        display: flex; /* Changed to flex for horizontal layout */
+        flex-wrap: nowrap; /* Prevent cards from wrapping */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+        scroll-snap-type: x mandatory; /* Snap to card boundaries */
+        scroll-padding: 1rem; /* Padding for scroll snapping */
+        gap: 2rem; /* Space between cards */
         margin-top: 2rem;
-        /* Optional: align-items: start; if you want cards to align at the top when heights vary */
+        padding-bottom: 1rem; /* Add some padding for the scrollbar if it appears */
     }
+
+    .image-grid::-webkit-scrollbar {
+        height: 8px; /* Height of the scrollbar */
+    }
+
+    .image-grid::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 10px;
+    }
+
+    .image-grid::-webkit-scrollbar-thumb {
+        background: #888; /* Color of the scrollbar thumb */
+        border-radius: 10px;
+    }
+
+    .image-grid::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Color of the scrollbar thumb on hover */
+    }
+
 
     .image-card {
         background: white;
         border-radius: 12px;
-        /* REMOVED: overflow: hidden; from here to allow text to expand */
         box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: flex;
         flex-direction: column; /* Ensure content stacks vertically */
+        flex-shrink: 0; /* Prevent cards from shrinking */
+        width: 320px; /* Fixed width for each card in horizontal layout. Adjust as needed. */
         height: auto; /* Allow height to adjust based on content */
         text-decoration: none;
         color: inherit;
+        scroll-snap-align: start; /* Snap to the start of each card */
     }
 
     .image-card:hover {
@@ -121,7 +146,7 @@
     /* Styles for the image visual area (for both <img> and slideshows) */
     .image-card-visual {
         width: 100%;
-        height: 180px; /* Consistent height for all image/slideshow visuals. Adjust as needed. */
+        height: 220px; /* Image height */
         object-fit: cover; /* Ensures images cover the area and are cropped if necessary */
         object-position: center top; /* Start cropping from the top for generic use */
         overflow: hidden; /* KEEP THIS for the image visual, to crop the image itself */
@@ -133,7 +158,7 @@
     .slideshow-container {
         position: relative;
         width: 100%;
-        height: 180px; /* Consistent height for all slideshows. Matches .image-card-visual */
+        height: 220px; /* Slideshow height. Matches .image-card-visual */
         overflow: hidden; /* KEEP THIS for the slideshow, to contain images */
         background-color: #f0f0f0;
         border-top-left-radius: 12px; /* Ensure top corners match card radius */
@@ -235,7 +260,6 @@
         line-height: 1.5;
         flex-grow: 1; /* Allows description to take up available space */
         margin-bottom: 0; /* Remove bottom margin to prevent extra space if it's the last element */
-        /* REMOVED ALL TEXT TRUNCATION PROPERTIES */
     }
 
     .image-card-link {
@@ -254,33 +278,32 @@
         gap: 0.8rem;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 1200px) {
-        .image-grid {
-            grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
-        }
-        /* Removed fixed height for .image-card here as well */
-    }
-
+    /* Responsive adjustments for horizontal scroll */
     @media (max-width: 768px) {
         .image-grid {
-            grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-            gap: 1.5rem;
+            /* On smaller screens, allow cards to take up more width if desired,
+               or keep them fixed and let scrolling handle it.
+               You might adjust width here or remove it to make them larger. */
+            scroll-padding: 0.5rem; /* Adjust padding for smaller screens */
         }
-        /* Removed fixed height for .image-card here as well */
+        .image-card {
+            width: 280px; /* Slightly smaller cards on tablets to fit more */
+        }
         .image-card-visual, .slideshow-container {
-            height: 180px; /* Keep consistent image height for 2 columns */
+            height: 200px; /* Adjust image height for smaller cards */
         }
     }
 
     @media (max-width: 480px) {
         .image-grid {
-            grid-template-columns: 1fr; /* Stack cards on small mobile screens */
-            gap: 1.5rem;
+            scroll-padding: 0.5rem;
         }
-        /* Removed fixed height for .image-card here as well */
+        .image-card {
+            width: 90vw; /* Make cards almost full screen width on very small mobiles */
+            margin: 0 auto; /* Center single card in viewport if needed */
+        }
         .image-card-visual, .slideshow-container {
-            height: 220px; /* Larger image on single column */
+            height: 250px; /* Larger image on very small screens */
         }
     }
 </style>
