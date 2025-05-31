@@ -62,7 +62,7 @@
             <img src="../images/water-lillies.jpg" alt="Making paper lilies at Girl Scout lab, Denver, Colorado" class="image-card-visual">
             <div class="image-card-content">
                 <h3 class="image-card-title">Making paper lilies at Girl Scout lab, Denver, Colorado</h3>
-                <p class="image-card-description">Engaged with Girl Scouts in a hands-on science activity, creating paper lilies to demonstrate biological concepts of radial symmetry.</p>
+                <p class="image-card-description">Engaged with Girl Scouts in a hands-on science activity, creating paper lilies to demonstrate biological concepts of radial symmetry in flowers.</p>
                 </div>
         </article>
     </div>
@@ -94,7 +94,7 @@
 
     .image-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(4, 1fr); /* Changed to 4 equal columns */
         gap: 2rem;
         margin-top: 2rem;
     }
@@ -106,8 +106,8 @@
         box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: flex;
-        flex-direction: column;
-        height: auto;
+        flex-direction: column; /* Ensure content stacks vertically */
+        height: 400px; /* Consistent height for all cards. Adjust as needed. */
         text-decoration: none;
         color: inherit;
     }
@@ -117,13 +117,21 @@
         box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     }
 
+    /* Styles for the image visual area (for both <img> and slideshows) */
+    .image-card-visual {
+        width: 100%;
+        height: 180px; /* Consistent height for all image/slideshow visuals. Adjust as needed. */
+        object-fit: cover; /* Ensures images cover the area and are cropped if necessary */
+        overflow: hidden; /* Important for cropping */
+    }
+
     /* Styles for the slideshow container */
     .slideshow-container {
         position: relative;
         width: 100%;
-        height: 200px; /* Consistent height for all cards */
+        height: 180px; /* Consistent height for all slideshows. Matches .image-card-visual */
         overflow: hidden;
-        background-color: #f0f0f0; /* Fallback background */
+        background-color: #f0f0f0;
     }
 
     .slideshow-image {
@@ -201,9 +209,10 @@
 
     .image-card-content {
         padding: 1.5rem;
-        flex-grow: 1;
+        flex-grow: 1; /* Allows content area to fill remaining vertical space */
         display: flex;
         flex-direction: column;
+        justify-content: space-between; /* Distributes content vertically */
     }
 
     .image-card-title {
@@ -218,8 +227,13 @@
         font-size: 0.95rem;
         color: #666;
         line-height: 1.5;
-        flex-grow: 1;
+        flex-grow: 1; /* Allows description to take up available space */
         margin-bottom: 1rem;
+        overflow: hidden; /* Hide overflow if description is too long */
+        text-overflow: ellipsis; /* Add ellipsis if text is cut off */
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit description to 3 lines, adjust as needed */
+        -webkit-box-orient: vertical;
     }
 
     .image-card-link {
@@ -239,14 +253,38 @@
     }
 
     /* Responsive adjustments */
+    @media (max-width: 1200px) {
+        .image-grid {
+            grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+        }
+        .image-card {
+            height: 420px; /* Adjust height for 3 columns if content needs more space */
+        }
+    }
+
     @media (max-width: 768px) {
         .image-grid {
-            grid-template-columns: 1fr; /* Stack cards on small screens */
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
             gap: 1.5rem;
         }
+        .image-card {
+            height: 450px; /* Adjust height for 2 columns */
+        }
+        .image-card-visual, .slideshow-container {
+            height: 180px; /* Adjust image height for 2 columns */
+        }
+    }
 
-        .image-card-visual {
-            height: 180px; /* Adjust height for mobile */
+    @media (max-width: 480px) {
+        .image-grid {
+            grid-template-columns: 1fr; /* Stack cards on small mobile screens */
+            gap: 1.5rem;
+        }
+        .image-card {
+            height: auto; /* Allow height to adjust on single column */
+        }
+        .image-card-visual, .slideshow-container {
+            height: 220px; /* Larger image on single column */
         }
     }
 </style>
