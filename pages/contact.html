@@ -1,0 +1,277 @@
+<div class="page-header">
+    <h1>Get in Touch</h1>
+    <p>Have a question, a collaboration idea, or just want to say hello? Fill out the form below!</p>
+</div>
+
+<div class="contact-layout-container">
+    <section class="section-container contact-info-section">
+        <div class="map-container">
+            <h3>My Location</h3>
+            <a href="https://www.google.com/maps/place/Washington,+DC" target="_blank" rel="noopener noreferrer">
+                <img src="https://placehold.co/600x400/A7C7E7/000000?text=Map+of+Washington+DC" alt="Map of Washington, DC" class="contact-map-image">
+                <p class="map-link-text">View Larger Map</p>
+            </a>
+            <p class="location-text">Washington, DC 20010</p>
+        </div>
+    </section>
+
+    <section class="section-container contact-form-section">
+        <h2>Send Me a Message</h2>
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email *</label>
+                <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Optional">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input type="text" id="subject" name="subject" required placeholder="Inquiry about collaboration">
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Comments *</label>
+                <textarea id="comments" name="comments" rows="6" required placeholder="Your message here..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+    </section>
+</div>
+
+<style>
+    /* Reusing general styles from main style.css and other pages */
+    .section-container {
+        margin-bottom: 4rem; /* Spacing between sections */
+    }
+
+    .section-container h2 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+    }
+
+    .section-description {
+        font-size: 1.1rem;
+        color: #666;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2.5rem auto;
+        line-height: 1.6;
+    }
+
+    /* New container for side-by-side layout */
+    .contact-layout-container {
+        display: flex;
+        flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+        gap: 2rem; /* Space between the two columns */
+        max-width: 1200px; /* Match main content width */
+        margin: 0 auto 4rem auto; /* Center the container and add bottom margin */
+        padding: 0 1.2rem; /* Match main padding */
+    }
+
+    .contact-layout-container > .section-container {
+        flex: 1; /* Allows sections to grow and shrink */
+        min-width: 300px; /* Minimum width before wrapping */
+        margin-bottom: 0; /* Remove individual section bottom margin as gap handles it */
+    }
+
+    /* Contact Info Section (now primarily for map) */
+    .contact-info-section {
+        /* Removed max-width and margin: auto as it's now handled by flex container */
+        max-width: none;
+        margin: 0;
+        background: #f8f9fa;
+        padding: 3rem;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        text-align: center;
+    }
+
+    .contact-info-section h2 {
+        margin-bottom: 2rem;
+    }
+
+    .map-container {
+        margin-top: 0;
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .map-container h3 {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+    .contact-map-image {
+        width: 100%;
+        max-width: 500px; /* Limit map image width */
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .map-link-text {
+        font-size: 0.95rem;
+        color: #667eea;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+        transition: color 0.3s ease;
+    }
+
+    .map-link-text:hover {
+        color: #5a6edb;
+        text-decoration: underline;
+    }
+
+    .location-text {
+        font-size: 1rem;
+        color: #555;
+    }
+
+
+    /* Specific styles for the contact form */
+    .contact-form-section {
+        /* Removed max-width and margin: auto as it's now handled by flex container */
+        max-width: none;
+        margin: 0;
+        background: #f8f9fa;
+        padding: 3rem;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    }
+
+    .contact-form-section h2 {
+        margin-bottom: 2rem;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
+    .form-group input[type="tel"]:focus,
+    .form-group textarea:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        outline: none;
+    }
+
+    .submit-button {
+        background-color: #667eea;
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        align-self: flex-start;
+    }
+
+    .submit-button:hover {
+        background-color: #5a6edb;
+        transform: translateY(-2px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .contact-layout-container {
+            flex-direction: column; /* Stack columns on small screens */
+            padding: 0 1rem; /* Adjust padding for mobile */
+        }
+
+        .contact-info-section,
+        .contact-form-section {
+            padding: 2rem;
+            margin: 0; /* Remove margin as gap handles spacing */
+        }
+
+        .submit-button {
+            width: 100%;
+            align-self: stretch;
+        }
+    }
+</style>
+
+<script>
+    // This function will be called by index.html after the page content is loaded
+    function initContactPage() {
+        console.log("Contact Me page initialized.");
+
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // In a real application, you would send this data to a server
+                // using fetch() or XMLHttpRequest. For this example, we'll just log it.
+                const formData = new FormData(contactForm);
+                const data = {};
+                for (let [key, value] = formData.entries()) {
+                    data[key] = value;
+                }
+
+                console.log("Form submitted with data:", data);
+
+                // Display a message box (using the displayMessageBox from index.html)
+                if (typeof displayMessageBox === 'function') {
+                    displayMessageBox('Thank you for your message! I will get back to you soon.');
+                } else {
+                    // Fallback if displayMessageBox isn't available (shouldn't happen if index.html is loaded)
+                    alert('Thank you for your message! (Fallback alert)');
+                }
+
+                contactForm.reset(); // Clear the form
+            });
+        }
+    }
+</script>
