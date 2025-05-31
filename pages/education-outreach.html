@@ -56,203 +56,189 @@
 </section>
 
 <style>
-    /* Global box-sizing for consistent sizing */
-    * {
-        box-sizing: border-box;
+    /* Reusing styles from main style.css and communications.html for consistency */
+    .section-container {
+        margin-bottom: 4rem; /* Spacing between sections */
     }
 
-    /* Body and Page Header - General layout for the page */
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        min-height: 100vh;
-        margin: 0;
-        padding: 2rem 0;
-    }
-
-    .page-header {
-        text-align: center;
-        margin-bottom: 3rem;
-        padding: 0 1rem;
-    }
-
-    .page-header h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
+    .section-container h2 {
+        font-size: 2rem;
         color: #2c3e50;
         margin-bottom: 1rem;
-        letter-spacing: -0.02em;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: -0.5px;
     }
 
-    .page-header p {
-        font-size: 1.2rem;
-        color: #64748b;
-        max-width: 600px;
-        margin: 0 auto;
+    .section-description {
+        font-size: 1.1rem;
+        color: #666;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2.5rem auto;
         line-height: 1.6;
     }
 
-    /* Section Container - limits content width on larger screens and centers it */
-    .section-container {
-        margin-bottom: 4rem;
-        max-width: 1100px; /* Adjusted to allow for wider cards */
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 1.5rem; /* Add some padding on sides */
-    }
-
-    /* Image Grid - now a simple vertical stack of cards */
+    /* image-grid will now simply stack the horizontal cards */
     .image-grid {
-        display: flex;
-        flex-direction: column; /* Stacks the cards vertically */
-        gap: 2rem; /* Creates vertical space between each horizontal card */
+        display: flex; /* Use flex to stack cards vertically */
+        flex-direction: column; /* Stack cards on top of each other */
+        gap: 2rem; /* Space between the horizontal cards */
         margin-top: 2rem;
+        max-width: 1000px; /* INCREASED: Max width of the overall grid to elongate cards */
+        margin-left: auto; /* Center the grid */
+        margin-right: auto; /* Center the grid */
+        padding: 0 1rem; /* Add some horizontal padding */
     }
 
-    /* Individual Image Card - THE HORIZONTAL SLAB */
     .image-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s ease;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: flex; /* Make the card itself a flex container */
-        flex-direction: row; /* VERY IMPORTANT: Arrange image (left) and content (right) horizontally */
-        align-items: stretch; /* Make children stretch to the height of the tallest */
-        min-height: 280px; /* Ensures a consistent minimum height for the card slab */
+        flex-direction: row; /* Arrange image (left) and content (right) horizontally */
+        align-items: stretch; /* Stretch items to fill the height of the card */
+        height: auto; /* Allow height to adjust based on content */
         text-decoration: none;
         color: inherit;
-        width: 100%; /* Take full width of its parent (image-grid) */
-        overflow: hidden; /* Important for border-radius on the card */
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        position: relative; /* For the ::before pseudo-element */
+        width: 100%; /* Take full width of its parent (.image-grid) */
     }
 
-    /* Top border hover effect */
-    .image-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #667eea, #764ba2);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .image-card:hover::before {
-        opacity: 1;
-    }
-
-    /* Card hover effect */
     .image-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     }
 
-    /* Image/Slideshow Visual Container */
+    /* Styles for the image visual area (for both <img> and slideshows) */
     .image-card-visual {
-        flex-shrink: 0; /* Prevents this section from shrinking */
-        width: 40%; /* Image takes 40% of card width. Adjust this percentage. */
-        height: auto; /* Allow height to adjust based on card content */
-        position: relative; /* For slideshow elements */
-        overflow: hidden; /* Important for cropping images */
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); /* Placeholder background */
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-top-right-radius: 0; /* No radius on the right side where it meets text */
-        border-bottom-right-radius: 0; /* No radius on the right side where it meets text */
+        flex-shrink: 0; /* Prevent image from shrinking */
+        width: 30%; /* ADJUSTED: Image takes 30% of card width for more text space */
+        height: 250px; /* Fixed height for the visual area, adjust to your preference */
+        object-fit: cover; /* Ensures images cover the area and are cropped if necessary */
+        object-position: center center; /* Center crop for horizontal layout */
+        overflow: hidden; /* KEEP THIS for the image visual, to crop the image itself */
+        border-top-left-radius: 12px; /* Top-left matches card radius */
+        border-bottom-left-radius: 12px; /* Bottom-left matches card radius */
+        border-top-right-radius: 0; /* No radius on the right side of the image */
+        border-bottom-right-radius: 0; /* No radius on the right side of the image */
     }
 
-    /* Direct image inside .image-card-visual (for static images) */
-    .image-card-visual img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* IMPORTANT: Fills the container, cropping if necessary */
-        object-position: center; /* Default: center the image within the frame */
-        transition: transform 0.4s ease;
-        display: block; /* Remove any extra space below image */
-    }
-
-    /* Specific object-position adjustments for images that crop awkwardly */
-    .image-card:nth-child(1) .image-card-visual img { /* AACR card */
-        object-position: center 25%; /* Adjust vertical position to show more of people */
-    }
-    .image-card:nth-child(3) .image-card-visual img { /* Cordova card */
-        object-position: center 10%; /* More top-biased for faces */
-    }
-
-
-    /* Slideshow Container specifics */
+    /* Styles for the slideshow container */
     .slideshow-container {
-        /* Inherits flex: 0 0 40%; height: auto; from .image-card-visual */
-        /* Ensure specific styles for slideshow images are applied */
-        width: 100%; /* Must fill its own flex container */
-        height: 100%; /* Must fill its own flex container */
+        flex-shrink: 0; /* Prevent slideshow from shrinking */
+        width: 30%; /* ADJUSTED: Slideshow takes 30% of card width. Matches .image-card-visual */
+        height: 250px; /* Slideshow height. Matches .image-card-visual */
         position: relative;
-        overflow: hidden;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        overflow: hidden; /* KEEP THIS for the slideshow, to contain images */
+        background-color: #f0f0f0;
+        border-top-left-radius: 12px; /* Top-left matches card radius */
+        border-bottom-left-radius: 12px; /* Bottom-left matches card radius */
+        border-top-right-radius: 0; /* No radius on the right side of the slideshow */
+        border-bottom-right-radius: 0; /* No radius on the right side of the slideshow */
     }
 
     .slideshow-image {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* IMPORTANT: Fills the container, cropping if necessary */
-        object-position: center;
+        object-fit: cover;
         position: absolute;
         top: 0;
         left: 0;
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
-        display: block; /* Remove extra space below image */
     }
 
     .slideshow-image.active {
         opacity: 1;
     }
 
-    /* Hide slideshow navigation buttons and dots */
-    .slideshow-btn, .slideshow-dots {
-        display: none !important; /* Use !important to strongly ensure they are hidden */
+    /* Slideshow navigation buttons - HIDDEN if not needed or styled to appear on hover only */
+    /* Since you removed them from HTML, these styles are less critical but kept for completeness */
+    .slideshow-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%); /* Center vertically */
+        width: auto;
+        padding: 8px; /* Smaller padding for compact look */
+        color: white;
+        font-weight: bold;
+        font-size: 14px; /* Smaller font size */
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0; /* Adjusted for horizontal card */
+        user-select: none;
+        background-color: rgba(0,0,0,0.5);
+        border: none;
+        z-index: 10;
+        /* display: none; /* Consider hiding by default if not always needed */
     }
 
+    .slideshow-btn.prev {
+        left: 0;
+        border-radius: 0 3px 3px 0; /* Adjusted for horizontal card */
+    }
 
-    /* Content Area - text part of the horizontal slab */
+    .slideshow-btn.next {
+        right: 0;
+        border-radius: 3px 0 0 3px; /* Adjusted for horizontal card */
+    }
+
+    .slideshow-btn:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Slideshow dots - HIDDEN if not needed or styled to appear on hover only */
+    /* Since you removed them from HTML, these styles are less critical but kept for completeness */
+    .slideshow-dots {
+        position: absolute;
+        bottom: 5px; /* Closer to bottom */
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+        /* display: none; /* Consider hiding by default if not always needed */
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 8px; /* Smaller dots */
+        width: 8px; /* Smaller dots */
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .dot.active, .dot:hover {
+        background-color: #717171;
+    }
+
     .image-card-content {
-        flex: 1; /* Allows content area to fill remaining width */
-        padding: 2rem;
+        padding: 1.5rem;
+        flex-grow: 1; /* Allows content area to fill remaining width */
         display: flex;
-        flex-direction: column; /* Stacks title, description, link vertically */
-        justify-content: center; /* Vertically centers content within its space */
-        border-top-right-radius: 20px; /* Apply radius to content side */
-        border-bottom-right-radius: 20px; /* Apply radius to content side */
+        flex-direction: column; /* Stack title and description vertically */
+        justify-content: flex-start; /* Aligns content to top */
+        border-top-right-radius: 12px; /* Top-right matches card radius */
+        border-bottom-right-radius: 12px; /* Bottom-right matches card radius */
     }
 
     .image-card-title {
-        font-size: 1.4rem;
+        font-size: 1.15rem;
         font-weight: 600;
-        color: #1e293b; /* Default color */
-        margin-bottom: 1rem;
-        line-height: 1.3;
-        transition: color 0.3s ease; /* Smooth transition for color change */
-    }
-
-    /* Hover effect for the title (when hovering over the entire card) */
-    .image-card:hover .image-card-title {
-        color: #667eea; /* Color on hover */
+        color: #2c3e50;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
     }
 
     .image-card-description {
-        font-size: 1rem;
-        color: #64748b;
-        line-height: 1.6;
-        margin-bottom: 1.5rem; /* Space below description */
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.5;
         flex-grow: 1; /* Allows description to take up available space */
+        margin-bottom: 0;
     }
 
     .image-card-link {
@@ -271,72 +257,55 @@
         gap: 0.8rem;
     }
 
-    /* --- Responsive design --- */
-
-    @media (max-width: 992px) { /* Medium screens (laptops, large tablets) */
+    /* Responsive adjustments for horizontal card content */
+    @media (max-width: 992px) { /* Adjust breakpoint for larger screens */
         .image-grid {
-            max-width: 850px; /* Slightly narrower grid */
+            max-width: 700px; /* Make grid narrower on slightly smaller screens */
         }
         .image-card-visual, .slideshow-container {
-            width: 45%; /* Image takes a bit more width within card */
+            width: 35%; /* Image takes slightly more width within card */
         }
     }
 
-    @media (max-width: 768px) { /* Tablets (vertical orientation) */
+    @media (max-width: 768px) {
         .image-grid {
-            gap: 1.5rem; /* Slightly smaller gap */
-            padding: 0 1rem;
-            max-width: 100%; /* Allow full width */
+            gap: 1.5rem;
+            padding: 0 0.5rem;
         }
         .image-card {
             flex-direction: column; /* Stack content vertically on tablets */
-            min-height: auto; /* Reset min-height as height will be more flexible */
+            height: auto; /* Allow height to adjust */
         }
-        /* Visual (Image/Slideshow) when stacked vertically */
         .image-card-visual, .slideshow-container {
-            flex: none; /* Remove flex basis */
-            width: 100%; /* Take full width */
-            height: 220px; /* Fixed height for image when stacking */
-            border-radius: 20px 20px 0 0; /* Rounded top, flat bottom */
+            width: 100%; /* Image takes full width when stacking */
+            height: 200px; /* Adjust image height for stacking */
+            border-bottom-left-radius: 0; /* Remove bottom-left radius when stacking */
+            border-top-right-radius: 12px; /* Add top-right radius back */
+            border-bottom-right-radius: 0; /* Remove bottom-right radius */
         }
-        /* Content when stacked vertically */
         .image-card-content {
-            padding: 1.5rem; /* Consistent padding */
-            border-radius: 0 0 20px 20px; /* Rounded bottom, flat top */
-        }
-        .image-card-title {
-            font-size: 1.25rem; /* Slightly smaller title */
+            border-top-right-radius: 0; /* Remove top-right radius when stacking */
+            border-bottom-left-radius: 12px; /* Add bottom-left radius back */
         }
     }
 
-    @media (max-width: 480px) { /* Small mobile devices */
-        body {
-            padding: 1rem 0;
-        }
-        .page-header {
-            margin-bottom: 2rem;
-        }
-        .page-header h1 {
-            font-size: 1.8rem;
-        }
-        .page-header p {
-            font-size: 1rem;
-        }
+    @media (max-width: 480px) {
         .image-grid {
-            gap: 1.5rem;
+            gap: 1rem;
             padding: 0;
         }
         .image-card {
-            border-radius: 0; /* No radius on very small screens for full width */
+            border-radius: 0; /* Remove border-radius on very small screens for full width */
             box-shadow: none; /* Remove box-shadow to blend with background */
         }
         .image-card-visual, .slideshow-container {
-            height: 200px; /* Adjust height for small mobile */
-            border-radius: 0; /* No radius */
+            width: 100%;
+            height: 220px; /* Larger image on single column */
+            border-radius: 0; /* No radius on very small screens */
         }
         .image-card-content {
             padding: 1rem; /* Smaller padding */
-            border-radius: 0; /* No radius */
+            border-radius: 0; /* No radius on very small screens */
         }
     }
 </style>
