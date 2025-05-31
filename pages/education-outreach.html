@@ -56,304 +56,259 @@
 </section>
 
 <style>
-    /* Updated styles that work with your existing HTML structure */
-* {
-    box-sizing: border-box;
-}
+    /* General section styles */
+    .section-container {
+        margin-bottom: 4rem;
+    }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
-    margin: 0;
-    padding: 2rem 0;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding: 0 1rem;
-}
-
-.page-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
-}
-
-.page-header p {
-    font-size: 1.2rem;
-    color: #64748b;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.section-container {
-    margin-bottom: 4rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1rem;
-}
-
-.image-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.image-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    min-height: 280px;
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-}
-
-.image-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.image-card:hover::before {
-    opacity: 1;
-}
-
-.image-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* Image visual area styles */
-.image-card-visual {
-    flex: 0 0 40%;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-.image-card-visual img {
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    object-fit: contain; /* Changed from cover to contain */
-    object-position: center;
-    transition: transform 0.4s ease;
-    border-radius: 8px;
-    margin: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.image-card:hover .image-card-visual img {
-    transform: scale(1.05);
-}
-
-/* Slideshow container styles */
-.slideshow-container {
-    flex: 0 0 40%;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-.slideshow-image {
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    object-fit: contain; /* Changed from cover to contain */
-    object-position: center;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.slideshow-image.active {
-    opacity: 1;
-}
-
-.slideshow-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    padding: 12px 16px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    z-index: 10;
-    display: block; /* Make sure buttons are visible */
-}
-
-.slideshow-btn:hover {
-    background: rgba(0, 0, 0, 0.9);
-}
-
-.slideshow-btn.prev {
-    left: 15px;
-    border-radius: 0 8px 8px 0;
-}
-
-.slideshow-btn.next {
-    right: 15px;
-    border-radius: 8px 0 0 8px;
-}
-
-.slideshow-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex; /* Make sure dots are visible */
-    gap: 8px;
-    z-index: 10;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.dot.active,
-.dot:hover {
-    background: white;
-    transform: scale(1.2);
-}
-
-/* Content area styles */
-.image-card-content {
-    flex: 1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.image-card-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #1e293b;
-    margin-bottom: 1rem;
-    line-height: 1.3;
-}
-
-.image-card-description {
-    font-size: 1rem;
-    color: #64748b;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-}
-
-.image-card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: gap 0.3s ease;
-    margin-top: auto;
-}
-
-.image-card-link:hover {
-    gap: 0.8rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .page-header h1 {
+    .section-container h2 {
         font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: -0.5px;
     }
 
+    .section-description {
+        font-size: 1.1rem;
+        color: #666;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2.5rem auto;
+        line-height: 1.6;
+    }
+
+    /* Outer container for the cards - stacks them vertically */
+    .image-grid {
+        display: flex;
+        flex-direction: column; /* Stacks the cards vertically */
+        gap: 2rem; /* Space between each horizontal card */
+        margin-top: 2rem;
+        max-width: 1100px; /* Max width of the entire section of cards for elongation */
+        margin-left: auto; /* Center the grid */
+        margin-right: auto; /* Center the grid */
+        padding: 0 1.5rem; /* Add some horizontal padding to the grid container */
+    }
+
+    /* Individual Card - now a horizontal slab */
     .image-card {
-        flex-direction: column;
-        min-height: auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        display: flex; /* Make the card itself a flex container */
+        flex-direction: row; /* Arrange image (left) and content (right) horizontally */
+        align-items: stretch; /* Stretch items to fill the height of the card */
+        min-height: 280px; /* Ensure a minimum height for the card */
+        text-decoration: none;
+        color: inherit;
+        width: 100%; /* Take full width of its parent (.image-grid) */
+        overflow: hidden; /* Keep overflow hidden for border-radius on main card */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
     }
 
-    .image-card-visual,
+    .image-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .image-card:hover::before {
+        opacity: 1;
+    }
+
+    .image-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Image visual area styles */
+    .image-card-visual {
+        flex: 0 0 40%; /* Image takes 40% of card width. Adjusted slightly. */
+        position: relative;
+        overflow: hidden; /* Important for image cropping */
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        /* No border-top-right-radius or border-bottom-right-radius here */
+    }
+
+    .image-card-visual img {
+        width: 100%; /* Image fills its container's width */
+        height: 100%; /* Image fills its container's height */
+        object-fit: cover; /* Changed from cover for full image fill */
+        object-position: center; /* Default center cropping */
+        transition: transform 0.4s ease;
+        border-radius: 0; /* Ensure no internal border-radius to cause gaps */
+    }
+
+    .image-card:hover .image-card-visual img {
+        transform: scale(1.05);
+    }
+
+    /* Slideshow container styles */
     .slideshow-container {
-        flex: none;
-        width: 100%;
-        height: 200px;
-        border-radius: 20px 20px 0 0;
+        flex: 0 0 40%; /* Matches .image-card-visual */
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        /* No border-top-right-radius or border-bottom-right-radius here */
     }
 
+    .slideshow-image {
+        width: 100%; /* Image fills its container's width */
+        height: 100%; /* Image fills its container's height */
+        object-fit: cover; /* Changed from cover for full image fill */
+        object-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        border-radius: 0; /* Ensure no internal border-radius */
+    }
+
+    .slideshow-image.active {
+        opacity: 1;
+    }
+
+    /* Slideshow navigation buttons and dots */
+    .slideshow-btn, .slideshow-dots {
+        display: none; /* Hide them */
+    }
+
+    /* Content area styles */
     .image-card-content {
-        padding: 1.5rem;
-        border-radius: 0 0 20px 20px;
+        flex: 1; /* Allows content area to fill remaining width */
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
 
     .image-card-title {
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding: 1rem 0;
-    }
-
-    .page-header {
-        margin-bottom: 2rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #1e293b; /* Default color */
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        transition: color 0.3s ease; /* Smooth transition for color change */
     }
 
-    .page-header h1 {
-        font-size: 1.8rem;
+    /* Added hover effect for the title */
+    .image-card:hover .image-card-title {
+        color: #667eea; /* Color on hover */
     }
 
-    .page-header p {
+    .image-card-description {
         font-size: 1rem;
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
     }
 
-    .image-grid {
-        gap: 1.5rem;
+    .image-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: gap 0.3s ease;
+        margin-top: auto;
     }
 
-    .image-card {
-        border-radius: 16px;
+    .image-card-link:hover {
+        gap: 0.8rem;
     }
 
-    .image-card-content {
-        padding: 1.25rem;
+    /* Responsive design */
+    @media (max-width: 992px) { /* On slightly smaller desktops/large tablets */
+        .image-grid {
+            max-width: 800px; /* Adjust max width for slightly narrower screens */
+        }
+        .image-card-visual, .slideshow-container {
+            flex: 0 0 35%; /* Adjust image width within card */
+        }
     }
-}
+
+    @media (max-width: 768px) { /* On tablets */
+        .image-grid {
+            gap: 1.5rem; /* Adjust gap for tablets */
+            padding: 0 1rem;
+            max-width: 100%; /* Allow full width on tablets */
+        }
+        .image-card {
+            flex-direction: column; /* Stack content vertically on tablets */
+            min-height: auto; /* Reset min-height when stacking */
+        }
+        .image-card-visual, .slideshow-container {
+            flex: none; /* Remove flex sizing */
+            width: 100%; /* Image takes full width when stacking */
+            height: 200px; /* Fixed height for image when stacking */
+            border-radius: 20px 20px 0 0; /* Rounded top, flat bottom */
+        }
+        .image-card-content {
+            padding: 1.5rem; /* Adjusted padding */
+            border-radius: 0 0 20px 20px; /* Rounded bottom, flat top */
+        }
+        .image-card-title {
+            font-size: 1.25rem; /* Slightly smaller title */
+        }
+    }
+
+    @media (max-width: 480px) { /* On small mobile devices */
+        body {
+            padding: 1rem 0;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 1.8rem;
+        }
+
+        .page-header p {
+            font-size: 1rem;
+        }
+
+        .image-grid {
+            gap: 1.5rem;
+            padding: 0;
+        }
+
+        .image-card {
+            border-radius: 0; /* Remove border-radius on very small screens for full width */
+            box-shadow: none; /* Remove box-shadow to blend with background */
+        }
+
+        .image-card-visual, .slideshow-container {
+            height: 220px; /* Slightly taller image for single column on small phones */
+            border-radius: 0; /* No radius on very small screens */
+        }
+
+        .image-card-content {
+            padding: 1.25rem; /* Smaller padding */
+            border-radius: 0; /* No radius on very small screens */
+        }
+    }
 </style>
 <script>
     // This part is crucial: If this script is loaded directly (e.g., for testing education-outreach.html alone),
