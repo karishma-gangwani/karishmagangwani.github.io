@@ -925,6 +925,62 @@ function initEducationOutreachPage() {
                 });
             }
         }
+    
+        function initSciencePage() {
+        console.log("Science page initialized.");
+        const themeLinks = document.querySelectorAll('.theme-sidebar .theme-link');
+        const articlesSections = document.querySelectorAll('.articles-section');
+
+        // Function to show a specific section and hide others
+        const showSection = (theme) => {
+            articlesSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            themeLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const activeSection = document.getElementById(theme);
+            if (activeSection) {
+                activeSection.classList.add('active');
+                const activeLink = document.querySelector(`.theme-link[data-theme="${theme}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        };
+
+        // Add click event listeners to theme links
+        themeLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const theme = event.target.dataset.theme;
+                showSection(theme);
+            });
+        });
+
+        // Set initial active section (e.g., "Cancer Biology" by default)
+        // Check if there's a hash for a science section and activate it
+        const hash = window.location.hash.slice(1);
+        if (hash && document.getElementById(hash) && Array.from(articlesSections).some(section => section.id === hash)) {
+            showSection(hash);
+        } else {
+            showSection('cancer-biology'); // Default to cancer biology
+        }
+
+
+        // Make blog cards clickable
+        const blogCards = document.querySelectorAll('.blog-card');
+        blogCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const link = card.querySelector('.blog-card-link');
+                if (link && link.href) {
+                    window.open(link.href, '_blank');
+                }
+            });
+        });
+    }
+    
     </script>
 </body>
 </html>
