@@ -480,12 +480,12 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Karishma Gangwani</div>
+            <div class="logo" onclick="showPage('home', true)">Karishma Gangwani</div>
             <div class="nav-links">
-                <a href="#" onclick="showPage('science')" class="nav-link">Science</a>
-                <a href="#" onclick="showPage('communications')" class="nav-link">Communications</a>
-                <a href="#" onclick="showPage('education-outreach')" class="nav-link">Education & Outreach</a>
-                <a href="#" onclick="showPage('contact')" class="nav-link">Contact Me</a>
+                <a href="#science" onclick="showPage('science')" class="nav-link">Science</a>
+                <a href="#communications" onclick="showPage('communications')" class="nav-link">Communications</a>
+                <a href="#education-outreach" onclick="showPage('education-outreach')" class="nav-link">Education & Outreach</a>
+                <a href="#contact" onclick="showPage('contact')" class="nav-link">Contact Me</a>
                 <div class="search-container">
                     <input type="text" class="search-input" id="searchInput" placeholder="Search...">
                     <svg class="search-icon" id="searchIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -520,16 +520,11 @@
                 </a>
                 <a href="https://github.com/karishma-gangwani" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="https://x.com/Karishma07Gangs" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.086 1.838 1.235 1.838 1.235 1.07 1.835 2.809 1.305 3.49.998.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.33-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.3-.54-1.52.14-3.18 0 0 1.005-.32 3.3 1.23.95-.265 1.96-.397 2.97-.397 1.01 0 2.02.132 2.97.397 2.295-1.55 3.3-1.23 3.3-1.23.68 1.66.275 2.88.14 3.18.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>
             </div>
-            <a href="#contact" onclick="showPage('contact'); return false;" class="contact-button">CONTACT</a>
+            <a href="mailto:karishmagangwani@email.com" class="contact-button">CONTACT</a>
         </div>
     </footer>
 
@@ -539,7 +534,7 @@
             'home': 'pages/home.html', // Keep home.html as the content source for the landing page
             'science': 'pages/science.html',
             'communications': 'pages/communications.html',
-            'education-outreach': 'pages/education-outreach.html', // Corrected path
+            'education-outreach': 'pages/education-outreach.html',
             'contact': 'pages/contact.html'
         };
 
@@ -569,24 +564,35 @@
                 container.innerHTML = htmlContent;
 
                 // Wait a moment for the new HTML to be parsed into the DOM
-                if (pageId === 'communications') {
-                        setTimeout(() => {
-                            if (typeof initCommunicationsPage === 'function') {
-                                initCommunicationsPage();
-                                } else {
-                                 console.warn('initCommunicationsPage() not found.');
-                                }
-                        }, 100); // 100ms delay; adjust if needed
+                setTimeout(() => {
+                    if (pageId === 'communications') {
+                        if (typeof initCommunicationsPage === 'function') {
+                            initCommunicationsPage();
+                        } else {
+                            console.warn('initCommunicationsPage() not found.');
+                        }
                     } else if (pageId === 'education-outreach') {
-                        setTimeout(() => {
-                            if (typeof initEducationOutreachPage === 'function') {
-                                initEducationOutreachPage();
-                                } else {
-                                 console.warn('initEducationOutreachPage() not found.');
-                                }
-                        }, 10);
-                    } 
-                
+                        if (typeof initEducationOutreachPage === 'function') {
+                            initEducationOutreachPage();
+                        } else {
+                            console.warn('initEducationOutreachPage() not found.');
+                        }
+                    } else if (pageId === 'science') {
+                        if (typeof initSciencePage === 'function') {
+                            initSciencePage();
+                        } else {
+                            console.warn('initSciencePage() not found.');
+                        }
+                    } else if (pageId === 'contact') {
+                        if (typeof initContactPage === 'function') {
+                            initContactPage();
+                        } else {
+                            console.warn('initContactPage() not found.');
+                        }
+                    }
+                }, 100);
+
+
                 // Update the 'active' class on navigation links
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
@@ -619,231 +625,52 @@
             }
         }
 
-        // 1. On initial load, check if there's a hash. If so, load that page. Otherwise, load home.
-        window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.slice(1);
-            if (hash && pagePaths[hash]) {
-                showPage(hash); // Load the page corresponding to the hash
-            } else {
-                showPage('home', true); // Load home page and clear hash from URL if no valid hash
-            }
-        });
-
-        // 2. Handle hash changes triggered by browser back/forward buttons or direct hash entry.
-        window.addEventListener('hashchange', () => {
-            const hash = window.location.hash.slice(1);
-            if (hash && pagePaths[hash]) {
-                showPage(hash); // Load the page corresponding to the hash
-            } else {
-                // If hash becomes empty or invalid through history navigation, go home
-                showPage('home', true); // Go home and clear the hash from URL
-            }
-        });
-
-        // 3. Modified click handlers for navigation links and logo.
-        document.addEventListener('click', function(e) {
-            // Handle clicks on navigation links
-            if (e.target.classList.contains('nav-link')) {
-                e.preventDefault(); // Prevent default link behavior
-                const pageIdMatch = e.target.getAttribute('onclick').match(/showPage\('(.+?)'\)/);
-                if (pageIdMatch && pageIdMatch[1]) {
-                    showPage(pageIdMatch[1]); // Normal navigation, will set URL hash
-                }
-            }
-            // Handle clicks on the logo to go to home page and clear hash
-            else if (e.target.closest('.logo')) {
-                e.preventDefault();
-                showPage('home', true); // Go home and clear hash from URL
-            }
-            // Handle clicks on the contact button
-            else if (e.target.closest('.contact-button')) {
-                e.preventDefault();
-                showPage('contact'); // Contact button will set URL hash
-            }
-        });
-
-        // Search functionality (remains the same)
-        const searchIcon = document.getElementById('searchIcon');
-        const searchInput = document.getElementById('searchInput');
-        let searchActive = false;
-
-        // Define searchable content (updated to reflect 'home' as the default landing page)
-        const searchableContent = [
-            { title: 'Home', pageId: 'home', keywords: ['home', 'profile', 'about', 'karishma', 'scientist', 'storyteller'] },
-            { title: 'Science', pageId: 'science', keywords: ['science', 'research', 'publications', 'biorxiv', 'springer', 'sciencedirect', 'mdpi', 'frontiers', 'pubmed', 'chromatin', 'drug discovery', 'crispr-cas9', 'non-coding rnas', 'cellular senescence', 'aging', 'mitochondrial dynamics', 'neurodegenerative', 'epigenetic modifications', 'plant development', 'drosophila cancer modeling', 'tobacco'] },
-            { title: 'Communications', pageId: 'communications', keywords: ['science', 'communication', 'blog', 'articles', 'tobacco', 'drosophila', 'proteinpaint', 'epigenetic', 'scientists', 'nematodes', 'grad school', 'cancer', 'research', 'publication', 'interdisciplinary', 'essays', 'public insights', 'societal biases', 'psychology', 'symbolism', 'change', 'xi wang mu', 'holika', 'limits'] },
-            { title: 'Education & Outreach', pageId: 'education-outreach', keywords: ['education & Outreach', 'learning', 'teaching', 'academic', 'videos', 'courses'] },
-            { title: 'Contact Me', pageId: 'contact', keywords: ['contact', 'email', 'reach', 'connect', 'inquiry', 'form'] }
-        ];
-
-        searchIcon.addEventListener('click', function() {
-            searchActive = !searchActive;
-            searchInput.classList.toggle('active');
-            searchIcon.classList.toggle('active');
-
-            if (searchActive) {
-                searchInput.focus();
-            } else {
-                searchInput.value = '';
-            }
-        });
-
-        searchInput.addEventListener('blur', function() {
-            setTimeout(() => {
-                if (this.value === '') {
-                    searchActive = false;
-                    this.classList.remove('active');
-                    searchIcon.classList.remove('active');
-                }
-            }, 200);
-        });
-
-        function performSearch(searchTerm) {
-            const term = searchTerm.toLowerCase();
-            const results = [];
-
-            searchableContent.forEach(item => {
-                // Check if the search term is in the title
-                if (item.title.toLowerCase().includes(term)) {
-                    results.push(item);
-                    return; // Move to the next item once a title match is found
-                }
-
-                // Check if the search term is in any of the keywords
-                const keywordMatch = item.keywords.some(keyword =>
-                    keyword.toLowerCase().includes(term)
-                );
-
-                if (keywordMatch) {
-                    results.push(item);
-                }
-            });
-
-            return results;
-        }
-
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const searchTerm = this.value.trim();
-                if (searchTerm) {
-                    const results = performSearch(searchTerm);
-
-                    if (results.length > 0) {
-                        showPage(results[0].pageId, true); // Load the first matching page and clear hash
-                        this.value = ''; // Clear search input
-                        searchActive = false;
-                        this.classList.remove('active');
-                        searchIcon.classList.remove('active');
-
-                        if (results.length > 1) {
-                            console.log(`Found ${results.length} results. Showing: ${results[0].title}`);
-                        }
-                    } else {
-                        displayMessageBox(`No results found for "${searchTerm}"`);
-                    }
-                }
-            }
-        });
-
-        function displayMessageBox(message) {
-            const overlay = document.createElement('div');
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-            `;
-
-            const messageBox = document.createElement('div');
-            messageBox.style.cssText = `
-                background-color: white;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                text-align: center;
-                max-width: 300px;
-                font-family: inherit;
-            `;
-
-            const messageText = document.createElement('p');
-            messageText.textContent = message;
-            messageText.style.marginBottom = '15px';
-            messageText.style.fontSize = '1.1rem';
-            messageText.style.color = '#333';
-
-            const closeButton = document.createElement('button');
-            closeButton.textContent = 'OK';
-            closeButton.style.cssText = `
-                background-color: #667eea;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 1rem;
-                transition: background-color 0.3s ease;
-            `;
-            closeButton.onmouseover = () => closeButton.style.backgroundColor = '#5a6edb';
-            closeButton.onmouseout = () => closeButton.style.backgroundColor = '#667eea';
-
-            closeButton.addEventListener('click', () => {
-                document.body.removeChild(overlay);
-            });
-
-            messageBox.appendChild(messageText);
-            messageBox.appendChild(closeButton);
-            overlay.appendChild(messageBox);
-            document.body.appendChild(overlay);
-        }
+        // Initialize functions for specific pages (these would typically be defined
+        // in separate JS files and imported, or included in the main script block
+        // if they are small and page-specific).
 
         function initCommunicationsPage() {
-    const themeLinks = document.querySelectorAll('.theme-link');
-    const articlesSections = document.querySelectorAll('.articles-section');
+            const themeLinks = document.querySelectorAll('.theme-link');
+            const articlesSections = document.querySelectorAll('.articles-section');
 
-    const showTheme = (themeId) => {
-        articlesSections.forEach(section => {
-            section.classList.remove('active');
-        });
-        themeLinks.forEach(link => {
-            link.classList.remove('active');
-        });
+            const showTheme = (themeId) => {
+                articlesSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                themeLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
 
-        const activeSection = document.getElementById(themeId);
-        if (activeSection) {
-            activeSection.classList.add('active');
-            const activeLink = document.querySelector(`.theme-link[data-theme="${themeId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+                const activeSection = document.getElementById(themeId);
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                    const activeLink = document.querySelector(`.theme-link[data-theme="${themeId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            };
+
+            themeLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const themeId = e.currentTarget.dataset.theme;
+                    showTheme(themeId);
+                });
+            });
+
+            if (themeLinks.length > 0) {
+                const currentHash = window.location.hash.slice(1);
+                const initialTheme = themeLinks[0].dataset.theme;
+                if (currentHash && document.getElementById(currentHash)) {
+                    showTheme(currentHash);
+                } else {
+                    showTheme(initialTheme);
+                }
             }
         }
-    };
 
-    themeLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const themeId = e.currentTarget.dataset.theme;
-            showTheme(themeId);
-        });
-    });
-
-    if (themeLinks.length > 0) {
-        const currentHash = window.location.hash.slice(1);
-        const initialTheme = themeLinks[0].dataset.theme;
-        if (currentHash && document.getElementById(currentHash)) {
-            showTheme(currentHash);
-        } else {
-            showTheme(initialTheme);
-        }
-    }
-}
-
-function initEducationOutreachPage() {
+        function initEducationOutreachPage() {
             const slideshowContainers = document.querySelectorAll('.slideshow-container');
             slideshowContainers.forEach(container => {
                 const images = container.querySelectorAll('.slideshow-image');
@@ -915,6 +742,8 @@ function initEducationOutreachPage() {
 
                     console.log("Form submitted with data:", data);
 
+                    // You would typically send this data to a server here.
+                    // For now, we'll just show a message.
                     if (typeof displayMessageBox === 'function') {
                         displayMessageBox('Thank you for your message! I will get back to you soon.');
                     } else {
@@ -925,65 +754,119 @@ function initEducationOutreachPage() {
                 });
             }
         }
-    
+
+        // ADDED THIS FUNCTION
         function initSciencePage() {
-        console.log("Science page initialized.");
-        const themeLinks = document.querySelectorAll('.theme-sidebar .theme-link');
-        const articlesSections = document.querySelectorAll('.articles-section');
+            console.log("Science page initialized.");
+            const themeLinks = document.querySelectorAll('.theme-sidebar .theme-link');
+            const articlesSections = document.querySelectorAll('.articles-section');
 
-        // Function to show a specific section and hide others
-        const showSection = (theme) => {
-            articlesSections.forEach(section => {
-                section.classList.remove('active');
-            });
-            themeLinks.forEach(link => {
-                link.classList.remove('active');
-            });
+            // Function to show a specific section and hide others
+            const showSection = (theme) => {
+                articlesSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                themeLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
 
-            const activeSection = document.getElementById(theme);
-            if (activeSection) {
-                activeSection.classList.add('active');
-                const activeLink = document.querySelector(`.theme-link[data-theme="${theme}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
+                const activeSection = document.getElementById(theme);
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                    const activeLink = document.querySelector(`.theme-link[data-theme="${theme}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
                 }
-            }
-        };
+            };
 
-        // Add click event listeners to theme links
-        themeLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                const theme = event.target.dataset.theme;
-                showSection(theme);
+            // Add click event listeners to theme links
+            themeLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const theme = event.target.dataset.theme;
+                    showSection(theme);
+                });
             });
-        });
 
-        // Set initial active section (e.g., "Cancer Biology" by default)
-        // Check if there's a hash for a science section and activate it
-        const hash = window.location.hash.slice(1);
-        if (hash && document.getElementById(hash) && Array.from(articlesSections).some(section => section.id === hash)) {
-            showSection(hash);
-        } else {
-            showSection('cancer-biology'); // Default to cancer biology
+            // Set initial active section (e.g., "Cancer Biology" by default)
+            // Check if there's a hash for a science section and activate it
+            const hash = window.location.hash.slice(1);
+            if (hash && document.getElementById(hash) && Array.from(articlesSections).some(section => section.id === hash)) {
+                showSection(hash);
+            } else {
+                showSection('cancer-biology'); // Default to cancer biology
+            }
+
+
+            // Make blog cards clickable
+            const blogCards = document.querySelectorAll('.blog-card');
+            blogCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const link = card.querySelector('.blog-card-link');
+                    if (link && link.href) {
+                        window.open(link.href, '_blank');
+                    }
+                });
+            });
         }
 
 
-        // Make blog cards clickable
-        const blogCards = document.querySelectorAll('.blog-card');
-        blogCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const link = card.querySelector('.blog-card-link');
-                if (link && link.href) {
-                    window.open(link.href, '_blank');
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchIcon = document.getElementById('searchIcon');
+            const searchInput = document.getElementById('searchInput');
+
+            searchIcon.addEventListener('click', () => {
+                searchInput.classList.toggle('active');
+                searchIcon.classList.toggle('active');
+                if (searchInput.classList.contains('active')) {
+                    searchInput.focus();
+                } else {
+                    searchInput.value = ''; // Clear input when collapsing
                 }
             });
+
+            // Handle initial page load based on URL hash
+            const initialHash = window.location.hash.slice(1);
+            if (initialHash && pagePaths[initialHash]) {
+                showPage(initialHash);
+            } else {
+                // Default to loading the home page if no valid hash is present
+                showPage('home', true);
+            }
         });
-    }
-    
-    </script>
-</body>
-</html>
+
+        // Function to display messages (e.g., for contact form submission)
+        // This is a placeholder and can be expanded for more complex message boxes
+        function displayMessageBox(message) {
+            const messageBox = document.createElement('div');
+            messageBox.style.position = 'fixed';
+            messageBox.style.top = '20px';
+            messageBox.style.left = '50%';
+            messageBox.style.transform = 'translateX(-50%)';
+            messageBox.style.backgroundColor = '#4CAF50';
+            messageBox.style.color = 'white';
+            messageBox.style.padding = '15px 30px';
+            messageBox.style.borderRadius = '8px';
+            messageBox.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+            messageBox.style.zIndex = '1000';
+            messageBox.style.opacity = '0';
+            messageBox.style.transition = 'opacity 0.3s ease-in-out';
+            messageBox.innerText = message;
+            document.body.appendChild(messageBox);
+
+            setTimeout(() => {
+                messageBox.style.opacity = '1';
+            }, 10); // Small delay to trigger transition
+
+            setTimeout(() => {
+                messageBox.style.opacity = '0';
+                messageBox.addEventListener('transitionend', () => {
+                    messageBox.remove();
+                }, { once: true });
+            }, 3000); // Hide after 3 seconds
+        }
     </script>
 </body>
 </html>
