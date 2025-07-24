@@ -1,0 +1,110 @@
+<section id="hero">
+    <div id="hero-visual-overlay"></div>
+    <div id="hero-content">
+        <h1>Where Scientific Inquiry Meets Creative Expression</h1>
+        <p>Explore the Confluence of Science, Art, and Thought.</p>
+    </div>
+</section>
+
+<section id="introduction">
+    <h2>Welcome to My Confluence of Curiosities</h2>
+    <p>
+        This space is an invitation to explore the diverse facets of my intellectual and artistic journey.
+        As a scientist by training, I am driven by the logic and beauty of the natural world, constantly seeking to unravel its complexities.
+        As a storyteller by passion, I believe in the transformative power of narrative to bridge divides, illuminate complex ideas, and inspire wonder.
+        Here, you'll find the intersection of these worlds, a curated collection of insights, projects, and explorations that reflect my commitment to cultivating knowledge and sharing it meaningfully.
+    </p>
+</section>
+
+<section id="pathways">
+    <h2>Pathways to Knowledge</h2>
+    <div class="pathway-grid">
+        <a href="#scientific-narrative" onclick="showPage('scientific-narrative'); return false;" class="pathway-card">
+            <i class="fas fa-microscope icon"></i>
+            <h3>The Scientific Narrative</h3>
+            <p>Delve into my work at the intersection of complex data and compelling human stories, showcasing my science communication and research contributions.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
+
+        <a href="#artistic-canvas" onclick="showPage('artistic-canvas'); return false;" class="pathway-card">
+            <i class="fas fa-palette icon"></i>
+            <h3>The Artistic Canvas</h3>
+            <p>Explore my creative expressions beyond the lab – a curated collection of visual arts, creative writing, and design projects.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
+
+        <a href="#melodies-of-thought" onclick="showPage('melodies-of-thought'); return false;" class="pathway-card">
+            <i class="fas fa-music icon"></i>
+            <h3>Melodies of Thought</h3>
+            <p>Journey through my connection to the world of music, from theoretical explorations to inspirational compositions and curated soundscapes.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
+
+        <a href="#igniting-minds" onclick="showPage('igniting-minds'); return false;" class="pathway-card">
+            <i class="fas fa-lightbulb icon"></i>
+            <h3>Igniting Minds</h3>
+            <p>Discover my passion for education and STEM engagement, featuring programs, pedagogical insights, and initiatives aimed at inspiring future generations.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
+
+        <a href="#wellspring-of-ideas" onclick="showPage('wellspring-of-ideas'); return false;" class="pathway-card">
+            <i class="fas fa-book-open icon"></i>
+            <h3>The Wellspring of Ideas</h3>
+            <p>Access my blog and insights, where I explore diverse topics, connecting seemingly disparate fields and sharing reflections from my storehouse of knowledge.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
+    </div>
+</section>
+
+<section id="philosophy">
+    <h2>My Philosophy: The Intersections of Knowledge</h2>
+    <p>
+        My journey has taught me that true understanding emerges at the crossroads of disciplines.
+        Whether dissecting a scientific problem, crafting a compelling narrative, or exploring the harmonies of music,
+        I seek the underlying patterns and connections that unite knowledge, art, and human experience.
+        This integrated approach allows me to not just understand the world, but to interpret and share its wonders in meaningful ways,
+        fostering a deeper appreciation for the interconnectedness of all things.
+    </p>
+</section>
+
+<section id="contact-cta">
+    <h2>Ready to Connect?</h2>
+    <p>I'm always open to new collaborations, discussions, and opportunities to share knowledge.</p>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/karishma-sanjay-gangwani/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://karishmagangwani.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+            <i class="fas fa-newspaper"></i>
+        </a>
+        <a href="https://github.com/karishma-gangwani" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+    <a href="#contact" onclick="showPage('contact'); return false;" class="contact-button">GET IN TOUCH</a>
+</section>
+
+<script>
+    // Placeholder for simple hero animation (e.g., subtle background movement)
+    // More complex animations would use a library like Three.js or D3.js
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroOverlay = document.getElementById('hero-visual-overlay');
+        if (heroOverlay) {
+            // Example: Simple pulsating effect or color shift
+            // This is a very basic example; for complex visual metaphors,
+            // you'd integrate a more sophisticated JS animation library.
+            let hue = 200; // Starting hue for a blueish tint
+            let direction = 1;
+
+            function animateHeroOverlay() {
+                hue += direction * 0.1; // Slowly change hue
+                if (hue > 220 || hue < 180) {
+                    direction *= -1; // Reverse direction
+                }
+                heroOverlay.style.background = `linear-gradient(45deg, hsla(${hue}, 70%, 70%, 0.1), hsla(${hue + 30}, 80%, 60%, 0.05))`;
+                requestAnimationFrame(animateHeroOverlay);
+            }
+            // animateHeroOverlay(); // Uncomment to enable this basic animation
+        }
+    });
+</script>
