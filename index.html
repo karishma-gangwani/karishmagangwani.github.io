@@ -3,538 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karishma Gangwani</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #ffffff;
-        }
-
-        /* Header */
-        header {
-            background: white;
-            padding: 1rem 1rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            /* Adjusted max-width and padding to align with main content below */
-            max-width: 1200px; /* Matches main's max-width */
-            margin: 0 auto;
-            padding: 1.2rem 1rem; /* Matches main's horizontal padding */
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-            letter-spacing: -0.5px;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-left: auto;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #666;
-            font-weight: 400;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #2c3e50;
-        }
-
-        .nav-links a.active {
-            color: #2c3e50;
-            font-weight: 500;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #2c3e50;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin-left: 1rem;
-        }
-
-        .search-input {
-            width: 0;
-            padding: 0;
-            border: none;
-            border-bottom: 1px solid transparent;
-            font-size: 0.9rem;
-            outline: none;
-            transition: all 0.3s ease;
-            opacity: 0;
-            background: transparent;
-            margin-right: 0.5rem;
-        }
-
-        .search-input.active {
-            width: 150px;
-            padding: 0.3rem 0;
-            opacity: 1;
-            border-bottom: 1px solid #666;
-        }
-
-        .search-icon {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            color: #666;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .search-icon:hover {
-            color: #2c3e50;
-        }
-
-        .search-icon.active {
-            color: #2c3e50;
-        }
-
-        /* Main Content styles (for the container) */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 1.2rem;
-            min-height: calc(100vh - 200px);
-        }
-
-        /* Styles that apply to content loaded into #dynamic-content-container */
-        .profile-section {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .profile-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .tagline {
-            font-style: italic;
-            font-size: 1.3rem;
-            color: #666;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        .about-section {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 3rem;
-            margin-bottom: 4rem;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-        }
-
-        .about-section h2 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-
-        .about-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            text-align: left;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            margin-top: 0;
-        }
-
-        .page-header h1 {
-            font-size: 1.6rem;
-            color: #2c3e50;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            margin-top: 0;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: auto;
-            cursor: pointer;
-            position: relative;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .blog-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg,
-                transparent 0%,
-                transparent 70%,
-                rgba(102, 126, 234, 0.05) 85%,
-                rgba(102, 126, 234, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-
-        .blog-card:hover::before {
-            opacity: 1;
-        }
-
-        .blog-card:hover .blog-card-image::after {
-            opacity: 1;
-        }
-
-        .blog-card-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background-size: cover;
-            background-position: center;
-            background-color: #f0f0f0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-card-image::after {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: -100%;
-            right: -100%;
-            bottom: -100%;
-            background: linear-gradient(45deg,
-                transparent 30%,
-                rgba(255, 255, 255, 0.1) 50%,
-                transparent 70%);
-            transform: rotate(45deg);
-            transition: opacity 0.6s ease;
-            opacity: 0;
-            animation: shimmer 0.6s ease-out;
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            }
-            100% {
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-            }
-        }
-
-        .blog-card:hover .blog-card-image::after {
-            animation: shimmer 0.6s ease-out;
-        }
-
-        .blog-card-content {
-            padding: 1.75rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 120px; /* Added min-height to ensure content is visible */
-        }
-
-        .blog-card-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-            /* Removed line clamping properties to ensure full title is visible */
-            display: block; /* Changed to block to remove flexbox truncation */
-            overflow: visible; /* Ensure text is not hidden */
-            -webkit-line-clamp: unset; /* Ensure no line clamping */
-            -webkit-box-orient: unset; /* Ensure no box orientation */
-            transition: color 0.3s ease;
-        }
-
-        .blog-card-title a {
-            color: #2c3e50;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            /* Removed line clamping properties to ensure full title is visible */
-            display: block; /* Changed to block to remove flexbox truncation */
-            overflow: visible; /* Ensure text is not hidden */
-            -webkit-line-clamp: unset; /* Ensure no line clamping */
-            -webkit-box-orient: unset; /* Ensure no box orientation */
-        }
-        .blog-card-title a:hover {
-            color: #667eea;
-            text-decoration: underline;
-        }
-
-        .blog-card-excerpt {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.5;
-            /* Removed line clamping properties to ensure text is always visible */
-            /* display: -webkit-box; */
-            /* -webkit-line-clamp: 2; */
-            /* -webkit-box-orient: vertical; */
-            overflow: visible; /* Changed to visible to ensure text is not hidden */
-            flex-grow: 1;
-        }
-
-        .blog-card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: gap 0.3s ease;
-        }
-
-        .blog-card-link:hover {
-            gap: 0.8rem;
-        }
-
-        .blog-card-link svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            padding: 3rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-3px);
-        }
-
-        .social-links svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .contact-button {
-            background: transparent;
-            color: white;
-            padding: 0.8rem 2rem;
-            border: 2px solid white;
-            border-radius: 25px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
-
-        .contact-button:hover {
-            background: white;
-            color: #2c3e50;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-                /* margin-left: 0; (This will be handled by the logo's margin-left: auto) */
-            }
-
-            .profile-image {
-                width: 200px;
-                height: 200px;
-            }
-
-            .about-section {
-                padding: 2rem;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-        }
-    </style>
+    <title>Karishma Gangwani: Confluence of Curiosities</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (or use inline SVGs) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo" onclick="showPage('home', true)">Karishma Gangwani</div>
-            <div class="nav-links">
-                <a href="#science" onclick="showPage('science')" class="nav-link">Science</a>
-                <a href="#communications" onclick="showPage('communications')" class="nav-link">Communications</a>
-                <a href="#education-outreach" onclick="showPage('education-outreach')" class="nav-link">Education & Outreach</a>
-                <a href="#contact" onclick="showPage('contact')" class="nav-link">Contact Me</a>
-                <div class="search-container">
-                    <input type="text" class="search-input" id="searchInput" placeholder="Search...">
-                    <svg class="search-icon" id="searchIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="M21 21l-4.35-4.35"></path>
-                    </svg>
-                </div>
+            <div class="logo" onclick="showPage('home', true)">
+                Karishma Gangwani
+                <span class="tagline-header">Unraveling Stories, Cultivating Knowledge</span>
             </div>
+            <div class="nav-links">
+                <a href="#scientific-narrative" onclick="showPage('scientific-narrative')" class="nav-link">Scientific Narrative</a>
+                <a href="#artistic-canvas" onclick="showPage('artistic-canvas')" class="nav-link">Artistic Canvas</a>
+                <a href="#melodies-of-thought" onclick="showPage('melodies-of-thought')" class="nav-link">Melodies of Thought</a>
+                <a href="#igniting-minds" onclick="showPage('igniting-minds')" class="nav-link">Igniting Minds</a>
+                <a href="#wellspring-of-ideas" onclick="showPage('wellspring-of-ideas')" class="nav-link">Wellspring of Ideas</a>
+                <a href="#contact" onclick="showPage('contact')" class="nav-link">Contact</a>
+            </div>
+            <!-- Optional Search Container - Keeping it simple for now -->
+            <!-- <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+                <i class="fas fa-search search-icon" id="searchIcon"></i>
+            </div> -->
         </nav>
     </header>
 
     <main id="dynamic-content-container">
-        </main>
+        <!-- Content for the home page will be loaded here dynamically -->
+        <!-- This section will be replaced by the content of home.html -->
+    </main>
 
     <footer>
         <div class="footer-content">
             <div class="social-links">
                 <a href="https://www.youtube.com/@karishmagangwani1951" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
+                    <i class="fab fa-youtube"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/karishma-sanjay-gangwani/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
+                    <i class="fab fa-linkedin-in"></i>
                 </a>
                 <a href="https://karishmagangwani.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Substack">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
-                    </svg>
+                    <i class="fas fa-newspaper"></i> <!-- Using newspaper icon for Substack -->
                 </a>
                 <a href="https://github.com/karishma-gangwani" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.086 1.838 1.235 1.838 1.235 1.07 1.835 2.809 1.305 3.49.998.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.33-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.3-.54-1.52.14-3.18 0 0 1.005-.32 3.3 1.23.95-.265 1.96-.397 2.97-.397 1.01 0 2.02.132 2.97.397 2.295-1.55 3.3-1.23 3.3-1.23.68 1.66.275 2.88.14 3.18.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z"/>
-                    </svg>
+                    <i class="fab fa-github"></i>
                 </a>
             </div>
             <a href="mailto:karishmagangwani@email.com" class="contact-button">CONTACT</a>
+        </div>
+        <div class="copyright">
+            &copy; <span id="current-year"></span> Karishma Gangwani. All rights reserved.
         </div>
     </footer>
 
     <script>
         // Define a mapping of page IDs to their corresponding HTML file paths
         const pagePaths = {
-            'home': 'pages/home.html', // Keep home.html as the content source for the landing page
-            'science': 'pages/science.html',
-            'communications': 'pages/communications.html',
-            'education-outreach': 'pages/education-outreach.html',
+            'home': 'pages/home.html',
+            'scientific-narrative': 'pages/scientific-narrative.html',
+            'artistic-canvas': 'pages/artistic-canvas.html',
+            'melodies-of-thought': 'pages/melodies-of-thought.html',
+            'igniting-minds': 'pages/igniting-minds.html',
+            'wellspring-of-ideas': 'pages/wellspring-of-ideas.html',
             'contact': 'pages/contact.html'
         };
 
@@ -554,53 +88,42 @@
             }
 
             try {
-                const response = await fetch(filePath);
+                // Construct the URL using new URL() for robustness in different environments
+                const urlToFetch = new URL(filePath, window.location.href).href;
+                const response = await fetch(urlToFetch);
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
+                    throw new Error(`HTTP error! status: ${response.status} for ${urlToFetch}`);
                 }
 
                 const htmlContent = await response.text();
                 container.innerHTML = htmlContent;
 
-                // Wait a moment for the new HTML to be parsed into the DOM
+                // Re-initialize page-specific scripts after content is loaded
+                // This is crucial for dynamic content that has its own JS logic (like slideshows, theme filters)
                 setTimeout(() => {
-                    if (pageId === 'communications') {
-                        if (typeof initCommunicationsPage === 'function') {
-                            initCommunicationsPage();
-                        } else {
-                            console.warn('initCommunicationsPage() not found.');
-                        }
-                    } else if (pageId === 'education-outreach') {
-                        if (typeof initEducationOutreachPage === 'function') {
-                            initEducationOutreachPage();
-                        } else {
-                            console.warn('initEducationOutreachPage() not found.');
-                        }
-                    } else if (pageId === 'science') {
-                        if (typeof initSciencePage === 'function') {
-                            initSciencePage();
-                        } else {
-                            console.warn('initSciencePage() not found.');
-                        }
-                    } else if (pageId === 'contact') {
-                        if (typeof initContactPage === 'function') {
-                            initContactPage();
-                        } else {
-                            console.warn('initContactPage() not found.');
-                        }
+                    if (pageId === 'scientific-narrative' && typeof initScientificNarrativePage === 'function') {
+                        initScientificNarrativePage();
+                    } else if (pageId === 'artistic-canvas' && typeof initArtisticCanvasPage === 'function') {
+                        initArtisticCanvasPage();
+                    } else if (pageId === 'melodies-of-thought' && typeof initMelodiesOfThoughtPage === 'function') {
+                        initMelodiesOfThoughtPage();
+                    } else if (pageId === 'igniting-minds' && typeof initIgnitingMindsPage === 'function') {
+                        initIgnitingMindsPage();
+                    } else if (pageId === 'wellspring-of-ideas' && typeof initWellspringOfIdeasPage === 'function') {
+                        initWellspringOfIdeasPage();
+                    } else if (pageId === 'contact' && typeof initContactPage === 'function') {
+                        initContactPage();
                     }
-                }, 100);
-
+                    // For 'home' page, no specific init function is currently needed as its content is static HTML.
+                }, 100); // Small delay to ensure DOM is ready
 
                 // Update the 'active' class on navigation links
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
                 });
 
-                if (pageId === 'home') {
-                    // No nav link to activate for 'home'
-                } else {
+                if (pageId !== 'home') { // 'home' doesn't have a direct nav link to activate
                     const activeLink = document.querySelector(`.nav-link[onclick*="showPage('${pageId}')"]`);
                     if (activeLink) {
                         activeLink.classList.add('active');
@@ -609,15 +132,12 @@
 
                 window.scrollTo(0, 0);
 
-                // --- MODIFIED HASH UPDATE LOGIC ---
+                // Update URL hash
                 if (clearHash) {
-                    // Replace the current history entry to remove the hash
                     history.replaceState(null, '', window.location.pathname + window.location.search);
                 } else if (window.location.hash !== `#${pageId}`) {
-                    // Only update hash if it's different to avoid redundant history entries
                     window.location.hash = pageId;
                 }
-                // --- END MODIFIED HASH UPDATE LOGIC ---
 
             } catch (error) {
                 console.error('Error loading page content:', error);
@@ -625,216 +145,26 @@
             }
         }
 
-        // Initialize functions for specific pages (these would typically be defined
-        // in separate JS files and imported, or included in the main script block
-        // if they are small and page-specific).
+        // Placeholder for page-specific initialization functions
+        // These will be defined in their respective HTML files or a separate JS file
+        function initScientificNarrativePage() { console.log("Scientific Narrative page initialized."); }
+        function initArtisticCanvasPage() { console.log("Artistic Canvas page initialized."); }
+        function initMelodiesOfThoughtPage() { console.log("Melodies of Thought page initialized."); }
+        function initIgnitingMindsPage() { console.log("Igniting Minds page initialized."); }
+        function initWellspringOfIdeasPage() { console.log("Wellspring of Ideas page initialized."); }
+        // initContactPage will be provided in contact.html
 
-        function initCommunicationsPage() {
-            const themeLinks = document.querySelectorAll('.theme-link');
-            const articlesSections = document.querySelectorAll('.articles-section');
-
-            const showTheme = (themeId) => {
-                articlesSections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                themeLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                const activeSection = document.getElementById(themeId);
-                if (activeSection) {
-                    activeSection.classList.add('active');
-                    const activeLink = document.querySelector(`.theme-link[data-theme="${themeId}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
-            };
-
-            themeLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const themeId = e.currentTarget.dataset.theme;
-                    showTheme(themeId);
-                });
-            });
-
-            if (themeLinks.length > 0) {
-                const currentHash = window.location.hash.slice(1);
-                const initialTheme = themeLinks[0].dataset.theme;
-                if (currentHash && document.getElementById(currentHash)) {
-                    showTheme(currentHash);
-                } else {
-                    showTheme(initialTheme);
-                }
-            }
-        }
-
-        function initEducationOutreachPage() {
-            const slideshowContainers = document.querySelectorAll('.slideshow-container');
-            slideshowContainers.forEach(container => {
-                const images = container.querySelectorAll('.slideshow-image');
-                const dotsContainer = container.querySelector('.slideshow-dots');
-                const prevBtn = container.querySelector('.slideshow-btn.prev');
-                const nextBtn = container.querySelector('.slideshow-btn.next');
-
-                let slideIndex = 0;
-
-                if (images.length === 0) {
-                    console.warn("No slideshow images found in container:", container);
-                    return;
-                }
-
-                function showSlides(n) {
-                    if (n >= images.length) {
-                        slideIndex = 0;
-                    } else if (n < 0) {
-                        slideIndex = images.length - 1;
-                    } else {
-                        slideIndex = n;
-                    }
-
-                    images.forEach(img => img.classList.remove('active'));
-                    if (dotsContainer) {
-                        dotsContainer.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
-                    }
-
-                    images[slideIndex].classList.add('active');
-                    if (dotsContainer && dotsContainer.children[slideIndex]) {
-                        dotsContainer.children[slideIndex].classList.add('active');
-                    }
-                }
-
-                function plusSlides(n) {
-                    showSlides(slideIndex + n);
-                }
-
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', () => plusSlides(-1));
-                }
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', () => plusSlides(1));
-                }
-
-                if (dotsContainer) {
-                    dotsContainer.querySelectorAll('.dot').forEach((dot, index) => {
-                        dot.addEventListener('click', () => showSlides(index));
-                    });
-                }
-
-                showSlides(0);
-            });
-        }
-
-        function initContactPage() {
-            console.log("Contact Me page initialized.");
-
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-
-                    const formData = new FormData(contactForm);
-                    const data = {};
-                    for (let [key, value] of formData.entries()) {
-                        data[key] = value;
-                    }
-
-                    console.log("Form submitted with data:", data);
-
-                    // You would typically send this data to a server here.
-                    // For now, we'll just show a message.
-                    if (typeof displayMessageBox === 'function') {
-                        displayMessageBox('Thank you for your message! I will get back to you soon.');
-                    } else {
-                        alert('Thank you for your message! (Fallback alert)');
-                    }
-
-                    contactForm.reset();
-                });
-            }
-        }
-
-        // ADDED THIS FUNCTION
-        function initSciencePage() {
-            console.log("Science page initialized.");
-            const themeLinks = document.querySelectorAll('.theme-sidebar .theme-link');
-            const articlesSections = document.querySelectorAll('.articles-section');
-
-            // Function to show a specific section and hide others
-            const showSection = (theme) => {
-                articlesSections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                themeLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                const activeSection = document.getElementById(theme);
-                if (activeSection) {
-                    activeSection.classList.add('active');
-                    const activeLink = document.querySelector(`.theme-link[data-theme="${theme}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
-            };
-
-            // Add click event listeners to theme links
-            themeLinks.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const theme = event.target.dataset.theme;
-                    showSection(theme);
-                });
-            });
-
-            // Set initial active section (e.g., "Cancer Biology" by default)
-            // Check if there's a hash for a science section and activate it
-            const hash = window.location.hash.slice(1);
-            if (hash && document.getElementById(hash) && Array.from(articlesSections).some(section => section.id === hash)) {
-                showSection(hash);
-            } else {
-                showSection('cancer-biology'); // Default to cancer biology
-            }
-
-
-            // Make blog cards clickable
-            const blogCards = document.querySelectorAll('.blog-card');
-            blogCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const link = card.querySelector('.blog-card-link');
-                    if (link && link.href) {
-                        window.open(link.href, '_blank');
-                    }
-                });
-            });
-        }
-
-
-        // Search functionality
+        // Handle initial page load based on URL hash or default to home
         document.addEventListener('DOMContentLoaded', () => {
-            const searchIcon = document.getElementById('searchIcon');
-            const searchInput = document.getElementById('searchInput');
-
-            searchIcon.addEventListener('click', () => {
-                searchInput.classList.toggle('active');
-                searchIcon.classList.toggle('active');
-                if (searchInput.classList.contains('active')) {
-                    searchInput.focus();
-                } else {
-                    searchInput.value = ''; // Clear input when collapsing
-                }
-            });
-
-            // Handle initial page load based on URL hash
             const initialHash = window.location.hash.slice(1);
             if (initialHash && pagePaths[initialHash]) {
                 showPage(initialHash);
             } else {
-                // Default to loading the home page if no valid hash is present
-                showPage('home', true);
+                showPage('home', true); // Load home page and clear hash
             }
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
 
         // Function to display messages (e.g., for contact form submission)
