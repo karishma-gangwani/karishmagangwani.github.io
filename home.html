@@ -1,5 +1,5 @@
 <section id="hero">
-    <div id="hero-visual-overlay"></div>
+    <canvas id="hero-canvas-overlay"></canvas>
     <div id="hero-content">
         <h1>Where Scientific Inquiry Meets Creative Expression</h1>
         <p>Explore the Confluence of Science, Art, and Thought.</p>
@@ -85,26 +85,100 @@
 </section>
 
 <script>
-    // Placeholder for simple hero animation (e.g., subtle background movement)
-    // More complex animations would use a library like Three.js or D3.js
     document.addEventListener('DOMContentLoaded', () => {
-        const heroOverlay = document.getElementById('hero-visual-overlay');
-        if (heroOverlay) {
-            // Example: Simple pulsating effect or color shift
-            // This is a very basic example; for complex visual metaphors,
-            // you'd integrate a more sophisticated JS animation library.
-            let hue = 200; // Starting hue for a blueish tint
-            let direction = 1;
+        const heroCanvas = document.getElementById('hero-canvas-overlay');
+        if (heroCanvas) {
+            const ctx = heroCanvas.getContext('2d');
+            let animationFrameId;
+
+            // Function to resize canvas
+            const resizeCanvas = () => {
+                heroCanvas.width = heroCanvas.offsetWidth;
+                heroCanvas.height = heroCanvas.offsetHeight;
+            };
+
+            // Initial resize and event listener for window resize
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Particle/Line animation setup
+            const particles = [];
+            const numParticles = 50;
+            const maxLineDistance = 150; // Max distance for lines to connect
+
+            // Colors for the lines/particles, inspired by your palette
+            const colors = [
+                'rgba(102, 126, 234, 0.8)', // secondary-color with opacity
+                'rgba(243, 156, 18, 0.7)',  // accent-color with opacity
+                'rgba(44, 62, 80, 0.6)',    // primary-color with opacity
+                'rgba(150, 170, 250, 0.5)'  // lighter blue with opacity
+            ];
+
+            function createParticle() {
+                return {
+                    x: Math.random() * heroCanvas.width,
+                    y: Math.random() * heroCanvas.height,
+                    vx: (Math.random() - 0.5) * 0.5, // Very slow horizontal movement
+                    vy: (Math.random() - 0.5) * 0.5, // Very slow vertical movement
+                    radius: Math.random() * 1.5 + 0.5, // Small particles
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                };
+            }
+
+            // Initialize particles
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(createParticle());
+            }
 
             function animateHeroOverlay() {
-                hue += direction * 0.1; // Slowly change hue
-                if (hue > 220 || hue < 180) {
-                    direction *= -1; // Reverse direction
+                ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height); // Clear canvas
+
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'; // Very subtle background fill
+                ctx.fillRect(0, 0, heroCanvas.width, heroCanvas.height);
+
+                for (let i = 0; i < numParticles; i++) {
+                    const p1 = particles[i];
+
+                    // Update particle position
+                    p1.x += p1.vx;
+                    p1.y += p1.vy;
+
+                    // Wrap particles around edges
+                    if (p1.x < 0 || p1.x > heroCanvas.width) p1.vx *= -1;
+                    if (p1.y < 0 || p1.y > heroCanvas.height) p1.vy *= -1;
+
+                    // Draw particle
+                    ctx.beginPath();
+                    ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = p1.color;
+                    ctx.fill();
+
+                    // Draw lines to other nearby particles
+                    for (let j = i + 1; j < numParticles; j++) {
+                        const p2 = particles[j];
+                        const distance = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+
+                        if (distance < maxLineDistance) {
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(102, 126, 234, ${1 - (distance / maxLineDistance) * 0.8})`; // Fade lines with distance
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
                 }
-                heroOverlay.style.background = `linear-gradient(45deg, hsla(${hue}, 70%, 70%, 0.1), hsla(${hue + 30}, 80%, 60%, 0.05))`;
-                requestAnimationFrame(animateHeroOverlay);
+                animationFrameId = requestAnimationFrame(animateHeroOverlay);
             }
-            // animateHeroOverlay(); // Uncomment to enable this basic animation
+
+            // Start the animation
+            animateHeroOverlay();
+
+            // Cleanup on page unload (important for dynamic content)
+            window.addEventListener('beforeunload', () => {
+                cancelAnimationFrame(animationFrameId);
+                window.removeEventListener('resize', resizeCanvas);
+            });
         }
     });
 </script>
