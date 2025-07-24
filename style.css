@@ -183,6 +183,18 @@ section p {
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
+#hero-canvas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block; /* Important for canvas to fill container */
+    z-index: 1;
+    /* You can add a subtle background color here if the canvas is transparent */
+    background-color: #e0e7ff; /* Matches hero background */
+}
+
 #hero-visual-overlay {
     position: absolute;
     top: 0;
