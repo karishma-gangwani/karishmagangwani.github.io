@@ -1,202 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karishma Gangwani: Confluence of Curiosities</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons (or use inline SVGs) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo" onclick="showPage('home', true)">
-                Karishma Gangwani
-                <span class="tagline-header">Unraveling Stories, Cultivating Knowledge</span>
-            </div>
-            <div class="nav-links">
-                <a href="#scientific-narrative" onclick="showPage('scientific-narrative')" class="nav-link">Scientific Narrative</a>
-                <a href="#artistic-canvas" onclick="showPage('artistic-canvas')" class="nav-link">Artistic Canvas</a>
-                <a href="#melodies-of-thought" onclick="showPage('melodies-of-thought')" class="nav-link">Melodies of Thought</a>
-                <a href="#igniting-minds" onclick="showPage('igniting-minds')" class="nav-link">Igniting Minds</a>
-                <a href="#wellspring-of-ideas" onclick="showPage('wellspring-of-ideas')" class="nav-link">Wellspring of Ideas</a>
-                <a href="#contact" onclick="showPage('contact')" class="nav-link">Contact</a>
-            </div>
-            <!-- Optional Search Container - Keeping it simple for now -->
-            <!-- <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search...">
-                <i class="fas fa-search search-icon" id="searchIcon"></i>
-            </div> -->
-        </nav>
-    </header>
+<section id="hero">
+    <div id="hero-visual-overlay"></div>
+    <div id="hero-content">
+        <h1>Where Scientific Inquiry Meets Creative Expression</h1>
+        <p>Explore the Confluence of Science, Art, and Thought.</p>
+    </div>
+</section>
 
-    <main id="dynamic-content-container">
-        <!-- Content for the home page will be loaded here dynamically -->
-        <!-- This section will be replaced by the content of home.html -->
-    </main>
+<section id="introduction">
+    <h2>Welcome to My Confluence of Curiosities</h2>
+    <p>
+        This space is an invitation to explore the diverse facets of my intellectual and artistic journey.
+        As a scientist by training, I am driven by the logic and beauty of the natural world, constantly seeking to unravel its complexities.
+        As a storyteller by passion, I believe in the transformative power of narrative to bridge divides, illuminate complex ideas, and inspire wonder.
+        Here, you'll find the intersection of these worlds, a curated collection of insights, projects, and explorations that reflect my commitment to cultivating knowledge and sharing it meaningfully.
+    </p>
+</section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.youtube.com/@karishmagangwani1951" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/karishma-sanjay-gangwani/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://karishmagangwani.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Substack">
-                    <i class="fas fa-newspaper"></i> <!-- Using newspaper icon for Substack -->
-                </a>
-                <a href="https://github.com/karishma-gangwani" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <a href="mailto:karishmagangwani@email.com" class="contact-button">CONTACT</a>
-        </div>
-        <div class="copyright">
-            &copy; <span id="current-year"></span> Karishma Gangwani. All rights reserved.
-        </div>
-    </footer>
+<section id="pathways">
+    <h2>Pathways to Knowledge</h2>
+    <div class="pathway-grid">
+        <a href="#scientific-narrative" onclick="showPage('scientific-narrative'); return false;" class="pathway-card">
+            <i class="fas fa-microscope icon"></i>
+            <h3>The Scientific Narrative</h3>
+            <p>Delve into my work at the intersection of complex data and compelling human stories, showcasing my science communication and research contributions.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
 
-    <script>
-        // Define a mapping of page IDs to their corresponding HTML file paths
-        const pagePaths = {
-            'home': 'pages/home.html',
-            'scientific-narrative': 'pages/scientific-narrative.html',
-            'artistic-canvas': 'pages/artistic-canvas.html',
-            'melodies-of-thought': 'pages/melodies-of-thought.html',
-            'igniting-minds': 'pages/igniting-minds.html',
-            'wellspring-of-ideas': 'pages/wellspring-of-ideas.html',
-            'contact': 'pages/contact.html'
-        };
+        <a href="#artistic-canvas" onclick="showPage('artistic-canvas'); return false;" class="pathway-card">
+            <i class="fas fa-palette icon"></i>
+            <h3>The Artistic Canvas</h3>
+            <p>Explore my creative expressions beyond the lab – a curated collection of visual arts, creative writing, and design projects.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
 
-        /**
-         * Loads content for a given page ID into the dynamic content container.
-         * @param {string} pageId - The ID of the page to load.
-         * @param {boolean} [clearHash=false] - If true, clears the URL hash after loading (e.g., for home page).
-         */
-        async function showPage(pageId, clearHash = false) {
-            const container = document.getElementById('dynamic-content-container');
-            const filePath = pagePaths[pageId];
+        <a href="#melodies-of-thought" onclick="showPage('melodies-of-thought'); return false;" class="pathway-card">
+            <i class="fas fa-music icon"></i>
+            <h3>Melodies of Thought</h3>
+            <p>Journey through my connection to the world of music, from theoretical explorations to inspirational compositions and curated soundscapes.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
 
-            if (!filePath) {
-                console.error(`Error: No file path defined for page: ${pageId}`);
-                container.innerHTML = `<div class="page-header"><h1>Page Not Found</h1><p>The content for "${pageId}" could not be loaded.</p></div>`;
-                return;
+        <a href="#igniting-minds" onclick="showPage('igniting-minds'); return false;" class="pathway-card">
+            <i class="fas fa-lightbulb icon"></i>
+            <h3>Igniting Minds</h3>
+            <p>Discover my passion for education and STEM engagement, featuring programs, pedagogical insights, and initiatives aimed at inspiring future generations.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
+
+        <a href="#wellspring-of-ideas" onclick="showPage('wellspring-of-ideas'); return false;" class="pathway-card">
+            <i class="fas fa-book-open icon"></i>
+            <h3>The Wellspring of Ideas</h3>
+            <p>Access my blog and insights, where I explore diverse topics, connecting seemingly disparate fields and sharing reflections from my storehouse of knowledge.</p>
+            <span class="explore-btn">Explore</span>
+        </a>
+    </div>
+</section>
+
+<section id="philosophy">
+    <h2>My Philosophy: The Intersections of Knowledge</h2>
+    <p>
+        My journey has taught me that true understanding emerges at the crossroads of disciplines.
+        Whether dissecting a scientific problem, crafting a compelling narrative, or exploring the harmonies of music,
+        I seek the underlying patterns and connections that unite knowledge, art, and human experience.
+        This integrated approach allows me to not just understand the world, but to interpret and share its wonders in meaningful ways,
+        fostering a deeper appreciation for the interconnectedness of all things.
+    </p>
+</section>
+
+<section id="contact-cta">
+    <h2>Ready to Connect?</h2>
+    <p>I'm always open to new collaborations, discussions, and opportunities to share knowledge.</p>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/karishma-sanjay-gangwani/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://karishmagangwani.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+            <i class="fas fa-newspaper"></i>
+        </a>
+        <a href="https://github.com/karishma-gangwani" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+    <a href="#contact" onclick="showPage('contact'); return false;" class="contact-button">GET IN TOUCH</a>
+</section>
+
+<script>
+    // Placeholder for simple hero animation (e.g., subtle background movement)
+    // More complex animations would use a library like Three.js or D3.js
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroOverlay = document.getElementById('hero-visual-overlay');
+        if (heroOverlay) {
+            // Example: Simple pulsating effect or color shift
+            // This is a very basic example; for complex visual metaphors,
+            // you'd integrate a more sophisticated JS animation library.
+            let hue = 200; // Starting hue for a blueish tint
+            let direction = 1;
+
+            function animateHeroOverlay() {
+                hue += direction * 0.1; // Slowly change hue
+                if (hue > 220 || hue < 180) {
+                    direction *= -1; // Reverse direction
+                }
+                heroOverlay.style.background = `linear-gradient(45deg, hsla(${hue}, 70%, 70%, 0.1), hsla(${hue + 30}, 80%, 60%, 0.05))`;
+                requestAnimationFrame(animateHeroOverlay);
             }
-
-            try {
-                // Construct the URL using new URL() for robustness in different environments
-                const urlToFetch = new URL(filePath, window.location.href).href;
-                const response = await fetch(urlToFetch);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status} for ${urlToFetch}`);
-                }
-
-                const htmlContent = await response.text();
-                container.innerHTML = htmlContent;
-
-                // Re-initialize page-specific scripts after content is loaded
-                // This is crucial for dynamic content that has its own JS logic (like slideshows, theme filters)
-                setTimeout(() => {
-                    if (pageId === 'scientific-narrative' && typeof initScientificNarrativePage === 'function') {
-                        initScientificNarrativePage();
-                    } else if (pageId === 'artistic-canvas' && typeof initArtisticCanvasPage === 'function') {
-                        initArtisticCanvasPage();
-                    } else if (pageId === 'melodies-of-thought' && typeof initMelodiesOfThoughtPage === 'function') {
-                        initMelodiesOfThoughtPage();
-                    } else if (pageId === 'igniting-minds' && typeof initIgnitingMindsPage === 'function') {
-                        initIgnitingMindsPage();
-                    } else if (pageId === 'wellspring-of-ideas' && typeof initWellspringOfIdeasPage === 'function') {
-                        initWellspringOfIdeasPage();
-                    } else if (pageId === 'contact' && typeof initContactPage === 'function') {
-                        initContactPage();
-                    }
-                    // For 'home' page, no specific init function is currently needed as its content is static HTML.
-                }, 100); // Small delay to ensure DOM is ready
-
-                // Update the 'active' class on navigation links
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                if (pageId !== 'home') { // 'home' doesn't have a direct nav link to activate
-                    const activeLink = document.querySelector(`.nav-link[onclick*="showPage('${pageId}')"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
-
-                window.scrollTo(0, 0);
-
-                // Update URL hash
-                if (clearHash) {
-                    history.replaceState(null, '', window.location.pathname + window.location.search);
-                } else if (window.location.hash !== `#${pageId}`) {
-                    window.location.hash = pageId;
-                }
-
-            } catch (error) {
-                console.error('Error loading page content:', error);
-                container.innerHTML = `<div class="page-header"><h1>Error</h1><p>Failed to load content for this page. Please try again later.</p></div>`;
-            }
+            // animateHeroOverlay(); // Uncomment to enable this basic animation
         }
-
-        // Placeholder for page-specific initialization functions
-        // These will be defined in their respective HTML files or a separate JS file
-        function initScientificNarrativePage() { console.log("Scientific Narrative page initialized."); }
-        function initArtisticCanvasPage() { console.log("Artistic Canvas page initialized."); }
-        function initMelodiesOfThoughtPage() { console.log("Melodies of Thought page initialized."); }
-        function initIgnitingMindsPage() { console.log("Igniting Minds page initialized."); }
-        function initWellspringOfIdeasPage() { console.log("Wellspring of Ideas page initialized."); }
-        // initContactPage will be provided in contact.html
-
-        // Handle initial page load based on URL hash or default to home
-        document.addEventListener('DOMContentLoaded', () => {
-            const initialHash = window.location.hash.slice(1);
-            if (initialHash && pagePaths[initialHash]) {
-                showPage(initialHash);
-            } else {
-                showPage('home', true); // Load home page and clear hash
-            }
-
-            // Set current year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-        });
-
-        // Function to display messages (e.g., for contact form submission)
-        // This is a placeholder and can be expanded for more complex message boxes
-        function displayMessageBox(message) {
-            const messageBox = document.createElement('div');
-            messageBox.style.position = 'fixed';
-            messageBox.style.top = '20px';
-            messageBox.style.left = '50%';
-            messageBox.style.transform = 'translateX(-50%)';
-            messageBox.style.backgroundColor = '#4CAF50';
-            messageBox.style.color = 'white';
-            messageBox.style.padding = '15px 30px';
-            messageBox.style.borderRadius = '8px';
-            messageBox.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
-            messageBox.style.zIndex = '1000';
-            messageBox.style.opacity = '0';
-            messageBox.style.transition = 'opacity 0.3s ease-in-out';
-            messageBox.innerText = message;
-            document.body.appendChild(messageBox);
-
-            setTimeout(() => {
-                messageBox.style.opacity = '1';
-            }, 10); // Small delay to trigger transition
-
-            setTimeout(() => {
-                messageBox.style.opacity = '0';
-                messageBox.addEventListener('transitionend', () => {
-                    messageBox.remove();
-                }, { once: true });
-            }, 3000); // Hide after 3 seconds
-        }
-    </script>
-</body>
-</html>
+    });
+</script>
